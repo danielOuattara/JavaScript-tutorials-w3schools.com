@@ -1,0 +1,92 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 04 2020
+JavaScript Tutorial : JavaScript VS jQuerry
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <script src="jQuery_prod_v3.5.0.js"></script>
+
+        <title>JavaScrit VS jQuery: CSS Styles</title>
+    </head>
+    <body>
+        <h1>JavaScrit VS jQuery: CSS Styles</h1>
+
+
+<!-- Hiding HTML Elements: Hide an HTML Element.
+===============================================-->
+        <h2 id='01'>Hello World!</h2>
+        <h2 id='02'>Hello Sweden!</h2>
+        <h2 id='03'>Hello Japan!</h2>
+        <h2 id='04'>Hello France!</h2>
+        <h2 id='05' style="display: none;">Hello Tanzania!</h2>
+
+        <script>
+
+            // jQuery
+            $(document).ready( function() {
+                var element1 = $('#02');
+                element1.hide(1000);
+                // shorter:
+                // $('#02').hide(1000);
+            });
+
+            // JavaScript
+            var element2 = document.getElementById('04')
+            element2.style.display = 'none';
+            // document.getElementById('04').style.display = 'none';
+        </script>
+        <hr/>
+
+<!-- Showing HTML Elements: Show an HTML Element:
+=================================================-->
+
+        <h2 id='head1' style='display:none;'>I'am learning jQuery!</h2>
+        <h2 id='head2' style='display:none;'>Next is JSON, Ajax, React, Angular !</h2>
+
+      <script>
+
+            // jQuery
+
+            $(document).ready(function(){
+                var element1 = $('#05')
+                element1 .show(1000);
+
+                var head1 = $('#head1');
+                head1.show(1000);
+            });
+
+            // JavaScript
+            document.getElementById('04').style.display = '';
+            document.getElementById('head2').style.display = '';
+        </script>
+        <hr/>
+
+
+<!-- Styling HTML Elements : Change the font size of an HTML element.
+====================================================================-->
+        <p id='demo1'>jQuery can change the style of an HTML element.</p>
+        <p id='demo2'>JavaScript can also change the style of an HTML element.</p>
+
+        <script>
+
+            // jQuery
+            var element5 = $('#demo1');
+            element5.css("font-size", "35px");
+            element5.css("color","green");
+
+            // JavaScript
+            element6 = document.getElementById('demo2');
+            element6.style.fontSize = "35px";
+
+        </script>
+
+
+    </body>
+</html>

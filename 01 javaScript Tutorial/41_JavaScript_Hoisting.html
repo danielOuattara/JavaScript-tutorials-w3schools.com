@@ -1,0 +1,100 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+20 04 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScipt Hoisting</title>
+    </head>
+    <body>
+        <h1>JavaScipt Hoisting</h1>
+
+
+<!-- JavaScript Declarations are Hoisted
+=========================================
+
+In JavaScript, a variable can be used before it has been declared.
+Hoisting is JavaScript's default behavior of moving all declarations to the top.
+
+> case 1 and case 2 give the same result                                     -->
+
+        <p id='demo1'></p><p id='demo2'></p>
+
+        <script>
+            /* case 1 */
+            x = 5;
+            element = document.getElementById('demo1');  // find an element
+            element.innerHTML = x;  // 5
+            var x;
+
+            /* case 2 */
+
+            var x;
+            x = 5;
+            element = document.getElementById('demo2');  // find an element
+            element.innerHTML = x;  // 5
+        </script>
+
+<!-- The let and const Keywords
+===============================
+Variables and constants declared with let or const are not hoisted! -->
+
+
+
+<!-- JavaScript Initializations are Not Hoisted
+===============================================
+
+JavaScript only hoists declarations, not initializations. -->
+        <p id='demo3'></p><p id='demo4'></p><p id='demo5'"></p>
+        <script>
+
+            // Example 1
+            var x = 5;  // declaration + Initialization
+            var y = 7;  //  same
+
+            document.getElementById('demo3').innerHTML =
+                x + " and  " + y; // 5 and 7
+
+            // Example 2
+            var w = 5;  // declaration + Initialization
+            document.getElementById('demo4').innerHTML =
+                x + " and " + z; // 5 and undefined
+            var z = 7;
+
+/* Does it make sense that z is undefined in the last example?
+This is because only the declaration (var z), not the initialization (= 7)
+is hoisted to the top. Because of hoisting, 'z' has been declared before it is used,
+but because initializations are not hoisted, the value of 'z' is undefined. */
+
+
+            // Example 2 re- Written
+
+            var w = 5;
+            var zz;
+            document.getElementById('demo5').innerHTML =
+                x + " and " + zz ;
+            zz = 7;
+
+    </script>
+
+<!-- Declare Your Variables At the Top !
+========================================
+Hoisting is (to many developers) an unknown or overlooked behavior of JavaScript.
+
+If a developer doesn't understand hoisting, programs may contain bugs (errors).
+
+To avoid bugs, always declare all variables at the beginning of every scope.
+
+Since this is how JavaScript interprets the code, it is always a good rule.
+
+NOTE: JavaScript in strict mode does not allow variables to be used if
+      they are not declared. Study "use strict" in the next chapter.         -->
+
+
+    </body>
+</html>

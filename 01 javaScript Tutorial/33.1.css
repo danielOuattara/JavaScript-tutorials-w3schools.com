@@ -1,0 +1,81 @@
+/*--------------------------------------------------|
+|Daniel OUATTARA- daniel.ouattara_AT_gmx.com        |
+|03 03 2020                                         |
+|HTML & CSS Tutorial from: Youtube - Pierre Giraud  |
+|                                                   |
+|---------------------------------------------------*/
+
+
+body {
+
+}
+
+.div0 {
+    background-color: dodgerblue;
+    width: 500px;
+    height: 400px;
+}
+
+.div1 {
+    background-color: dodgerblue;
+    width: 50%;
+    height: 400px;
+}
+
+.div2 {
+    background-color: dodgerblue;
+    width: 500px;
+    height: 400px;
+}
+
+h1 {
+
+}
+
+.p1   {
+    height: 100px;
+    width: 400px;
+    background-color: darkorange;
+    padding: 60px;
+
+}
+
+.p2 {
+
+}
+
+a {
+
+}
+
+.h2-1 {
+
+}
+
+.p3 {
+    width: 50%;
+    height: 100px;
+    width: 400px;
+    background-color: darkorange;
+}
+
+.p4 {
+}
+
+.h2-2 {
+}
+
+.p5 {
+}
+
+.h2-3 {
+}
+
+.p6 {
+}
+
+.p7 {
+}
+
+.p8 {
+}

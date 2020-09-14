@@ -1,0 +1,75 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 04 2020
+JavaScript Tutorial : JavaScript VS jQuerry
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <script src="jQuery_prod_v3.5.0.js"></script>
+        <title>JavaScrit VS jQuery: DOM Selectors</title>
+    </head>
+    <body>
+
+<!-- jQuery was created in 2006 by John Resig.
+
+It was designed to handle Browser Incompatibilities and to simplify HTML DOM
+Manipulation, Event Handling, Animations, and Ajax.
+
+For more than 10 years, jQuery has been the most popular JavaScript library
+in the world.
+
+However, from JavaScript Version 5 (2009), most of the jQuery utilities can be
+solved with a few lines of standard JavaScript: -->
+
+        <script>
+
+/* 1. Finding HTML ELement by Id
+============================= */
+
+        // jQuery:
+        var myElement = $('#id01');
+
+        // JavaScript:
+        var myElement = document.getElementById('id01');
+
+
+/* 2. Finding HTML Elements by Tag Name
+==================================== */
+
+        // jQuery:
+        var myElements = $('p');
+
+        //JavaScript:
+        var myElements = document.getElementByTagName('p');
+
+
+/* 3. Finding HTML Elements by Class Name
+====================================== */
+
+        // jQuery:
+        var myElements = $('.intro')
+
+        // JavaScript:
+        var myElements = document.getElementsByClassName('intro');
+
+
+/* 4. Finding HTML Elements by CSS Selectors
+========================================= */
+        // Return a list of all <p> elements with class="intro".
+
+        //jQuery:
+        var myElements = $('p.intro');
+
+        // JavaScript:
+        var myElements = document.querySelectorAll('p.intro');
+
+        </script>
+
+    </body>
+</html>

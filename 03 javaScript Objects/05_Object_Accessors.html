@@ -1,0 +1,210 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Objects
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Objects Accessors</title>
+    </head>
+    <body>
+        <h1>JavaScript Objects Accessors</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p> <p id="demo10">
+
+        <script>
+
+/* JavaScript Accessors (Getters and Setters).
+==============================================
+
+ECMAScript 5 (2009) introduced Getter and Setters.
+Getters and setters allow you to define 'Object Accessors' (Computed Properties).
+Getters and setters allow you to 'get' and 'set' properties via methods.*/
+
+
+/* JavaScript Getter (The 'get' Keyword).
+=======================================
+This example uses a 'lang' property (method) to 'get' the value of the
+'language' property.                                                          */
+
+    // Create an object:
+             var person = {
+                firstName : "John",
+                lastName : "Doe",
+                language : "en",
+                get lang() {
+                    return this.language;
+                }
+            };
+            // Display data from the object using a getter:
+            document.getElementById("demo1").innerHTML = person.lang;
+
+
+/* JavaScript Setter (The 'set' Keyword)
+==========================================
+This example uses a 'lang' property to 'set' the value of the 'language' property. */
+
+
+    // Create an object:
+            var person = {
+                firstName : "John",
+                lastName : "Doe",
+                language : "",
+                set lang(input) {
+                    this.language = input;
+                }
+            };
+                // Set an object property using a setter:
+                person.lang = "fr";
+
+                // Display data from the object:
+                document.getElementById("demo2").innerHTML = person.language;
+
+
+/*  JavaScript Function or Getter ?
+===================================
+
+What is the differences between these two examples ?*/
+
+            // example 1: access fullName as a function: person.fullName()
+            var person = {
+                fName: "John",
+                lName: "Doe",
+                fullName: function() {
+                    return this.fName + " " + this.lName;
+                }
+            };
+            // display data from the object using a method:
+            // Object data can be accessed using property stored as a function.
+            document.getElementById("demo3").innerHTML = person.fullName();
+
+
+            // example 2: access fullName as a property: person.fullName
+            var person = {
+                fName: "John",
+                lName: "Doe",
+                get fullName() {
+                    return this.fName + " " + this.lName;
+                }
+            };
+            // Object data can be accessed using a getter.
+            document.getElementById("demo4").innerHTML = person.fullName;
+
+
+/* Data Quality.
+================
+JavaScript can secure better data quality when using 'getters' and 'setters'.
+
+Using the 'lang' property, in this example, returns the value
+of the 'language' property in upper case:*/
+
+            // Example 1
+            var person = {
+            firstName: "John",
+            lastName : "Doe",
+            language : "en",
+            get lang() {
+            return this.language.toUpperCase();
+            }
+            };
+
+            // Display data from the object using a getter:
+            document.getElementById("demo5").innerHTML = person.lang;
+
+
+
+/* Using the lang property, in this example, stores
+   an upper case value in the language property: */
+
+            // Example 2
+            var person = {
+                fName: "Abdoul",
+                lName: "Razak",
+                language: "",
+                set lang(inputLang) {
+                    this.language = inputLang.toUpperCase();
+                }
+            };
+
+            // Set an object property using a setter:
+            person.lang ="english";
+
+            // Display data from the object:
+            document.getElementById("demo6").innerHTML = person.language;
+
+
+/* Why Using Getters and Setters ?
+=================================
+
+    > It gives simpler syntax
+    > It allows equal syntax for properties and methods
+    > It can secure better data quality
+    > It is useful for doing things behind-the-scenes
+ */
+
+
+
+/* Object.defineProperty():
+==========================
+
+The 'Object.defineProperty()' method can also be used to add Getters and Setters: */
+
+            // Define object
+            var objet = {counter: 3};
+
+
+            // Define setters:
+            Object.defineProperty(objet, "reset", {
+                get: function() {
+                    this.counter = 0;
+                }
+            });
+
+            Object.defineProperty(objet, "increment", {
+                get: function() {this.counter ++;}
+            });
+
+            Object.defineProperty(objet, "decrement", {
+                get: function() {this.counter --;}
+            });
+
+            Object.defineProperty(objet, "add", {
+                set: function(value) {this.counter += value;}
+            });
+
+            Object.defineProperty(objet, "substract", {
+                set: function(value) {this.counter -= value;}
+            });
+
+            Object.defineProperty(objet, "multiply", {
+                set: function(value) {this.counter *= value;}
+            });
+
+            Object.defineProperty(objet, "divide", {
+                set: function(value) {this.counter /= value;}
+            });
+            // Play with counter:
+            objet.reset;
+            objet.add = 5;
+            objet.substract = 1;
+            objet.increment;
+            objet.decrement;
+            objet.multiply = 4;
+            objet.divide = 32;
+
+            document.getElementById("demo7").innerHTML = objet.counter;
+
+            document.getElementById("demo8").innerHTML = Object.values(objet);
+            document.getElementById("demo9").innerHTML = Object.keys(objet).length;
+            document.getElementById("demo10").innerHTML = objet;
+
+        </script>
+
+    </body>
+</html>

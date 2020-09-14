@@ -1,0 +1,65 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript if else and else if</title>
+    </head>
+    <body>
+        <h1>JavaScript if else and else if</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+
+<!--
+Conditional Statements
+========================
+Very often when you write code, you want to perform different actions for different decisions.
+You can use conditional statements in your code to do this.
+In JavaScript we have the following conditional statements:
+
+ > Use 'if' to specify a block of code to be executed, if a specified condition is true
+ > Use 'else' to specify a block of code to be executed, if the same condition is false
+ > Use 'else if' to specify a new condition to test, if the first condition is false
+ > Use 'switch' to specify many alternative blocks of code to be executed                   -->
+
+        <script>
+            // if
+            if (new Date().getHours() < 18) {
+                document.getElementById("demo1").innerHTML = " Good Day  !";
+            }
+            // else
+            if (new Date().getHours() > 18) {
+                document.getElementById("demo2").innerHTML = "Good Day  My Dear !"
+            }else {
+                document.getElementById("demo2").innerHTML = "Good Evening My Dear !"
+            }
+            var timeNow = new Date().getHours();
+            if (timeNow < 10) {
+                document.getElementById("demo3").innerHTML = "Good Morning !"
+            } else if (10 <= timeNow < 18) {
+                document.getElementById("demo3").innerHTML = "Good Day !"
+            } else {
+                document.getElementById("demo3").innerHTML = "Good Evening !"
+            }
+
+            // Random Link Based if statement:
+            var text = "";
+            if (Math.random() < 0.3) {
+                text = "<a href='htpps://www.w3schools.com'> Visit W3.schools.com</a>";
+            } else if (Math.random() > 0.7) {
+                text = "<a href='htpps://www.wikipedia.org'> Visit wikipedia.org</a>";
+            } else {
+                text = "I Do Nothing !";
+            }
+            document.getElementById("demo4").innerHTML = text
+
+        </script>
+
+    </body>
+</html>

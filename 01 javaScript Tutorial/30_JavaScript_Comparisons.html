@@ -1,0 +1,111 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Comparison and Logical Operators</title>
+    </head>
+    <body>
+        <h1>JavaScript Comparison and Logical Operators</h1>
+        <p id="demo1"></p><p id="demo2"></p><p id="demo3"></p><p id="demo4"></p>
+        <p id="demo5"></p><p id="demo6"></p><p id="demo7"></p><p id="demo8"></p>
+        <p id="demo9"></p><p id="demo10"></p><p id="demo11"></p><p id="demo12"></p>
+        <p id="demo13"></p><p id="demo14"></p><p id="demo15"></p><p id="demo16"></p>
+        <p id="demo17"></p><p id="demo18"><p id="demo19"></p><p id="demo20"><p id="demo21">
+        <p id="demo22"></p><p id="demo23"><p id="demo24"></p><p id="demo25"></p><p id="demo26"></p>
+        <p id="demo27"></p><p id="demo28"></p><p id="demo29"></p><p id="demo30"></p>
+        <p id="demo31"></p><p id="demo32"></p><p id="demo33"></p><p id="demo34"></p>
+        <p id="demo35"></p><p id="demo36"></p><p id="demo37"></p><p id="demo38"></p>
+
+<!--
+NOTE:
+Comparing data of different types may give unexpected results.
+When comparing a string with a number, JavaScript will convert
+the string to a number when doing the comparison.
+An empty string converts to 0.
+A non-numeric string converts to NaN which is always false. -->
+        <script>
+
+/* Comparisons Operators */
+
+            var x = 5;
+            // ==: equal value
+            document.getElementById("demo1").innerHTML = 'x == 8 : ' + (x == 8 );  // false
+            document.getElementById("demo2").innerHTML = 'x == 5 : ' +  (x == 5 );  // true
+            document.getElementById("demo3").innerHTML = ' x == "5" : ' + (x == 5 );  // true
+
+            // ===: equal value and equal type
+            document.getElementById("demo4").innerHTML = 'x === 8 : ' + (x === 8 );
+            document.getElementById("demo5").innerHTML = 'x === 5 : ' +  (x === 5 );
+            document.getElementById("demo6").innerHTML = ' x === "5" : ' + (x === 5 );
+            // != : not equal value
+            document.getElementById("demo7").innerHTML = 'x != 8 : ' + (x != 8 );
+            document.getElementById("demo8").innerHTML = 'x != 5 : ' +  (x != 5 );
+            document.getElementById("demo9").innerHTML = ' x != "5" : ' + (x != 5 );
+            // !== :  	not equal value or not equal type
+            document.getElementById("demo10").innerHTML = 'x !== 8 : ' + (x !== 8 );
+            document.getElementById("demo11").innerHTML = 'x !== 5 : ' +  (x !== 5 );
+            document.getElementById("demo12").innerHTML = ' x !== "5" : ' + (x !== 5 );
+            // > : greater than
+            document.getElementById("demo13").innerHTML = 'x > 8 : ' + (x > 8 );
+            document.getElementById("demo14").innerHTML = 'x > 5 : ' +  (x > 5 );
+            document.getElementById("demo15").innerHTML = ' x > "5" : ' + (x > 5 );
+            // < : less than
+            document.getElementById("demo16").innerHTML = 'x < 8 : ' + (x < 8 );
+            document.getElementById("demo17").innerHTML = 'x < 5 : ' +  (x < 5 );
+            document.getElementById("demo18").innerHTML = ' x < "5" : ' + (x < 5 );
+            // >= : greater than or equal to
+            document.getElementById("demo19").innerHTML = 'x >= 8 : ' + (x >= 8 );
+            document.getElementById("demo20").innerHTML = 'x >= 5 : ' +  (x >= 5 );
+            document.getElementById("demo21").innerHTML = ' x >= "5" : ' + (x >= 5 );
+            // <= : less than or equal to
+            document.getElementById("demo22").innerHTML = 'x <= 8 : ' + (x <= 8 );
+            document.getElementById("demo23").innerHTML = 'x <= 5 : ' +  (x <= 5 );
+            document.getElementById("demo24").innerHTML = ' x <= "5" : ' + (x <= 5 );
+
+            var age = 23;
+            if (age < 18) {
+                document.getElementById("demo25").innerHTML = "Under Age: Access Denied ! ";
+            } else {
+                document.getElementById("demo25").innerHTML = "Access Granted ! ";
+            }
+
+/* Logical Operators*/
+            var x = 6, y = 3;
+            //&& : Logical AND
+            document.getElementById("demo26").innerHTML ='x < 10 && y > 1  is : ' + (x < 10 && y > 1);
+            // || : Logical OR
+            document.getElementById("demo27").innerHTML ='x == 5 || y == 5  is : ' + (x == 5 || y == 5);
+            // ! : Logical NOT
+            document.getElementById("demo28").innerHTML ='!(x == y)  is : ' +  	!(x == y);
+            document.getElementById("demo29").innerHTML ='x < 10 && y > 1  is : ' + (x < 10 && y > 1);
+            document.getElementById("demo30").innerHTML ='x < 10 && y > 1  is : ' + (x < 10 && y > 1);
+
+/* Conditional (Ternary) Operator */
+            var age = 20;
+            var voteable = (age > 20) ? "Old enough": "Too Young";
+
+/* Comparing Different Types */
+
+            document.getElementById("demo31").innerHTML ='2 < 12  is : ' + (2 < 12);
+            document.getElementById("demo32").innerHTML ='2 < "12"  is : ' + (2 < "12");
+            document.getElementById("demo33").innerHTML ='2 < "John"  is : ' + (2 < "John");
+            document.getElementById("demo34").innerHTML ='2 > "John"  is : ' + (2 > "John");
+            document.getElementById("demo35").innerHTML ='2 == "John"  is : ' + (2 == "John");
+            document.getElementById("demo36").innerHTML ='"2" < "12"  is : ' + ("2" < "12");
+            document.getElementById("demo37").innerHTML ='"2" > "12"  is : ' + ("2" > "12");
+            document.getElementById("demo38").innerHTML ='"2" == "12"  is : ' + ("2" == "12");
+
+
+
+
+        </script>
+
+    </body>
+</html>

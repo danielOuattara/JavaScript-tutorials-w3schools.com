@@ -1,0 +1,78 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Statement</title>
+  </head>
+  <body>
+    <h1> JavaScript Statement</h1>
+
+    <p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed
+       by a computer.</p>
+    <p id="demo_1"></p>
+    <p id ="demo_2"></p>
+    <p id ="demo_3"></p>
+    <p id ="demo_4"></p>
+
+    <button type="button" onclick="myFunction()">Click</button>
+
+    <script>
+
+      var x, y , z;
+      x = 5;
+      y = 6;
+      z = x + y;
+      document.getElementById('demo_1').innerHTML = "The value of z = " + z + ".";
+      document.getElementById('demo_2').innerHTML = "Hello Dolly.";
+
+      function myFunction() {
+        document.getElementById('demo_3').innerHTML = "How are you ?.";
+        document.getElementById('demo_4').innerHTML = "I have a story for You !";
+      }
+    </script>
+
+    <h3>JavaScript Keyword</h3>
+
+    <pre>
+      Keyword 	Description
+      ========  ============
+
+--------------------------------------------------------------------------------
+break 	         Terminates a switch or a loop
+--------------------------------------------------------------------------------
+continue         Jumps out of a loop and starts at the top
+--------------------------------------------------------------------------------
+debugger 	       Stops the execution of JavaScript, and calls (if available)
+                 the debugging function
+--------------------------------------------------------------------------------
+do ... while 	   Executes a block of statements, and repeats the block, while
+                 a condition is true
+--------------------------------------------------------------------------------
+for 	           Marks a block of statements to be executed, as long as a
+                 condition is true
+--------------------------------------------------------------------------------
+function 	       Declares a function
+--------------------------------------------------------------------------------
+if ... else 	   Marks a block of statements to be executed, depending on a
+                 condition
+--------------------------------------------------------------------------------
+return 	         Exits a function
+--------------------------------------------------------------------------------
+switch 	         Marks a block of statements to be executed, depending on
+                 different cases
+--------------------------------------------------------------------------------
+try ... catch 	 Implements error handling to a block of statements
+--------------------------------------------------------------------------------
+var 	           Declares a variable
+--------------------------------------------------------------------------------
+    </pre>
+
+  </body>
+</html>

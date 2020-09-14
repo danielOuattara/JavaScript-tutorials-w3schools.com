@@ -1,0 +1,123 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Objects
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Objects Prototype</title>
+    </head>
+    <body>
+        <h1>JavaScript Objects Prototype</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p>
+
+        <script>
+
+
+/*   All JavaScript objects inherit properties and methods from a prototype.*/
+
+
+/*   In the previous chapter we learned how to use an 'object constructor'. */
+
+            function Person(firstName, lastName, age, eyeColor) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                 this.age = age;
+                this.eyeColor = eyeColor;
+            }
+
+            var uncle = new Person("John", "Doe", 50, "blue");
+            var aunt = new Person ("Julia", "Roberts", 48, "grey");
+
+            document.getElementById("demo1").innerHTML =
+                "My uncle name is : " + uncle.firstName + "  " + uncle.lastName + "." +
+                 " He is " + uncle.age + " . " + "<br/>" +
+
+                " My aunt name is : " + aunt.firstName + "  " + aunt.lastName + "."  +
+                 " She is "  + aunt.age + " . " + "<br/>"
+
+/*
+    We also learned that you can not add a new property to an existing object
+    constructor:
+
+            Person.nationality = bla-bla-bla ; // undefined
+
+    To add a new property to a constructor, you must add it into
+    the constructor function definition.*/
+
+
+
+/* Prototype Inheritance.
+=========================
+
+All JavaScript objects inherit properties and methods from a 'prototype':
+
+    > 'Date' objects inherit from 'Date.prototype'
+    > 'Array' objects inherit from 'Array.prototype'
+    > 'Person' objects inherit from 'Person.prototype'
+
+The 'Object.prototype' is on the top of the prototype inheritance chain:
+
+    'Date' objects, 'Array' objects, and 'Person' objects inherit from
+    Object.prototype.                                                             */
+
+
+/* Adding Properties and Methods to Objects.
+=============================================
+
+    Sometimes you want to add new properties (or methods) to :
+    - all existing objects of a given type.
+    - an object constructor.
+
+    Using the 'prototype' Property.
+    =============================
+
+  The JavaScript 'prototype' property allows you to add new properties
+  to object constructors:*/
+
+            function Person(first, last, age, eye) {
+              this.firstName = first;
+              this.lastName = last;
+              this.age = age;
+              this.eyeColor = eye;
+            };
+
+            Person.prototype.nationality = "English";  // Right HERE !
+
+            var uncle = new Person ("John", "Doe", 50, "blue");
+            document.getElementById("demo2").innerHTML =
+            "The nationality of my uncle is " + uncle.nationality;
+
+  /* The JavaScript prototype property also allows you to add new methods
+     to objects constructors:*/
+
+            function Person(firstName, lastName, age, eyeColor) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.eyeColor = eyeColor;
+            }
+
+            Person.prototype.name = function () {  // Rigth HERE !
+                return this.firstName + " " + this.lastName;
+            };
+
+            var aunt = new Person ("Anna", "Roberts", 50, "grey");
+            document.getElementById("demo3").innerHTML = Object.values(aunt);
+            document.getElementById("demo4").innerHTML = Object.values(aunt.name());
+            document.getElementById("demo5").innerHTML = aunt.name();
+
+/*
+CAUTION:  Only modify your own prototypes. Never modify the prototypes of
+          standard JavaScript objects. */
+
+        </script>
+
+    </body>
+</html>

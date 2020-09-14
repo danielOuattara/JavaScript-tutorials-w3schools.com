@@ -1,0 +1,91 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+25 03 2020
+JavaScript Tutorial : Objects
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Objects Methods</title>
+    </head>
+    <body>
+        <h1>JavaScript Objects Methods</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p> <p id="demo7"></p>
+
+        <script>
+
+
+/* JavaScript Methods:
+======================
+
+JavaScript methods are actions that can be performed on objects.
+A JavaScript method is a property containing a function definition.
+Methods are functions stored as object properties.
+*/
+
+            var person = {
+                firstName: "John",
+                lastName : "Doe",
+                id       : 5566,
+                fullName : function() {
+                    //method that extract the name of a person.//
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+
+/* Accessing Object Methods:
+============================*/
+
+            // Accessing Object method
+            document.getElementById("demo1").innerHTML = person.fullName();
+
+            // Accessing Object method by expression:
+            var named = person.fullName();
+            document.getElementById("demo2").innerHTML = named;
+            // Accessing Object method definition !!!
+            document.getElementById("demo3").innerHTML = person.fullName;
+
+
+/*  JavaScript Built-in Methods:
+  ==============================*/
+
+            var message = "Hello World !";
+            document.getElementById("demo4").innerHTML = message;
+            var xXX_message = message.toUpperCase();
+            var xxx_message = message.toLowerCase();
+            document.getElementById("demo5").innerHTML = message.toUpperCase();
+            document.getElementById("demo6").innerHTML = message.toLowerCase();
+
+
+/* Adding a Method to an Object:
+  ==============================*/
+
+            var person = {
+                firstName: "John",
+                lastName : "Doe",
+                id       : 5566,
+                fullName : function() {
+                    //method to extract the name of a person.//
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+            person.gender = "Male";  // adding a property
+            person.height = 170;  //  ""
+            person.race = "White";  // ""
+
+            // adding a method.
+            person.fullDescribe = function(){
+                return this.firstName + " "+ this.lastName + " " + person.id +
+                        " " + person.gender + " " + person.race + " " + person.height;
+            }
+            document.getElementById("demo7").innerHTML = person.fullDescribe();
+
+        </script>
+
+    </body>
+</html>

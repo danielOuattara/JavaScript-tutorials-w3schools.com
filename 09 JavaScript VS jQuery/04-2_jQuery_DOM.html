@@ -1,0 +1,65 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 04 2020
+JavaScript Tutorial : JavaScript VS jQuerry
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <script src="jQuery_prod_v3.5.0.js"></script>
+
+        <title>JavaScrit VS jQuery: HTML DOM</title>
+    </head>
+    <body>
+        <h1>JavaScrit VS jQuery: HTML DOM</h1>
+
+<!-- Removing Elements: Remove an HTML element.
+=============================================== -->
+        <h2 id='id01'>Hello World!</h2>
+        <h2 id='id02'>Hello Sweden!</h2>
+        <h2 id='id03'>Static Miles!</h2>
+        <h2 id='id04'>Nautic Miles!</h2>
+        <script>
+
+            // jQuery
+            $(document).ready(function(){
+
+                $('#id01').remove();
+            });
+
+            // JavaScript
+            var element1 = document.getElementById('id03');
+            element1.parentNode.removeChild(element1);
+
+        </script>
+        <hr/>
+
+
+<!-- Get Parent Elements: Return the parent of an HTML element.
+=============================================================-->
+        <div class="div1"><h2 id='id05'>A</h2></div>
+        <h2 id='id06'>B</h2>
+        <p id='demo2'>demo2</p>
+        <p id='demo3'>demo3</p>
+
+        <script>
+
+            // jQuery
+            $(document).ready(function() {
+
+                var parent2 = $('#id05').parent();
+                $('#demo2').text(parent2.prop('nodeName'));
+            });
+
+            // JavaScript
+            var parent3 = document.getElementById('id06').parentNode;
+            document.getElementById('demo3').innerHTML = parent3.nodeName;
+        </script>
+
+    </body>
+</html>

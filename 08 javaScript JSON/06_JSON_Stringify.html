@@ -1,0 +1,131 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+19 06 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JSON.stringify()</title>
+</head>
+
+<body>
+  <h1>JSON.stringify().</h1>
+
+
+<!-- A common use of JSON is to exchange data to/from a web server.
+When sending data to a web server, the data has to be a string.
+
+Convert a JavaScript object into a string with 'JSON.stringify()'.
+
+
+Stringify a JavaScript Object
+==============================
+
+Imagine we have this object in JavaScript:
+var obj = { name: "John", age: 30, city: "New York" };
+
+Use the JavaScript function 'JSON.stringify()' to convert it into a JSON string.
+var myJSON = JSON.stringify(obj);
+
+The result will be a string following the JSON notation.
+
+myJSON is now a string, and ready to be sent to a server:
+You will learn how to send JSON to the server in the next chapter.           -->
+
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <script>
+       var object_1 = { name: "John", age: 30, city: "New-York"};
+       var myJSON_1 = JSON.stringify(object_1);
+       document.getElementById('demo1').innerHTML =  `myJSON_1 = ${myJSON_1}`;
+       document.getElementById("demo2").innerHTML  = `Type of ${myJSON_1} =  ${typeof myJSON_1}`;
+     </script>
+
+
+<!-- Stringify a JavaScript Array
+===================================
+
+It is also possible to stringify JavaScript arrays:
+
+Imagine we have this array in JavaScript:
+var arr = [ "John", "Peter", "Sally", "Jane" ];
+
+Use the JavaScript function 'JSON.stringify()' to convert it into a string.
+var myJSON = JSON.stringify(arr);
+
+The result will be a string following the JSON notation.
+
+myJSON is now a string, and ready to be sent to a server:
+You will learn how to send JSON to the server in the next chapter            -->
+
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+
+    <script>
+       var array_1 = ["John", "Peter", "Sally", "Jane"];
+       var myJSON_2 = JSON.stringify(array_1);
+       document.getElementById("demo3").innerHTML = 'myJSON_2 = ' +  myJSON_2;
+       document.getElementById("demo4").innerHTML  = 'type of myJSON_2 = ' +
+         typeof myJSON_2;
+
+     </script>
+
+
+<!-- Exceptions
+=================
+
+Stringify Dates
+----------------
+
+In JSON, date objects are not allowed. The JSON.stringify() function will
+convert any dates into strings.
+You can convert the string back into a date object at the receiver.          -->
+
+    <p id='demo5'></p>
+    <script>
+       var object_2 = {name: "John", today: new Date(), city: "New-York"};
+       var myJSON_3 = JSON.stringify(object_2);
+
+       document.getElementById("demo5").innerHTML = 'myJSON_3 = ' +  myJSON_3;
+
+     </script>
+
+<!-- Stringify Functions
+-------------------------
+
+In JSON, functions are not allowed as object values.
+The JSON.stringify() will remove any functions from a JavaScript object,
+both the key and the value: -->
+
+     <p id="demo6"></p>
+    <script>
+       var  object_3 = {name: "John", age: function() { return 30;}, city: "NY"};
+       var myJSON_4 = JSON.stringify(object_3);
+
+       document.getElementById("demo6").innerHTML = "myJSON_4 = " + myJSON_4;
+     </script>
+
+<!-- This can be avoided if you convert your functions into strings before
+running the JSON.stringify(). -->
+
+
+      <p id="demo7"></p>
+      <script>
+        var  object_4 = {name: "John", age: function() { return 30;}, city: "NY"};
+        object_4.age = object_4.age.toString();
+        var myJSON_4 = JSON.stringify(object_4);
+
+        document.getElementById("demo7").innerHTML = "myJSON_4 = " + myJSON_4;
+      </script>
+
+
+<!-- If you send functions using JSON, the functions will lose their scope,
+and the receiver would have to use 'eval()' to convert them back into functions. -->
+
+  </body>
+</html>

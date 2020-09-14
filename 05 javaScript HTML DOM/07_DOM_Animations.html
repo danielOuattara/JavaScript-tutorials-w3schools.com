@@ -1,0 +1,96 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+21 04 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Animation</title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM Animation</h1><hr/>
+
+<!-- Learn to create HTML animations using JavaScript.
+
+
+Create an Animation Container
+==============================
+
+All animations should be relative to a container element.-->
+
+        <div id = "container">
+            <div id = "animate"> </div>
+        </div>
+
+
+<!-- Style the Elements
+========================
+
+The container element should be created with
+ > style = "position: relative"
+ > style = "position: absolute".                                     -->
+
+
+        <style>
+            #container {
+                width: 400px;
+                height: 400px;
+                position: relative;
+                background-color: yellow;
+            }
+
+            #animate {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                background-color: red;
+            }
+        </style>
+
+
+<!-- Animation Code
+===================
+
+JavaScript animations are done by programming gradual changes in an element's style.
+The changes are called by a timer. When the timer interval is small, the animation
+ looks continuous. -->
+
+        <script>
+            /*
+            var Id = setInterval(frame, 5);
+
+            function frame ()  {
+                if (// test for finished ) {
+                    clearInterval(Id);
+                } else {
+                    // code to change the element style
+                }
+            }
+            */
+        </script>
+
+<!-- completing the example -->
+
+        <p><button onclick="myMove()">Click to move</button> </p>
+
+        <script>
+            function myMove() {
+                var elem = document.getElementById('animate');
+                var pos = 0;
+                var id = setInterval(frame, 0.1);
+                function frame() {
+                    if (pos == 300) {
+                        clearInterval(id);
+                    } else {
+                        pos++;
+                        elem.style.top = pos + "px";
+                        elem.style.left = pos + "px";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

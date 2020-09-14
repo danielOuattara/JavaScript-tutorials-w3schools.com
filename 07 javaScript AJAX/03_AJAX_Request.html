@@ -1,0 +1,241 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+22 06 2020
+JavaScript Tutorial : AJAX
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Ajax - Sen a Request To a Server</title>
+    </head>
+    <body>
+
+        <h1>Ajax - Sen a Request To a Server.</h1><hr/>
+
+<!-- The XMLHttpRequest object is used to exchange data with a server.
+
+
+Send a Request To a Server
+===========================
+
+To send a request to a server, we use the 'open()'and 'send()' methods
+of the XMLHttpRequest object:
+__________________________________________
+xhttp.open("GET", "ajax_info.txt", true);
+xhttp.send();
+__________________________________________
+
+
+Method      	               Description
+------                       -----------
+--------------------------------------------------------------------------------
+open( method, url, async) 	 Specifies the request
+--------------------------------------------------------------------------------
+                             method: the type of request: GET or POST
+                             url: the server (file) location
+                             async: true (asynchronous) or false (synchronous)
+--------------------------------------------------------------------------------
+send(): 	                   Sends the request to the server (used for GET)
+--------------------------------------------------------------------------------
+send(string) 	Sends the request to the server (used for POST)
+--------------------------------------------------------------------------------
+
+
+GET or POST ?
+=============
+
+'GET' is simpler and faster than 'POST', and can be used in most cases.
+
+However, always use POST requests when:
+
+>  A cached file is not an option (update a file or database on the server).
+>  Sending a large amount of data to the server (POST has no size limitations).
+>  Sending user input (which can contain unknown characters),
+   POST is more robust and secure than GET.
+
+
+GET Requests
+=============
+
+A simple GET request example:
+-----------------------------                                                -->
+
+      <button type="button" onclick="loadDoc1()">Request data</button>
+
+      <p>Click the button several times to see if the time changes, or
+        if the file is cached.</p>
+      <p id="demo1"></p>
+      <script>
+        function loadDoc1() {
+
+          var xhttp = new XMLHttpRequest();
+
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById('demo1').innerHTML = this.responseText;
+            }
+          };
+
+          xhttp.open("GET", "demo_get.asp", true);
+          xhttp.send();
+        }
+      </script>
+
+<!-- In the example above, you may get a cached result. To avoid this, add
+a unique ID to the URL                                                       -->
+
+      <button type="button" onclick="loadDoc2()">Request data</button>
+
+       <p>Click the button several times to see if the time changes, or
+          if the file is cached.</p>
+      <p id="demo2"></p>
+      <script>
+        function loadDoc2() {
+
+          var xhttp = new XMLHttpRequest();
+
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById('demo2').innerHTML = this.responseText;
+            }
+          };
+          
+          xhttp.open("GET", "demo_get.asp?t=" + Math.random(), true);
+          xhttp.send();
+        }
+      </script>
+
+<!-- If you want to send information with the 'GET' method, add the information
+to the URL:                                                                  -->
+
+      <button type="button" onclick="loadDoc3()">Request data</button>
+
+      <p>Click the button several times to see if the time changes, or
+        if the file is cached.</p>
+      <p id="demo3"></p>
+      <script>
+        function loadDoc3() {
+
+          var xhttp = new XMLHttpRequest();
+
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById('demo3').innerHTML = this.responseText;
+            }
+          };
+          
+          xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford", true);
+          xhttp.send();
+        }
+      </script>
+
+
+<!-- POST Requests
+==================
+
+A simple POST request Example
+-----------------------------                                                -->
+
+       <button type="button" onclick="loadDoc4()">Request data</button>
+       <p>Click the button several times to see if the time changes, or
+         if the file is cached.</p>
+       <p id="demo4"></p>
+       <script>
+         function loadDoc4() {
+           var xhttp = new XMLHttpRequest();
+           xhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+               document.getElementById('demo4').innerHTML = this.responseText;
+             }
+           };
+           xhttp.open("POST", "demo_post.asp", true);
+           xhttp.send();
+         }
+       </script>
+
+
+<!-- To POST data like an HTML form, add an HTTP header with
+'setRequestHeader().' Specify the data you want to send in the send() method:-->
+
+
+        <button type="button" onclick="loadDoc5()">Request data</button>
+        <p>Click the button several times to see if the time changes, or
+          if the file is cached.</p>
+        <p id="demo5"></p>
+        <script>
+          function loadDoc5() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('demo5').innerHTML = this.responseText;
+              }
+            };
+            xhttp.open("POST", "demo_post2.asp", true);
+            xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhttp.send("fname=Henry&lname=Ford");
+          }
+        </script>
+
+
+<!-- Method 	Description
+setRequestHeader(header, value) 	Adds HTTP headers to the request
+
+header: specifies the header name
+value: specifies the header value
+The url - A File On a Server
+
+The url parameter of the open() method, is an address to a file on a server:
+xhttp.open("GET", "ajax_test.asp", true);
+
+The file can be any kind of file, like .txt and .xml, or server scripting files like .asp and .php (which can perform actions on the server before sending the response back).
+Asynchronous - True or False?
+
+Server requests should be sent asynchronously.
+
+The async parameter of the open() method should be set to true:
+xhttp.open("GET", "ajax_test.asp", true);
+
+By sending asynchronously, the JavaScript does not have to wait for the server response, but can instead:
+
+    execute other scripts while waiting for server response
+    deal with the response after the response is ready
+
+The onreadystatechange Property
+
+With the XMLHttpRequest object you can define a function to be executed when the request receives an answer.
+
+The function is defined in the onreadystatechange property of the XMLHttpRequest object:
+Example
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+};
+xhttp.open("GET", "ajax_info.txt", true);
+xhttp.send();
+
+You will learn more about onreadystatechange in a later chapter.
+Synchronous Request
+
+To execute a synchronous request, change the third parameter in the open() method to false:
+xhttp.open("GET", "ajax_info.txt", false);
+
+Sometimes async = false are used for quick testing. You will also find synchronous requests in older JavaScript code.
+
+Since the code will wait for server completion, there is no need for an onreadystatechange function:
+Example
+xhttp.open("GET", "ajax_info.txt", false);
+xhttp.send();
+document.getElementById("demo").innerHTML = xhttp.responseText;
+
+Synchronous XMLHttpRequest (async = false) is not recommended because the JavaScript will stop executing until the server response is ready. If the server is busy or slow, the application will hang or stop.
+
+Synchronous XMLHttpRequest is in the process of being removed from the web standard, but this process can take many years.
+
+Modern developer tools are encouraged to warn about using synchronous requests and may throw an InvalidAccessError exception when it occurs.
+ -->
+
+    </body>
+</html>

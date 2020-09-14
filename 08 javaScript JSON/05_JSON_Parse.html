@@ -1,0 +1,157 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+25 05 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JSON.parse()</title>
+</head>
+
+<body>
+  <h1>JSON.parse()</h1><hr/>
+
+<!-- A common use of JSON is to exchange data to/from a web server.
+
+When receiving data from a web server, the data is always a string.
+
+Parse the data with 'JSON.parse()', and the data becomes a JavaScript object.
+
+
+Example - Parsing JSON
+=======================
+
+* Imagine we received this text from a web server:
+    '{ "name":"John", "age":30, "city":"New York"}'
+
+* Use the JavaScript function 'JSON.parse()' to convert text into a JavaScript
+  object:
+
+  var myObject = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
+
+Make sure the text is written in JSON format, or you will get a syntax
+error.
+
+* Use the JavaScript object in your page:                                    -->
+
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+
+    <script>
+      let serverResponse = '{"name": "John Doe", "age": 30, "city": "Montreal"}';
+      let myObject = JSON.parse(serverResponse);
+      document.getElementById("demo1").innerHTML = `${myObject.name}, ${myObject.city}`;
+      document.getElementById("demo2").innerHTML = `${myObject.name}, ${myObject.age}`;
+    </script><hr/>
+
+
+<!-- JSON From the Server
+==========================
+
+You can request JSON from the server by using an AJAX request.
+As long as the response from the server is written in JSON format, you can
+parse the string into a JavaScript object.                                   -->
+
+    <p id="demo3"></p>
+    <script>
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+          document.getElementById("demo3").innerHTML = myObj.name;  // John
+        }
+      };
+
+      xmlhttp.open("GET", "json_demo.txt", true);
+      xmlhttp.send();
+
+      /*
+      {
+        "name":"John",
+        "age":31,
+        "pets":[
+            { "animal":"dog", "name":"Fido" },
+            { "animal":"cat", "name":"Felix" },
+            { "animal":"hamster", "name":"Lightning" }
+        ]
+      }
+
+      */
+    </script>
+
+    <p>Take a look at <a href="json_demo.txt" target="_blank">json_demo.txt</a></p>
+
+
+<!-- Array as JSON
+===================
+
+When using the 'JSON.parse()' on a JSON derived from an array, the method will
+return a JavaScript array, instead of a JavaScript object. -->
+    <p id="demo4"></p>
+    <script>
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var myArr = JSON.parse(this.responseText);
+          document.getElementById("demo4").innerHTML = myArr[0];  // Ford
+          }
+        };
+      xmlhttp.open("GET", "json_demo_array.txt", true);
+      xmlhttp.send();
+
+      // [ "Ford", "BMW", "Audi", "Fiat" ]
+
+    </script>
+
+
+<!-- Exceptions: Parsing Dates
+===============================
+
+Date objects are not allowed in JSON.
+If you need to include a date, write it as a string. You can convert it back
+into a date object later:
+                                                                             -->
+
+      <p id ="demo4"></p>
+      <p id ="demo5"></p>
+      <script>
+         var text = '{"name": "John", "birth": "1986-12-14", "city": "New York"}';
+         var myObject_with_date = JSON.parse(text, function(key, value) {
+           if (key == "birth") {
+             return new Date(value);
+           } else {
+             return value;
+           }
+         });
+         document.getElementById("demo4").innerHTML = myObject_with_date["name"];
+         document.getElementById("demo5").innerHTML = myObject_with_date.birth;
+
+       </script>
+
+
+<!-- Exceptions: Parsing Functions
+===================================
+
+Functions are not allowed in JSON.
+If you need to include a function, write it as a string. You can convert it
+back into a function later:                                                  -->
+
+      <p id="demo6"></p>
+      <script>
+         var text2 = '{"name": "John", "age": "function () {return 30;}", "city": "New-York"}';
+         var myObject_with_function = JSON.parse(text2);
+         myObject_with_function.age = eval("(" + myObject_with_function.age + ")");
+
+         document.getElementById("demo6").innerHTML =`${myObject_with_function.name}, ${myObject_with_function.age()}`;
+
+/* You should avoid using functions in JSON, the functions will lose their
+ scope, and you would have to use eval() to convert them back into functions.*/
+       </script>
+
+  </body>
+</html>

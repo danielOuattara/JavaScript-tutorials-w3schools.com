@@ -1,0 +1,160 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+06 07 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Element (Nodes)</title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM Element (Nodes).</h1><hr/>
+
+<!-- Adding and Removing Nodes (HTML Elements)
+
+
+Creating New HTML Elements (Nodes)
+===================================
+
+To add a new element to the HTML DOM, you must create the element (element node) first,
+and then append it to an existing element.  -->
+
+       <div id="div1" style="border: 1px solid black">
+           <p id="p1">This is a paragraph</p>
+           <p id="p2"> This is another paragraph</p>
+       </div>
+
+       <script>
+           var para = document.createElement("p");
+           var node = document.createTextNode("This paragraph is new.");
+           para.appendChild(node);
+
+           var element = document.getElementById("div1");
+           element.appendChild(para);
+
+           para.style.color = "blue";
+           para.style.fontSize = "20px";
+           para.addEventListener("mouseover", colorFunction1);
+           para.addEventListener("mouseout", colorFunction2);
+
+           function colorFunction1() {
+               para.style.color = "green";
+               para.style.fontSize = "25px";
+           }
+           function colorFunction2() {
+               para.style.color = "blue";
+               para.style.fontSize = "20px";
+           }
+       </script>
+
+<!-- Creating new HTML Elements - insertBefore()
+================================================
+
+The appendChild() method in the previous example, appended the new element as 
+the last child of the parent.
+
+If you don't want that you can use the insertBefore() method:  -->
+
+
+        <div id="div2">
+            <p id="p3">This is paragraph</p>
+            <p id="p4">This is another paragraph</p>
+        <p id="p4">This is another paragraph, Yes it is !</p>
+        </div>
+        <button id="button1">Click to create :p  </button>
+        <button id="button2">Click to position :p  </button>
+
+        <script>
+            var button1 = document.getElementById("button1");
+            var button2 = document.getElementById("button2");
+          
+            var element2 = document.getElementById("div2");
+            var para2 = document.createElement("p");
+            var node2 = document.createTextNode("This is new paragraph Again !"); 
+            
+            button1.onclick = pCreation;
+            button2.onclick = pPositionning;
+
+            function pCreation() {
+                
+                para2.appendChild(node2);
+                para2.style.color = "green";
+                para2.style.backgroundColor="lightBlue";
+                element2.append(para2);
+            }
+            
+            function pPositionning() {
+               
+                var child2 = document.getElementById("p4");
+                element2.insertBefore(para2, child2);
+
+            }
+
+        </script><br/><hr/>
+
+<!-- Removing Existing HTML Elements
+=====================================
+
+To remove an HTML element, use the remove() method: -->
+
+      <div id="div3" style="border: 1px solid ;">
+          <p id="p5">This is a paragraph</p>
+          <p id="p6">This is another paragraph</p>
+      </div>
+      <button id="button3">Click to Remove p element</button>
+
+      <script>
+          var element3 = document.getElementById("p6");
+          var button3 = document.getElementById("button3");
+          button3.onclick = removeElement;
+
+          function removeElement() {
+              element3.remove();
+          }
+      </script><br/>
+
+<!-- The remove() method does not work in older browsers, see the
+example below on how to use removeChild() instead. 
+
+
+Removing a Child Node
+=====================
+
+For browsers that does not support the remove() method, you have to 
+find the parent node to remove an element:                      -->
+
+
+    <div id="div4" style="border: 1px solid" >
+        <p id="p7">This is a paragraph</p>
+        <p id="p8">This is another paragraph</p>
+    </div>
+
+    <button id="button4">Click to remove p element</button>
+
+    <script>
+        var parent = document.getElementById("div4");
+        var child = document.getElementById("p8");
+        var button4 = document.getElementById("button4");
+        button4.onclick = removeChildElement;
+
+        function removeChildElement() {
+            parent.removeChild(child);
+            
+        }
+    </script>
+
+
+
+
+
+
+
+         
+
+
+
+    </body>
+</html>

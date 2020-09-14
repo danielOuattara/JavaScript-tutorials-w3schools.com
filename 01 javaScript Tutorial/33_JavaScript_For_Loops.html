@@ -1,0 +1,144 @@
+<!------------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript For Loop</title>
+    </head>
+    <body>
+        <h1>JavaScript For Loop</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+
+        <!-- Loops can execute a block of code a number of times. -->
+        <script>
+            // "Basic" for loop:
+            var superCars = ["BMW", "Volvo", "Mercedes", "Audi", "Porsche", "Opel", "MyBach"];
+            var counting;
+            var text = "";
+            for (counting = 0; counting < superCars.length; counting++) {
+                text += superCars[counting] + "<br>";
+            }
+            document.getElementById("demo1").innerHTML = text;
+/*
+Different Kinds of Loops
+========================
+JavaScript supports different kinds of loops:
+    > for      loops through a block of code a number of times
+    > for/in   loops through the properties of an object
+    > for/of   loops through the values of an iterable object
+    > while    loops through a block of code while a specified condition is true
+    > do/while loops through a block of code while a specified condition is true
+ */
+
+     /* for loop:
+        ----------
+     for ( statement1; statement2; statement3) {
+     code, code, code
+     }
+     */
+             var list ="";
+             var i;
+             for( i = 0; i < 11; i++) {
+                 list += i + "<br>";
+             }
+             document.getElementById("demo2").innerHTML = list;
+
+    /* Statement 1:
+       ------------
+       Normally 'statement 1' is used to initialize the variable used in the loop (i = 0).
+       This is not always the case, statement 1 is optional.*/
+
+            //You can initiate many values in statement 1 (separated by comma):
+            var cars = ["BMW", "Volvo", "Mercedes", "Audi", "Porsche", "Opel"];
+            var i, len , text ;
+            for ( i = 0, len = cars.length, text = ""; i < len; i++) {
+                text += cars[i] + "<br/>";
+            }
+            document.getElementById("demo3").innerHTML = text;
+
+            //you can omit statement 1 (like when your values are set before the loop starts):
+            var i = 1;
+            var len = cars.length;
+            var text = "";
+            for (; i < len; i++) {
+                text += cars[i] + "<br/>";
+            }
+            document.getElementById("demo4").innerHTML = text;
+
+    /* Statement 2:
+       ------------
+       Often 'statement 2' is used to evaluate the condition of the initial variable.
+       This is not always the case, statement 2 is also optional.
+       If statement 2 returns true the loop will start over again,
+       if it returns false, the loop will end.*/
+
+    /*
+       NOTE: If you omit statement 2, you must provide a break inside the loop.
+             Otherwise the loop will never end. This will crash your browser.
+             Read about breaks in a later chapter of this tutorial.
+    */
+
+    /* Statement 3:
+       ------------
+       Often 'statement 3' increments the value of the initial variable.
+       This is not always the case, statement 3 is optional.
+       tatement 3 can do anything like negative increment (i--), positive
+       ncrement (i = i + 15), or anything else. */
+
+             // Statement 3 can also be omitted (like when you increment your values inside the loop):
+                fruits = [ "apple", "banana", "orange", "melon"]
+                var i = 0;
+                var text = "";
+                var len = fruits.length;
+                for ( ; i < len; ) {
+                    text += fruits[i] + "<br/>";
+                    i++;
+                }
+                document.getElementById("demo5").innerHTML = text;
+
+    /*
+     The For/In Loop
+     ----------------
+     The JavaScript for/in statement loops through the properties of an object:
+    */
+
+                var person = {fname:"John", lname:"Doe", age: 35};
+                var output = "";
+                for(item in person ) {
+                    output += person[item] + " ";
+                }
+                document.getElementById("demo6").innerHTML = output;
+    /*
+    The For/Of Loop
+    ----------------
+    The JavaScript for/of statement loops through the values of an iterable objects.
+    for/of lets you loop over data structures that are iterable such as
+    Arrays, Strings, Maps, NodeLists, and more.
+    */
+                // loop over an Array.
+                var vegetables = ["tomato", "ognion", "eggplant", "peanut"];
+                vegetableList = "";
+                var item;
+                for (item of vegetables) {
+                    vegetableList += item + "<br/> ";
+                }
+                document.getElementById("demo7").innerHTML = vegetableList;
+
+                // loop over a String.
+                var code = "JavaScript";
+                var spellWord = "";
+                var item;
+                for (item of code){
+                    spellWord += item + "<br/>";
+                }
+                document.getElementById("demo8").innerHTML = spellWord;
+        </script>
+    </body>
+</html>

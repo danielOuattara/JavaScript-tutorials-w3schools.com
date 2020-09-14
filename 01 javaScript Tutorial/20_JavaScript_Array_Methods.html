@@ -1,0 +1,244 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+10  03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Array Methods</title>
+    </head>
+    <body>
+        <h1>JavaScript Array Methods</h1>
+
+        <!--toString()--><p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p>
+                         <p id="demo4"></p>
+
+        <!--join()--><p id="demo5"></p>
+
+        <!--pop()--><p id="demo6"></p> <p id="demo7"></p> <p id="demo8"></p>
+
+        <!--push()--><p id="demo9"></p><p id="demo10"> </p><p id="demo11"></p>
+
+        <!--shift()--><p id="demo12"></p><p id="demo13"></p><p id="demo14"></p>
+                      <p id="demo15"></p>
+
+        <!--unshift--><p id="demo15"></p><p id="demo16"></p><p id="demo17"></p>
+        <!--changing Element--><p id="demo18"></p><p id="demo19"></p>
+
+        <!--deleting Elements-->
+
+        <!--splice() --><p id="demo20"></p> <p id="demo21"></p><p id="demo22"></p>
+                        <p id="demo23"></p>
+
+        <!--concat() --><p id="demo24"></p><p id="demo25"></p><p id="demo26"></p>
+                        <p id="demo27"></p>
+
+        <!--slice() --> <p id="demo28"></p><p id="demo29"></p><p id="demo30"></p>
+                        <p id="demo31"></p><p id="demo32"></p>
+
+        <!-- automatique toString() in JavaScript -->
+
+
+        <script>
+
+            /* toString(): Converts an 'array' to a 'string' of array values
+            ============== (comma separated).*/
+
+            var fruits = ["Banana", "Orange", "Apple", "Mango"];
+            document.getElementById("demo1").innerHTML =  "fruits = " + fruits;
+
+            x = fruits.toString();
+            document.getElementById("demo2").innerHTML = " x (fruits To Strings) = " + x;
+            document.getElementById("demo3").innerHTML = "is x an Array ? ... " + Array.isArray(x);
+             // false
+            document.getElementById("demo4").innerHTML = "type of x = " + typeof x;
+             // String
+
+
+            /* join(): Joins all array elements into a 'string'. It behaves just
+            ========== like toString(), but in addition you can specify the separator: */
+
+            var insectes = ["fourmie", "criquet", "mouche", "moustique"];
+            document.getElementById("demo5").innerHTML = insectes.join(" - ");
+
+
+            /* pop(): Removes the last element from an array:
+            =========                                                      */
+
+            var fruits = ["Passion", "Pasteque", "Raisin", "Mangue"];
+            fruits.pop();  // Removes the last element 'Mangue' from fruits
+            document.getElementById("demo6").innerHTML = "fruits = " + fruits;//
+            document.getElementById("demo7").innerHTML = fruits.pop();
+            // Raisin:  print removed item
+            document.getElementById("demo8").innerHTML = "fruits = " + fruits;
+            // Passion,Pasteque
+
+
+            /* push(): Adds a new element(s) at the end of an array. 1 or more
+            =========  entries. Also return the new array length:             */
+
+            fruits.push("Kiwi", "Tomate", "Melon");
+            document.getElementById("demo9").innerHTML = "fruits = " + fruits;  // Passion, Pasteque, Kiwi, Tomate, Melon
+            document.getElementById("demo10").innerHTML = fruits.push();
+            // gives numbers of element
+
+
+            /* shift(): Removes the first array's element and "shifts"
+            =========== all other elements to a lower index.                  */
+
+            fruits.shift();   // Removes the first element 'Passion' from fruits
+            document.getElementById("demo12").innerHTML = fruits;  // Pasteque, Kiwi, Tomate, Melon
+            document.getElementById("demo13").innerHTML = fruits.shift() + " is the shifted-out element"; // Pasteque
+            document.getElementById("demo14").innerHTML = "fruits = " + fruits; // Kiwi, Tomate, Melon
+            fruits.shift("Kiwi"); // shift-out the 1st element in fruits
+            document.getElementById("demo15").innerHTML = fruits;  // Tomate, Melon
+
+
+            /* unshift(): adds a new element to an array (at the beginning),
+            ============  and "unshifts" older elements.                       */
+
+            fruits.unshift("Citron");
+            document.getElementById("demo16").innerHTML = fruits; // Citron, Tomate, Melon
+            document.getElementById("demo17").innerHTML = fruits.unshift();  // returns new Aray length
+
+
+            /* Changing Elements
+            ====================                                              */
+
+            // Adding a new element "Papaye" at top right.
+            fruits[fruits.length] = "Papaye"
+            document.getElementById("demo18").innerHTML = "fruits = " +  fruits;
+
+            // Changing the elemnt to "Fraise"
+            fruits[0] = "Fraise"
+            document.getElementById("demo19").innerHTML = "fruits = " +  fruits;
+            //document.getElementById("demo19").innerHTML = fruits.unshift();
+
+
+            /*Deleting Elements
+            ===================                                               */
+            /*var fruits = ["Banana", "Orange", "Apple", "Mango"];
+            delete fruits[0];  // Changes the first element in fruits to undefined
+            Using delete may leave undefined holes in the array.
+              --->>> Use pop() or shift() instead.  */
+
+
+            /* splice(): can be used to add new items to an array:
+            ============                                                      */
+
+            fruits.splice(2, 0, "Goyave", "Pomme canelle");
+            document.getElementById("demo20").innerHTML = "fruits = " + fruits;
+            // 2: position where to add elements
+            // 0: numbers of elements to be removed
+            // "Goyave", "Pomme canelle": elements added
+            document.getElementById("demo21").innerHTML = "fruits = " +  fruits;
+
+            // use splice to remove and show the removed.
+            document.getElementById("demo21").innerHTML = "removed = " + fruits.splice(2, 2, "Clementine", "Orange");
+            document.getElementById("demo22").innerHTML = "fruits = " + fruits;
+
+            // use splice to remove, without "holes"
+            fruits.splice(0, 2);
+            document.getElementById("demo23").innerHTML = "fruits = " + fruits;
+
+
+            /* concat(): creates a NEW array by merging (concatenating)
+            ============ existing arrays:                                     */
+
+            letters = ["A", "B", "C", "D"]
+            numbers = ["1", "2", "3", "4"]
+            symbols = ["$","£","€","@"]
+            lettersNumbers = letters.concat(numbers);
+            numbersLetters = numbers.concat(letters);
+            lettersSymbolsNumbers = letters.concat(symbols, numbers);
+            lettersNumbersHundreds = letters.concat(numbers, ["200","300","400"]);
+            document.getElementById("demo24").innerHTML = "lettersNumbers = " + lettersNumbers;
+            document.getElementById("demo25").innerHTML = "numbersLetters = " + numbersLetters;
+            document.getElementById("demo26").innerHTML = "lettersSymbolsNumbers= " + lettersSymbolsNumbers;
+            document.getElementById("demo27").innerHTML = "lettersNumbersHundreds= " + lettersNumbersHundreds;
+
+
+            /*slice(): Slices out a piece of an array into a NEW array.
+            ========== Does not remove any elements from the source array.
+                       Can take 2 arguments                                   */
+
+            var writtenNumbers =
+                ["zero", "one", "two", "three", "four", "five", "six", "seven"];
+            document.getElementById("demo28").innerHTML =
+                "writtenNumbers = " + writtenNumbers;
+            document.getElementById("demo29").innerHTML =
+                writtenNumbers.slice(3);  // from 2 to end.
+
+            var neWrittenNumbers =
+                writtenNumbers.slice(2); // from 2 to end.
+            document.getElementById("demo30").innerHTML =
+                "neWrittenNumbers = " + neWrittenNumbers;
+
+            var neWrittenNumbers2 = writtenNumbers.slice(2,7); // from 2 to 7 excluded.
+            document.getElementById("demo31").innerHTML =
+                "neWrittenNumbers2 = " + neWrittenNumbers2;
+
+        </script>
+
+<!--
+
+Array Properties
+====================
+Property 	  Description
+---------     ------------
+constructor   Returns the function that created the Array object's prototype
+length 	      Sets or returns the number of elements in an array
+prototype 	  Allows you to add properties and methods to an Array object
+
+
+Array Methods
+====================
+Method 	       Description
+-------
+concat() 	     Joins two or more arrays, and returns a copy of the joined arrays
+copyWithin()   Copies array elements within the array, to and from specified
+               positions
+entries() 	   Returns a key/value pair Array Iteration Object
+every() 	     Checks if every element in an array pass a test
+fill() 	       Fill the elements in an array with a static value
+filter() 	     Creates a new array with every element in an array that pass
+               a test
+find() 	       Returns the value of the first element in an array that pass
+               a test
+findIndex()    Returns the index of the first element in an array that pass
+               a test
+forEach() 	   Calls a function for each array element
+from() 	       Creates an array from an object
+includes() 	   Check if an array contains the specified element
+indexOf() 	   Search the array for an element and returns its position
+isArray() 	   Checks whether an object is an array
+join() 	       Joins all elements of an array into a string
+keys() 	       Returns a Array Iteration Object, containing the keys of the
+               original array
+lastIndexOf()  Search the array for an element, starting at the end, and
+               returns its position
+map() 	       Creates a new array with the result of calling a function for
+               each array element
+pop() 	       Removes the last element of an array, and returns that element
+push() 	       Adds new elements to the end of an array, and returns the new
+               length
+reduce() 	     Reduce the values of an array to a single value (going
+               left-to-right)
+reduceRight()  Reduce the values of an array to a single value (going
+               right-to-left)
+reverse() 	   Reverses the order of the elements in an array
+shift() 	     Removes the first element of an array, and returns that element
+slice() 	     Selects a part of an array, and returns the new array
+some() 	       Checks if any of the elements in an array pass a test
+sort() 	       Sorts the elements of an array
+splice() 	     Adds/Removes elements from an array
+toString() 	   Converts an array to a string, and returns the result
+unshift() 	   Adds new elements to the beginning of an array, and returns
+               the new length
+valueOf() 	   Returns the primitive value of an array                           -->
+
+    </body>
+</html>

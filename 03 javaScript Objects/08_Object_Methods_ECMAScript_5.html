@@ -1,0 +1,250 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Objects
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript ES5 Objects Methods</title>
+    </head>
+    <body>
+        <h1>JavaScript ES5 Objects Methods</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p> <p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p><p id="demo10"></p>
+
+        <script>
+
+
+             /* List of Object method:
+             =========================
+
+            Object.defineProperty(object, property, descriptor)
+            // Adding or changing an object property
+
+            Object.defineProperties(object, descriptors)
+            // Adding or changing many object properties
+
+            Object.getOwnPropertyDescriptor(object, property)
+            // Accessing Properties
+
+            Object.getOwnPropertyNames(object)
+            // Returns all properties as an array
+
+            Object.keys(object)
+            // Returns only enumerable properties as an array
+
+            Object.getPrototypeOf(object)
+            // Accessing the prototype
+
+            Object.preventExtensions(object)
+            // Prevents adding properties to an object
+
+            Object.isExtensible(object)
+            // Returns true if properties can be added to an object
+
+            Object.seal(object)
+            // Prevents changes of object properties (not values)
+
+            Object.isSealed(object)
+            // Returns true if object is sealed
+
+            Object.freeze(object)
+            // Prevents any changes to an object
+
+            Object.isFrozen(object)                                             */
+            // Returns true if object is frozen
+
+
+        /* ECMAScript 5 added a lot of new Object Methods to JavaScript         */
+
+            /* Adding or changing an object property:
+            =========================================
+
+                    Object.defineProperty(object, property, descriptor)         */
+
+            var person = {
+                firstName : "John",
+                lastName  : "Doe",
+                language  : "EN"
+            };
+
+            /* changing a property:
+            -----------------------*/
+            Object.defineProperty(person, "language", {value : "Turkish"});
+
+            var resume = "";
+            var item;
+            for (item in person) {
+                resume += item + " : " + person[item] + "<br/>"
+            }
+
+            document.getElementById('demo1').innerHTML = resume;
+
+            /* adding a property:
+            ---------------------*/
+            Object.defineProperty(person, "age", {value : 50});
+
+
+            document.getElementById('demo2').innerHTML = person.age;
+
+
+            /* Changing Meta Data: ES5 allows the following property
+            =====================  meta data to be changed
+
+
+     writable : true / false     || Property value can be changed:  true / false
+     enumerable : true / false   || Property can be enumerated:  true / false
+     configurable : true / false || Property can be reconfigured:  true / false                       */
+
+
+            /* ES5 allows getters and setters to be changed:
+            ================================================
+
+            // Defining a getter
+            get: function() { return language }
+
+            // Defining a setter
+            set: function(value) { language = value }                           */
+
+
+            /* This example makes language read-only:
+            =========================================
+
+            Object.defineProperty(person, "language", {writable:false});        */
+
+            /* This example makes language not enumerable:
+            ==============================================
+
+            Object.defineProperty(person, "language", {enumerable:false});      */
+
+
+            /* Listing All Properties: This example list all properties of an object,
+            ========================== in any conditions */
+
+            var person = {
+                firstName : "Champs",
+                lastName : "Elysée",
+                language: "Arabic"
+            };
+
+            // change property:
+            Object.defineProperty(person, "language", {enumerable: false});
+
+            // Display Properties:
+            document.getElementById('demo3').innerHTML =
+                 Object.getOwnPropertyNames(person);
+
+            // firstName,lastName,language
+
+            document.getElementById('demo4').innerHTML = Object.values(person);
+            // Champs,Elysée
+
+
+            /* Listing Enumerable Properties: This example list only enumerable properties,
+            ================================  of an object */
+
+            var newPerson = {
+                firstName : "Champs",
+                lastName : "Elysée",
+                language: "Arabic"
+            };
+
+            // change Property:
+            Object.defineProperty( newPerson, "language", {enumerable: false});
+
+              // Display All Properties:
+              document.getElementById('demo5').innerHTML =
+                 Object.getOwnPropertyNames(newPerson);
+
+            // firstName,lastName,language
+
+            // Display enumerable Properties:
+            document.getElementById('demo6').innerHTML =
+                 Object.keys(newPerson);
+
+            // firstName,lastName
+
+
+            /* Adding a Property:This example adds a new property to
+            ==================== an object: */
+
+            Object.defineProperty(newPerson, "country", {value: "Bagdad"});
+
+            document.getElementById('demo7').innerHTML = newPerson.country;
+            // Bagdad
+
+
+            /* Adding Getters and Setters
+            =============================
+
+            The Object.defineProperty() method can also be used
+            to add Getters and Setters: */
+
+            var hero = { firstName: 'Lucky', lastName: 'Luke'};
+
+            // define a getter
+            Object.defineProperty(hero, "fullName", { get : function(){
+                return this.firstName + " " + this.lastName;
+                }
+            });
+
+            document.getElementById('demo8').innerHTML =
+                " The hero is : " + hero.fullName;
+            // Lucky Luke
+
+
+            /* A Counter Example: again */
+
+
+            var obj = {counter: 0};
+
+            // Define setters:
+
+            Object.defineProperty(obj, "reset", { get : function() {
+                this.counter = 0;
+                }
+            });
+
+            Object.defineProperty(obj, "increment", { get : function() {
+                this.counter++;
+                }
+            });
+
+            Object.defineProperty(obj, "decrement", { get : function() {
+                this.counter--;
+                }
+            });
+
+            Object.defineProperty(obj, "add", { set : function (value) {
+                this.counter += value;
+                }
+            });
+
+            Object.defineProperty(obj, "substract", { set : function(value) {
+                this.counter -=value;
+                }
+            });
+
+            // Run  tests:
+
+            obj.reset;
+            obj.add = 5;
+            obj.substract = 1;
+            obj.increment;
+            obj.decrement;
+
+            document.getElementById('demo9').innerHTML = 'obj.counter = ' + obj.counter;
+
+
+
+
+        </script>
+
+    </body>
+</html>

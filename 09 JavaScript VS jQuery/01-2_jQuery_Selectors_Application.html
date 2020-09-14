@@ -1,0 +1,135 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 04 2020
+JavaScript Tutorial : JavaScript VS jQuerry
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <script src="jQuery_prod_v3.5.0.js"></script>
+        <title>JavaScrit VS jQuery: DOM Selectors</title>
+    </head>
+    <body>
+        <h1>JavaScrit VS jQuery: DOM Selectors</h1>
+
+        <hr/>
+
+
+<!-- Finding HTML ELement by Id
+===============================-->
+        <p id='id01'>Hello World Again!</p>
+        <p id='demo1'></p>
+
+        <p id='id02'>Hello Sweden !</p>
+        <p id='demo2'></p>
+        
+        <p id='id03'>Hello Japan</p>
+
+        <script>
+
+        // jQuery ---------------------------
+            $(document).ready(function() {
+
+                // return the element with 'id01'
+                var element1 = $('#id01');
+
+                // modifiy the content of 'demo1'
+                $('#demo1').text('The content of \'id01\' is : ' +
+                    element1[0].innerHTML);
+            });
+
+
+        // JavaScript -------------------------------------
+            //return the element with 'id02'
+            var element2 = document.getElementById('id02');
+
+            // modify the content of 'demo2' and print it
+            document.getElementById('demo2').innerHTML =
+              'The content of \'id02\' is : ' + element2.innerHTML;
+
+        </script><hr/>
+
+
+
+<!-- Finding HTML Elements by Tag Name
+====================================-->
+        <p>Hello You!</p> <p>Hello Molly!</p>
+        <p>Hello Joddy!</p> <p>Hello Roddy!</p>
+        <p id='demo3'></p><p id='demo4'></p>
+
+        <script>
+        // jQuery:
+            $(document).ready(function() {
+                //return all <p> elements
+                var elements3 = $('p');
+
+                // print the content of 4th <p> element.
+                $('#demo3').text('demo3 = ' + elements3[3].innerHTML);
+            });
+
+
+        // JavaScript:
+            // return all the <p> elements
+            var elements4 = document.getElementsByTagName('p');
+            // print the content of 4th <p> element in 'demo4'
+            document.getElementById('demo4').innerHTML =
+                'demo4 = ' + elements4[3].innerHTML;
+            // JavaScrit cannot 'see' the updated content of 'demo1' from jQuery
+            // why ?
+        </script><hr/>
+
+
+<!-- /*Finding HTML Elements by Class Name
+=========================================== */ -->
+        <p class="intro">Hello One!</p>
+        <h2 class="intro">jQuery Learning!</h2>
+        <p class="intro">Hello Three!</p>
+        <p id="demo5"></p><p id="demo6"></p>
+        <p id="demo7"></p><p id="demo8"></p>
+
+        <script>
+
+            // jQuery
+            $(document).ready(function() {
+                // Return all the elements with class='intro'.
+                var elements5 = $('.intro');
+                // modify the content of the 2nd class= 'intro' element
+                $('#demo5').text('demo5 = ' + elements5[1].innerHTML);
+            });
+
+            // JavaScript
+
+            // Return all the elements with class='intro'
+            var elements6 = document.getElementsByClassName('intro');
+            //
+            document.getElementById('demo6').innerHTML =
+                'demo6 = ' + elements6[1].innerHTML;
+        </script>
+
+<!--  /* Finding HTML Elements by CSS Selectors
+================================================  -->
+  
+        <script>
+
+            // jQuery
+            $(document).ready(function() {
+                // Return all the <p> elements with class='intro'.
+                var elements7 = $('p.intro');
+                //
+                $('#demo7').text('demo7 = ' + elements7[1].innerHTML);
+            });
+
+            // JavaScript
+            var elements8 = document.querySelectorAll('p.intro');
+            document.getElementById('demo8').innerHTML =
+                'demo8 = ' + elements8[1].innerHTML;
+
+        </script>
+
+    </body>
+</html>

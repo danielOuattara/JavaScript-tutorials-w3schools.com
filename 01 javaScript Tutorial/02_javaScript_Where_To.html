@@ -1,0 +1,106 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script>
+      function myFunction_1() {
+        document.getElementById("demo_1").innerHTML = "Voilà!";
+      }
+    </script>
+    <script type="text/javascript" src="02.js"></script>
+    <meta charset="utf-8">
+    <title>JavaScript Where To</title>
+
+  </head>
+  <body>
+
+    <h2>javaScript Where To</h2>
+
+    <p> in HTML, JavaScript must be inserted  between &lt;script&gt; and
+      &lt;/script&gt; tags</p>
+
+
+    <!-- Ih the Head Element -->
+    <h3> JavaScript in the head </h3>
+    <p id="demo_1">This paragaph will change by a function inside a script
+       element located in the Head element</p>
+    <button type="button" name="button" onclick="myFunction_1()">Try javaScript
+      in the Head</button>
+
+    <!-- In the Body -->
+    <h3> JavaScript in the body</h3>
+    <p id="demo_2">This paragaph will be changed by a function inside a script
+      element located in the body</p>
+    <button type="button" name="button" onclick="myFunction_2()">Try javaScript
+      in the Body</button>
+
+     <!-- In External  -->
+    <h3> JavaScript External</h3>
+    <p id="demo_3">This paragaph will be changed by an external function</p>
+    <button type="button" name="button" onclick="myFunction_3()">Try javaScript
+       in the Head</button>
+
+    <p id="demo_4">This paragaph will be changed by an external function</p>
+    <button type="button" name="button" onclick="myFunction_4()">Try javaScript
+       external</button>
+
+    <p>To use an external script, put the name of the script file in the src
+      (source) attribute of a script tag:<br/>
+     &lt;script src="myScript.js"&gt;&lt;/script&gt.<br/><br/>
+     You can place an external script reference in &lt;head&gt; or &lt;body&gt;
+      as you like.<br/><br/>
+     The script will behave as if it was located exactly where the &lt;script&gt;
+      tag is located.</p>
+
+    <p>Placing scripts in external files has some advantages:</p>
+    <pre>
+     > It separates HTML and code
+     > It makes HTML and JavaScript easier to read and maintain
+     > Cached JavaScript files can speed up page loads
+    </pre>
+
+    <p>To add several script files to one page  - use several script tags:</p>
+    <pre>
+
+    &lt;script src="myScript1.js"&gt;&lt;/script&gt;
+    &lt;script src="myScript2.js"&gt;&lt;/script&gt;
+    </pre>
+
+    <!-- External URL ! -->
+    <h4>External References</h4>
+
+    <p>External scripts can be referenced with a full URL or with a path
+       relative to the current web page.</p>
+
+    <pre>
+    This example uses a full URL to link to a script:
+    &lt;script src="https://www.w3schools.com/js/myScript1.js"&gt;&lt;/script&gt;
+
+    This example uses a script located in a specified folder on the current
+     web site:
+    &lt;script src="/js/myScript1.js"&gt;&lt;/script&gt;
+
+    This example links to a script located in the same folder as the current
+    page: &lt;script src="myScript1.js"&gt;&lt;/script&gt;
+    </pre>
+
+
+    <p id="demo"></p>
+    <script type="text/javascript">
+      document.getElementById("demo").innerHTML= "javaScript is Fun !"
+    </script>
+
+    <script type="text/javascript">
+      function myFunction_2() {
+        document.getElementById("demo_2").innerHTML = "Voilà!";
+      }
+    </script>
+
+  </body>
+</html>

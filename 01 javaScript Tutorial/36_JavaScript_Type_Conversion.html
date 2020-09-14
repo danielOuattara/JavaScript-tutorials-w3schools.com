@@ -1,0 +1,329 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+26 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Type Conversion</title>
+        <style>
+            p {font-family: courier; font-size: 17px; }
+        </style>
+    </head>
+    <body>
+        <h1>JavaScript Type Conversion</h1>
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p> <p id="demo10"></p> <p id="demo11"></p> <p id="demo12"></p>
+        <p id="demo13"></p> <p id="demo14"></p> <p id="demo15"></p><p id="demo16"></p>
+        <p id="demo17"></p> <p id="demo18"></p> <p id="demo19"></p> <p id="demo20"></p>
+        <p id="demo21"></p> <p id="demo22"></p> <p id="demo23"></p>
+        <script>
+/*
+Number(): converts to a Number,
+String(): converts to a String,
+Boolean(): converts to a Boolean.
+ */
+
+/* JavaScript Data Types.
+=========================
+# In JavaScript there are 5 different data types that can contain values:
+    > string
+    > number
+    > boolean
+    > object
+    > function
+# There are 6 types of objects:( Notice the fisrt letter is CAPITAL)
+    > Object
+    > Date
+    > Array
+    > String
+    > Number
+    > Boolean
+# And 2 data types that cannot contain values:
+    > null
+    > undefined
+*/
+
+/* The typeof Operator
+=======================
+You can use the 'typeof' operator to find the data type of a JavaScript variable.
+*/
+            document.getElementById("demo1").innerHTML =
+            "typeof 'John' : " + typeof "John" + "<br/>" +  // "string"
+            "typeof 3.14 : " + typeof 3.14   + "<br/>" +  // "number"
+            "typeof NaN : " + typeof NaN    + "<br/>" +  // "number"
+            "typeof false : " + typeof false  + "<br/>" +  // "boolean"
+            "typeof [1, 2, 3, 4] : " + typeof [1,2,3,4] + "<br/>" +  // "object"
+            "typeof {name:'John', age 34} : " + typeof {name:'John', age:34} + "<br/>" +  // "object"
+            "typeof new Date : " + typeof new Date() + "<br/>" +  // "object"
+            "typeof function {} : " + typeof function()  {} + "<br/>" +  // "function"
+            "typeof myCar : " + typeof myCar + "<br/>" +  // "undefined" *
+            "typeof null : " + typeof null  + "<br/>";  // "object"
+/*
+Please observe:
+    > The data type of 'NaN' is 'number'.
+    >  "   "    "   "  an 'array' is 'object'.
+    >  "   "    "   "  a 'date' is 'object'.
+    >  "   "    "   "  'null' is 'object'.
+    >  "   "    "   "  an 'undefined' variable is 'undefined'.
+    >  "   "    "   "  a variable that has not been assigned a value is also undefined.
+
+NOTE: You cannot use typeof to determine if a JavaScript object is an array or a date.
+----- Beacause it returns 'object'for the both */
+
+/* The Data Type of typeof:
+ ==========================
+The 'typeof' operator is not a variable. It is an operator.
+Operators ( + - * / ) do not have any data type.
+But, the 'typeof' operator always returns a string (containing the type of the operand).
+*/
+
+/* The constructor Property:
+ ===========================
+The 'constructor' property returns the builder/maker function
+for all JavaScript variables. */
+
+            document.getElementById("demo2").innerHTML =
+            '"John".constructor : ' + "John".constructor + "<br/>" +  // function String()  {[native code]}
+            '(3.14).constructor : ' + (3.14).constructor  + "<br/>" +  // function Number()  {[native code]}
+            'false.constructor : ' + false.constructor + "<br/>" +  // function Boolean() {[native code]}
+            '[1,2,3,4].constructor : ' + [1,2,3,4].constructor + "<br/>" +  // function Array()   {[native code]}
+            '{name:"John",age:34}.constructor : ' + {name:'John',age:34}.constructor + "<br/>" +  // function Object()  {[native code]}
+            'new Date().constructor : ' + new Date().constructor  + "<br/>" +  // function Date()    {[native code]}
+            ' function () {}.constructor : ' + function() {}.constructor + "<br>" ;  // function Function(){[native code]}
+            // Arrray.isArray().constructor
+
+            var fruits = ["banana", "melon", "apple"];
+
+            // You can check the constructor property to find out if
+            // an object is an Array (contains the word "Array"):
+            function isArray1(item) {
+                return item.constructor.toString().indexOf("Array")>-1;
+            }
+            document.getElementById("demo3").innerHTML = "isArray1(fruits) : " + isArray1(fruits);
+
+            //Or even simpler, you can check if the object is an Array function:
+            function isArray2(item) {
+                return item.constructor === Array;
+            }
+            document.getElementById("demo4").innerHTML = "isArray2(fruits) : " + isArray2(fruits);
+
+            // You can check the constructor property to find out if
+            // an object is a Date (contains the word "Date"):
+            var nowDate = new Date();
+            function isDate1(item) {
+                return item.constructor.toString().indexOf("Date")>-1;
+            }
+            document.getElementById("demo5").innerHTML = "isItDate1(nowDate) : " + isDate1(nowDate);
+
+            //Or even simpler, you can check if the object is a Date function:
+            function isDate2(item) {
+                return item.constructor === Date;
+            }
+            document.getElementById("demo6").innerHTML = "isItDate2(nowDate) : " + isDate2(nowDate);
+
+
+/*JavaScript Type Conversion.
+=============================
+JavaScript variables can be converted to a new variable of another data type:
+    > by the use of a JavaScript function.
+    > automatically by JavaScript itself.
+*/
+
+/* Converting to Strings.
+=================================
+The global method 'String()' can convert numbers to strings.
+It can be used on any type of numbers, literals, variables, or expressions:
+ */
+
+      // converting Numbers to Strings
+      //-------------------------------
+            var x = 123;
+            // String(): converts numbers to strings.
+            document.getElementById("demo7").innerHTML =
+                String (x) + "<br/>" +
+                String(123) + "<br/>" +
+                String(100 + 23) + "<br/>";
+
+            // toString(): converts numbers to strings.
+            document.getElementById("demo8").innerHTML =
+                x.toString() + "<br/>" +
+                (123).toString() + "<br/>" +
+                (100 + 23).toString() + "<br/>";
+
+            /* In the chapter Number Methods, you will find more methods
+               that can be used to convert numbers to strings.*/
+
+      // Converting Booleans to Strings.
+      //------------------------------
+            // 'String()' converts booleans to strings.
+            document.getElementById("demo9").innerHTML =
+                String(false) + "<br/>" +
+                String(true) + "<br/>";
+
+            // The Boolean method 'toString()':
+            document.getElementById("demo10").innerHTML =
+                false.toString() + "<br/>" +
+                true.toString() + "<br/>";
+
+      // Converting Dates to Strings
+      //-----------------------------
+
+            // 'String()' converts dates to strings.
+            document.getElementById("demo11").innerHTML = String(Date());
+
+           // The Date method 'toString()':
+           document.getElementById("demo12").innerHTML = Date().toString();
+
+           // In the chapter Date Methods, you will find more
+           // methods that can be used to convert dates to strings:
+
+
+/* Converting to Numbers
+========================= */
+
+        /* Strings to Numbers:
+        -----------------------
+          The global method Number() can convert strings to numbers.
+          Strings containing numbers (like "3.14") convert to numbers (like 3.14).
+          Empty strings convert to 0. Anything else converts to NaN (Not a Number).*/
+
+            document.getElementById("demo13").innerHTML =
+                Number("3.14") + "<br/>" +   // 3.14
+                Number(" ") + "<br/>" +      // 0
+                Number("") + "<br/>" +       // 0
+                Number("99 88") + "<br/>" +  // NaN
+                Number("John") + "<br/>" +   // NaN
+                Number("125 cm") + "<br/>" ; // NaN
+
+
+        /*The Unary + Operator
+        ----------------------
+           The 'unary + operator' can be used to convert a variable to a number: */
+
+            var y = "5";  //  string (number understring)
+            var x = +y;  // number
+            document.getElementById("demo14").innerHTML =
+                y + "<br/>" +
+                x + "<br/>" ;
+
+            // If the variable cannot be converted, it will still become a number,
+            // but with the value NaN (Not a Number):
+            var z = "John";  // string
+            var w = +z;  // number as NaN ???
+            document.getElementById("demo15").innerHTML =
+                z + "<br/>" +
+                w + "<br/>" ;
+
+        /*Converting Booleans to Numbers.
+        ---------------------------------
+        The global method Number() can convert booleans to numbers.*/
+            document.getElementById("demo16").innerHTML =
+                "Number(false): " + Number(false) + "<br/>" +  // 0
+                "Number(true): " + Number(true) + "<br/>" ;  // 1
+
+
+        /*Converting Date to Numbers.
+        ---------------------------------
+        The global method Number() can convert dates to numbers.*/
+            document.getElementById("demo17").innerHTML = Number(new Date());
+
+            //The date method getTime() convert  Date to seconds (Number)
+            document.getElementById("demo18").innerHTML = (new Date()).getTime();
+
+
+/* Automatic Type Conversion
+============================
+When JavaScript tries to operate on a "wrong" data type, it will try to convert
+the value to a "right" type. The result is not always what you expect:
+*/
+            document.getElementById("demo19").innerHTML =
+                (5 + null) + "<br/>" +   // returns 5 , null is converted to O before addition.
+                ("5" + null) + "<br/>" +  // returns "5null", null is converted to "null".
+                ("5" + 2) + "<br/>" +  // returns "52", 2 is converted to "2".
+                ("5" - 2) + "<br/>" +  // returns 3, "5" is converted to 5.
+                ("5" * "2")  + "<br/>" ;  // returns 10 , "10" and "2" are converted to 5 and 2.
+
+/* Automatic String Conversion:
+===============================
+JavaScript automatically calls the variable's toString()
+function when you try to "output" an object or a variable:
+
+document.getElementById("demo").innerHTML = myVar;
+
+// if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"
+// if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"
+// if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"
+
+Numbers and booleans are also converted, but this is not very visible:
+// if myVar = 123             // toString converts to "123"
+// if myVar = true            // toString converts to "true"
+// if myVar = false           // toString converts to "false"
+
+*/
+
+/*
+JavaScript Type Conversion Table
+================================
+This table shows the result of converting different JavaScript values
+to Number, String, and Boolean:
+
+Value in quotes indicate string calues.
+Vaues with (*) indicate values programmers might not expect.
+
+--------------------------------------------------------------
+Original            Converted     Converted      Converted
+Value               to Number     to String      to Boolean
+--------            ---------     ----------     -------------
+false 	              0 	       "false" 	        false
+--------------------------------------------------------------
+true           	      1 	       "true" 	        true
+--------------------------------------------------------------
+0 	                  0 	         "0" 	        false
+--------------------------------------------------------------
+1 	                  1 	         "1" 	        true
+--------------------------------------------------------------
+"0" 	              0              "0" 	        true (*)
+--------------------------------------------------------------
+"000"  	              0 	        "000" 	        true (*)
+--------------------------------------------------------------
+"1" 	              1 	         "1"            true
+--------------------------------------------------------------
+NaN 	             NaN 	        "NaN" 	        false
+--------------------------------------------------------------
+Infinity 	       Infinity 	   "Infinity" 	    true
+--------------------------------------------------------------
+-Infinity 	       -Infinity 	   "-Infinity" 	    true
+--------------------------------------------------------------
+"" 	                  0 (*) 	       "" 	        false (*)
+--------------------------------------------------------------
+"20"        	      20 	         "20" 	        true
+--------------------------------------------------------------
+"twenty" 	          NaN 	       "twenty" 	    true
+--------------------------------------------------------------
+[ ] 	              0 (*)          "" 	        true
+--------------------------------------------------------------
+[20] 	              20 (*)	         "20" 	        true
+--------------------------------------------------------------
+[10,20] 	          NaN 	        "10,20" 	    true
+--------------------------------------------------------------
+["twenty"] 	          NaN 	        "twenty" 	    true
+--------------------------------------------------------------
+["ten","twenty"]   	  NaN 	      "ten,twenty" 	    true
+--------------------------------------------------------------
+function(){} 	      NaN 	     "function(){}"     true
+--------------------------------------------------------------
+{ } 	              NaN 	     "[object Object]"  true
+--------------------------------------------------------------
+null 	              0 (*) 	         "null" 	    false
+--------------------------------------------------------------
+undefined 	          NaN 	       "undefined" 	    false
+--------------------------------------------------------------
+*/
+        </script>
+    </body>
+</html>

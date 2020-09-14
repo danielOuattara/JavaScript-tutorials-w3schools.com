@@ -1,0 +1,93 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 04 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM - Changing HTML</title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM - Changing HTML</h1>
+        <br/><br/><hr/><br/>
+
+<!-- The HTML DOM allows JavaScript to change the content of HTML elements. 
+
+
+ Changing the HTML Output Stream.
+=================================
+
+JavaScript can create dynamic HTML content. In JavaScript, 'document.write()' 
+can be used to write directly to the HTML output stream:  -->
+
+        <script>
+            document.write(Date());
+        </script><br/><br/><hr/><br/>
+
+
+<!-- Changing HTML Content.
+===========================
+
+The easiest way to modify the content of an HTML element is by using the 'innerHTML' 
+property. To change the content of an HTML element, use this syntax:
+    ________________________________________________
+    document.getElementById(id).innerHTML = new HTML content
+
+This example changes the content of a <p> element: -->
+
+            <p id="demo1">World !</p>
+            <script>
+                document.getElementById("demo1").innerHTML = "Hello World Again !";
+            </script>
+
+
+<!-- This example changes the content of an <h1> element: -->
+
+            <h1 id="demo2">Old Heading</h1>
+            <script>
+                document.getElementById("demo2").innerHTML = "New Heading";
+            </script>
+
+
+<!-- Changing the Value of an Attribute.
+========================================
+
+To change the value of an HTML attribute, use this syntax:
+    _________________________________________________
+    document.getElementById(id).attribute = new value
+
+This example changes the value of the src attribute of an <img> element: -->
+
+           <button  id="button01" onclick="myFunction()" onmouseover="myFunction2()">
+               Click to change image :</button><br/>
+
+            <img  id="image01" src="../../HTML/images/acacia-trees.jpg"
+                  alt="acacia tree" style ="width: 500px; height: 450px;"/><br/><br/>
+
+    
+            <img  id="image02" src="../../HTML/images/acacia-trees.jpg"
+            alt="acacia tree" style ="width: 500px; height: 450px;" 
+            onclick="myFunction()"/>
+
+
+
+            <script>
+                function myFunction () {
+                    
+                    //document.getElementById("image01").src =
+                    //  "../../HTML/images/girafe2.jpg";
+                    myImage = document.getElementById('image02');
+                    myImage.setAttribute("src", "../../HTML/images/girafe2.jpg" );
+                }
+
+                function myFunction2() {
+                    document.getElementById('button01').style.cursor ="pointer";
+                }
+
+            </script>
+
+    </body>
+</html>

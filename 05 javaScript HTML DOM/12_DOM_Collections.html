@@ -1,0 +1,78 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+06 07 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Collections</title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM Collections.</h1><hr/>
+
+
+<!-- The HTMLCollection Object
+==============================
+
+The 'getElementsByTagName()' method returns an 'HTMLCollection' object.
+
+An 'HTMLCollection' object is an "array-like" list (collection) of HTML elements.
+
+NOTE: An HTMLCollection is NOT an array!
+----  An HTMLCollection may look like an array, but it is not.
+      You can loop through the list and refer to the elements 
+      with a number (just like an array).
+      However, you cannot use array methods like valueOf(), pop(), 
+      push(), or join() on an HTMLCollection.
+
+
+The following code selects all <p> elements in a document:
+
+var x = document.getElementsByTagName("p");    
+____________________________________________  -->
+
+        <p>Hello World !</p>
+
+        <p>Hello Norway !</p>
+        <p>Hello Canada !</p>
+
+        <p id="demo"></p>
+
+        <script>
+        var myCollection = document.getElementsByTagName("p");
+        document.getElementById("demo").innerHTML =
+        "The innerHTML of the second paragraph is: " +
+        myCollection[1].innerHTML;
+        </script>
+
+
+<!-- HTML HTMLCollection Length
+================================
+
+The 'length' property defines the number of elements in an 'HTMLCollection': -->
+  
+        <p id="demo2"></p>
+        <script>
+            document.getElementById("demo2").innerText = "There is " + myCollection.length +
+                " in  myCollection of <p> elements ";            
+        </script>
+
+<!-- Change the background color of all <p> elements -->
+       
+        <script>
+            var i;
+            for (i = 0 ; i < myCollection.length; i ++) {
+                if (i % 2 == 0) {
+                    myCollection[i].style.color = "blue";
+                } else {
+                    myCollection[i].style.color = "green";
+                }
+            }
+        </script>
+
+
+    </body>
+</html>

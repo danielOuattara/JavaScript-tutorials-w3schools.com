@@ -1,0 +1,232 @@
+<!----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+07  03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Arrays</title>
+    </head>
+    <body>
+        <h1>JavaScript Arrays</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p><br/> <p id="demo3"></p>
+        <p id="demo4"></p> <p id="demo5"></p> <p id="demo6"></p>
+        <p id="demo7"></p> <p id="demo8"></p> <p id="demo9"></p>
+        <p id="demo10"></p> <p id="demo11"></p> <p id="demo12"></p>
+        <p id="demo13"></p> <p id="demo14"></p> <p id="demo15"></p>
+        <p id="demo16"></p> <p id="demo17"></p> <p id="demo18"></p>
+        <p id="demo19"></p>
+
+        <p id="test"></p>
+
+<!-- Associative Arrays = arrays with named indexes                          -->
+
+
+<!-- The Difference Between Arrays and Objects
+===============================================
+
+ > In JavaScript, arrays use numbered indexes.
+ > In JavaScript, objects use named indexes.                                 -->
+
+
+<!-- When to Use Arrays. When to use Objects.
+==============================================
+
+  > JavaScript does not support 'associative arrays'.
+  > You should use 'objects' when you want the element names to be strings (text).
+  > You should use 'arrays' when you want the element names to be numbers.     -->
+
+
+<!-- Creating New Array:
+========================
+  > Avoid new Array(), ex: points = new Array();
+  > Prefer use []    , ex: points2 = [];                                     -->
+
+        <script>
+
+            // Creating Arrays:
+            var points1 = new Array();  // Avoid
+            var points2 = [];  // Good
+
+            var points1 = new Array(40, 100, 1, 5, 25, 10); // Avoid
+            var points2 = [40, 100, 1, 5, 25, 10];          // Good
+
+
+            // Creating an Array (preferred method), Accessing full Array.
+            var cars = ["Saab", "Volvo", "BMW"];
+            document.getElementById("demo1").innerHTML = "cars = " + cars;
+        // document.getElementById("demo1").textContent = cars;
+
+            var box = ["Saab", "Volvo", "BMW", 2, "true", 43];
+            document.getElementById("demo2").innerHTML = box;
+
+            // Creating an Array by using the JavaScript Keyword 'new': Avoid
+            var cars2 = new Array("Saab","Volvo","BMW")
+            document.getElementById("demo3").innerHTML = cars2;
+
+            // Access the Elements of an Array.
+            document.getElementById("demo4").innerHTML =
+                cars[0] + " " + " is the first array item " + "<br/>" +
+                cars[1] + " " + " is the second array item " + "<br/>" +
+                cars[2] + " " + " is the third array item " + "<br/>";
+
+            // Changing an Array Element.
+            cars[0] = "OPel"
+            document.getElementById("demo5").innerHTML = cars;  // Opel,Volvo,BMW
+
+            // Arrays are Objects; 'typeof' returns object for arrays.
+            document.getElementById("demo6").innerHTML = typeof(cars);  // object
+
+            person = ["John", "Doe", 46];
+            document.getElementById("demo7").innerHTML = person[0];  // John
+
+            myArray = [Date.now(), myFunction(), cars];  // Arrays Element can be objects
+
+            // Array Attributes/ Field.
+            // the length of an array (the number of elements).
+            document.getElementById("demo8").innerHTML = box.length;   //  6
+
+            // Array Methods.
+            // sort(): Alphabetical Sorts arrays.
+            sortedArray = cars.sort();
+
+            // Accessing the First Array Element.
+            document.getElementById("demo9").innerHTML = box[0];  // Saab
+
+            // Accessing the Last Array Element.
+            document.getElementById("demo10").innerHTML = box[box.length - 1];  // 43
+
+            // Looping Array Element: "for" loop
+            var text = "<ul>";
+            var i ;
+            for( i = 0; i < box.length; i++) {
+                text += "<li>" + box[i] + "</li>"
+            }
+            
+            text += "</ul>"
+            document.getElementById("demo11").innerHTML = " text = " + text
+              // Looping through box as unordered list.
+
+
+            // Looping Array Elements: "forEach" Loop
+            var text2 = "<ul>";
+            box.forEach(myFunction);
+            text2 += "</ul>"
+            document.getElementById("demo12").innerHTML = " text2 = " + text2
+              // Looping through box as unordered list.
+
+            function myFunction(item) {
+                text2 += "<li>" + item + "</li>";
+            }
+
+            // Adding Array Elements.
+            var fruits = ["banana", "orange", "apple", "mango"];
+            document.getElementById("demo13").innerHTML = "fruits = " + fruits
+
+            fruits.push("lemon");   // adds a new element to fruits
+            document.getElementById("demo14").innerHTML = "fruits = " + fruits
+
+            fruits[fruits.length] = "pineapple";
+            document.getElementById("demo15").innerHTML = "fruits = " + fruits
+
+            fruits[10] = "pineapple";
+            document.getElementById("demo16").innerHTML = "fruits = " + fruits
+
+
+            // Arrays named indexes = associatives Arrays
+            var member = [];
+            member[0] = "John";
+            member[1] = "Doe";
+            member[3] = 46;
+            var memberLength = member.length;  //  returns 3
+            var memberFirstData = member[0];   //  returns "John"
+
+            var member2 = [];
+            member2["firstName"] = "John";
+            member2["lastName"] = "Doe";
+            member2["age"] = 46;
+            var member2Length = member2.length;   //  returns 0
+            var member2FirstData = member2[0];    //  returns undefined
+
+/* JavaScript does not support associative arrays.
+   You should use objects when you want the element names to be strings (text).
+   You should use arrays when you want the element names to be numbers.*/
+
+
+            // How to recognize an Array ?
+            //=============================
+
+                //solution 1:
+                //-----------
+            Array.isArray(points2);   //  returns true
+
+
+               //solution 2:
+               //-----------
+            function isArray(points2) {
+                // returns true if points2 is an Array
+                return points2.constructor.toString().indexOf("Array") > -1;
+            }
+
+                //solution 3:
+                //-----------
+            points2 instanceof Array;   //  returns true
+
+            document.getElementById("test").innerHTML = points2.constructor.toString();
+        </script>
+
+
+
+<!--
+
+Array Properties
+====================
+Property 	  Description
+---------     ------------
+constructor   Returns the function that created the Array object's prototype
+length 	      Sets or returns the number of elements in an array
+prototype 	  Allows you to add properties and methods to an Array object
+
+
+Array Methods
+================
+
+Method 	       Description
+-------
+concat() 	   Joins two or more arrays, and returns a copy of the joined arrays
+copyWithin()   Copies array elements within the array, to and from specified positions
+entries() 	   Returns a key/value pair Array Iteration Object
+every() 	   Checks if every element in an array pass a test
+fill() 	       Fill the elements in an array with a static value
+filter() 	   Creates a new array with every element in an array that pass a test
+find() 	       Returns the value of the first element in an array that pass a test
+findIndex()    Returns the index of the first element in an array that pass a test
+forEach() 	   Calls a function for each array element
+from() 	       Creates an array from an object
+includes() 	   Check if an array contains the specified element
+indexOf() 	   Search the array for an element and returns its position
+isArray() 	   Checks whether an object is an array
+join() 	       Joins all elements of an array into a string
+keys() 	       Returns a Array Iteration Object, containing the keys of the original array
+lastIndexOf()  Search the array for an element, starting at the end, and returns its position
+map() 	       Creates a new array with the result of calling a function for each array element
+pop() 	       Removes the last element of an array, and returns that element
+push() 	       Adds new elements to the end of an array, and returns the new length
+reduce() 	   Reduce the values of an array to a single value (going left-to-right)
+reduceRight()  Reduce the values of an array to a single value (going right-to-left)
+reverse() 	   Reverses the order of the elements in an array
+shift() 	   Removes the first element of an array, and returns that element
+slice() 	   Selects a part of an array, and returns the new array
+some() 	       Checks if any of the elements in an array pass a test
+sort() 	       Sorts the elements of an array
+splice() 	   Adds/Removes elements from an array
+toString() 	   Converts an array to a string, and returns the result
+unshift() 	   Adds new elements to the beginning of an array, and returns the new length
+valueOf() 	   Returns the primitive value of an array                           -->
+
+    </body>
+</html>

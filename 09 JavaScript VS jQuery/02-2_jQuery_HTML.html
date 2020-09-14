@@ -1,0 +1,141 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 04 2020
+JavaScript Tutorial : JavaScript VS jQuerry
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <script src="jQuery_prod_v3.5.0.js"></script>
+
+        <title>JavaScrit VS jQuery: HTML Selectors</title>
+    </head>
+    <body>
+
+        <h1>JavaScrit VS jQuery: HTML Elements</h1>
+        <hr/>
+
+<!-- Set Text Content: Set the inner text of an HTML element:
+============================================================-->
+       
+        <h3 id='01'>Let's start:</h3>
+        <h3 id='02'></h3>
+        <h3 id='03'></h3>
+       
+        <script>
+
+            // jQuery
+            $(document).ready( function() {
+                var element2 = $('#02');
+                element2.text('Hello World');
+                // OR $('#02').text('Hello World !')
+            });
+
+            // JavaScript
+             var element3 = document.getElementById('03');
+             element3.textContent = 'Hello World Again !';
+             // OR document.getElementById('03').textContent = 'Hello World Again';
+             
+        </script>
+        <hr/>
+
+
+<!-- Get Text Content: Get the inner text of an HTML element:
+============================================================-->
+        
+        <h3 id='04'>Travelling is :</h3>
+        <h3 id='05'>Fantastic</h3>
+        <h3 id='06'>Isn't it ?</h3>
+
+        <p id='demo1'></p> <p id='demo2'></p>
+        <p id='07'>Isn't it ?</p>
+
+        <script>
+
+            // jQuery
+            $(document).ready(function() {
+                var element4 = $('#04');
+                var element4Contenu = element4.text();
+                $('#demo1').text(element4Contenu);
+
+                /* OR:
+                1- Compact
+                var element4 = $('#04').text() // get the content of element
+                                               // with id '#04'
+                $(#demo1).text(element4)  // put the content of element4 in
+                                          // '#demo1' and print out to the screen
+
+                2- More compact
+                $('#demo1').text($('#04').text())
+                */
+            });
+
+            // JavaScript
+            var element5 = document.getElementById('05');
+            var element5Contenu = document.getElementById('05').textContent;
+            document.getElementById('demo2').innerHTML = element5Contenu;
+                /* OR: 
+                 var element5Contenu = document.getElementById('05').innertext;
+                */
+
+            /* Same result:
+             document.getElementById('demo2').innerHTML =
+             document.getElementById('05').textContent */
+
+        </script>
+        <hr/>
+
+<!-- Set HTML Content: Set the HTML content of an element:
+=========================================================-->
+        <div id='08'><h3>Bankok</h3></div>
+        <div id='09'><h3>A nice city</h3></div>
+        <div id='10'><h3>Tokyo</h3></div>
+        <div id='11'><h3>is my next destination</h3></div>
+
+        <script>
+
+            // jQuery
+            $(document).ready(function() {
+                var element6 = $('#09');
+                element6.html('<p> A nice city !</p>')
+                /* Shorter:
+                    $('#09').html('<p> Bankok is  nice city !</p>')
+                */
+            });
+
+            // JavaScript
+            var element7 = document.getElementById('11');
+            element7.innerHTML = '<p>is my next destination</p>';
+                /* Shorter:
+                    document.getElementById('11').innerHTML = '<p>is my next destination</p>'
+                */
+        </script>
+        <hr/>
+
+
+<!--Get HTML Content
+==================== -->
+        <div id='12'><h3>Biking is cool!</h3></div>
+        <div id='13'><h3>Fishing is fun!</h3></div>
+        <div id='14'><h3>Gao</h3></div>
+        <div id='15'><h3>Tumbuctu</h3></div>
+
+        <script>
+
+            // jQuery
+            $(document).ready(function(){
+                var element8 = $('#13').html();
+                $('#12').html(element8);
+            });
+
+            // JavaScript
+            var element9 = document.getElementById('15').innerHTML;
+            document.getElementById('14').innerHTML = element9;
+        </script>
+    </body>
+</html>

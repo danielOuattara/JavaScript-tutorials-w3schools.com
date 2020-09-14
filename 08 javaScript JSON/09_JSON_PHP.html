@@ -1,0 +1,295 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+27 06 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JSON PHP</title>
+</head>
+
+<body>
+  <h1>JSON PHP.</h1><hr/>
+
+<!-- A common use of JSON is to read data from a web server, and display
+the data in a web page.
+
+This chapter will teach you how to exchange JSON data between the client and
+ a PHP server.
+
+
+The PHP File
+===============
+
+PHP has some built-in functions to handle JSON.
+Objects in PHP can be converted into JSON by using the PHP function
+'json_encode()'
+
+      <?php
+        $myObj->name = "John";
+        $myObj->age = 30;
+        $myObj->city = "NY";
+
+        $myJSON = json_encode($myObj);
+
+        echo $myJSON;
+        // ouptup : {"name": "John", "age": 30, "city": "NY"}
+        // a JSON Object.
+      ?>
+
+
+The Client JavaScript
+======================
+
+Here is a JavaScript on the client, using an AJAX call to request the PHP
+file from the example above:
+
+Use JSON.parse() to convert the result into a JavaScrit object:
+                                                                             -->
+    <script>
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+          document.getElementById("demo1").innerHTML = myObj.name;
+        }
+      };
+
+      xmlhttp.open("GET", "demo1_file.php", true);
+      xmlhttp.send();
+
+    </script>
+
+<!-- PHP Array
+===============
+
+Arrays in PHP will also be converted into JSON when using the PHP function
+json_encode():
+
+    <?php
+
+    $myArr =  aray("John", "Mary", "Peter", "Saly");
+
+    $myJSON_arr = json_encode($myArr);
+
+    echo $myJSON_arr;
+    ?>
+
+    // output ["John","Mary","Peter","Sally"]
+    // as JSON array
+
+
+The Client JavaScript
+=======================
+
+Here is a JavaScript on the client, using an AJAX call to request the PHP
+file from the array example above:                                           -->
+
+
+    <script>
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+          document.getElementById("demo2").innerHTML = myObj[2];
+        }
+      };
+      xmlhttp.open("GET", "demo_file_array.php", true)
+      xmlhttp.send();
+
+    </script>
+
+
+<!-- PHP Database
+==================
+
+PHP is a server side programming language, and can be used to access a database.
+
+Imagine you have a database on your server, and you want to send a request to
+it from the client where you ask for the 10 first rows in a table called
+"customers".
+
+On the client, make a JSON object that describes the numbers of rows you want
+to return.
+
+Before you send the request to the server, convert the JSON object into a
+string and send it as a parameter to the url of the PHP page: -->
+
+<script>
+  // Use JSON.stringify() to convert the JavaScritpt object into JSON:
+  var obj = {"limit: 10"};
+  var dbParam = JSON.stringify(obj);
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200 ) {
+      document.getElementById('demo3').innerHTML = ths.responseText;
+    }
+  };
+  xmlhttp.open("GET", "json_demo_db.php?x=" + dbParam, true);
+  xmlhttp.send();
+
+  /* output:
+  The JSON received from the PHP file:
+
+    [{"name":"Alfreds Futterkiste"},{"name":"Ana Trujillo Emparedados y helados"},
+    {"name":"Antonio Moreno Taqueria"},{"name":"Around the Horn"},
+    {"name":"Berglunds snabbkop"},{"name":"Blauer See Delikatessen"},
+    {"name":"Blondel pere et fils"},{"name":"Bolido Comidas preparadas"},
+    {"name":"Bon app'"},{"name":"Bottom-Dollar Marketse"}]                    */
+</script>
+
+
+<!-- Example explained:
+========================
+>  Define an object containing a "limit" property and value.
+>  Convert the object into a JSON string.
+>  Send a request to the PHP file, with the JSON string as a parameter.
+>  Wait until the request returns with the result (as JSON)
+>  Display the result received from the PHP file.
+
+Take a look at the PHP file:
+
+   <?php
+
+     header("Content-type: application/json; chartset=UTF-8");
+     $obj = json_encode($_GET["x"], false);
+
+     $conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+     $stmt = $conn->prepare("SELECT name FROM customers LIMIT ?");
+     $ stmt->bind_param("s,$obj->limit");
+     $stmt->execute();
+     $result = $stmt->get_result();
+     $outp = $result->fetch_all(MYSQLI_ASSOC);
+
+     echo json_encode($outp);
+   ?>
+
+PHP File explained:
+====================
+
+ > Convert the request into an object, using the PHP function json_decode().
+ > Access the database, and fill an array with the requested data.
+ > Add the array to an object, and return the object as JSON using the
+  json_encode() function.
+
+   Loop Through the Result
+
+   Convert the result received from the PHP file into a JavaScript object, or in this case, a JavaScript array:
+
+
+Loop Through the Result
+========================
+
+Convert the result received from the PHP file into a JavaScript object,
+or in this case, a JavaScript array:                                         -->
+
+      <script>
+        var obj, dbParam, xmlhttp, myObj, x;
+        var txt ="";
+
+        obj = { "limit":10 };
+        dbParam = JSON.stringify(obj);
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if ( this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.reponsesText);
+            for ( x in myObj) {
+              txt += myObj[x].name + "<br/>";
+            }
+            document.getElementById("demo4").innerHTML = txt;
+          }
+        };
+        xmlhttp.open("GET", "json_demo_db.php?x=" + dbParam, true);
+        xmlhttp.send();
+
+        /* output:
+          Alfreds Futterkiste
+          Ana Trujillo Emparedados y helados
+          Antonio Moreno Taqueria
+          Around the Horn
+          Berglunds snabbkop
+          Blauer See Delikatessen
+          Blondel pere et fils
+          Bolido Comidas preparadas
+          Bon app'
+          Bottom-Dollar Marketse
+        */
+      </script>
+
+
+<!-- PHP Method = POST
+======================
+
+When sending data to the server, it is often best to use the HTTP 'POST' method.
+
+To send AJAX requests using the 'POST' method, specify the method, and
+the correct header.
+
+The data sent to the server must now be an argument to the 'send()' method: -->
+
+
+      <script>
+        var obj, dbParam, xmlhttp, myObj, x;
+        var txt = "";
+        obj = { "limit":10 };
+        dbParam = JSON.stringify(obj);
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            for (x in myObj) {
+              txt += myObj[x].name + "<br>";
+            }
+            document.getElementById("demo").innerHTML = txt;
+          }
+        };
+        xmlhttp.open("POST", "json_demo_db_post.php", true);
+        xmlhttp.setRequestHeader ("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("x=" + dbParam);
+
+        /* output:
+            Alfreds Futterkiste
+            Ana Trujillo Emparedados y helados
+            Antonio Moreno Taqueria
+            Around the Horn
+            Berglunds snabbkop
+            Blauer See Delikatessen
+            Blondel pere et fils
+            Bolido Comidas preparadas
+            Bon app'
+            Bottom-Dollar Marketse
+         */
+      </script>
+
+
+<!-- The only difference in the PHP file is the method for getting the
+transferred data.
+
+PHP file
+=========
+Use $_POST instead of $_GET:
+
+<?php
+header("Content-Type: application/json; charset=UTF-8");
+$obj = json_decode($_POST["x"], false);
+
+$conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+$stmt = $conn->prepare("SELECT name FROM customers LIMIT ?");
+$stmt->bind_param("s", $obj->limit);
+$stmt->execute();
+$result = $stmt->get_result();
+$outp = $result->fetch_all(MYSQLI_ASSOC);
+
+echo json_encode($outp);
+?>
+                                                                             -->
+
+
+
+</body>
+</html>

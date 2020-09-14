@@ -1,0 +1,314 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+22 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Array Iteration Methods</title>
+    </head>
+    <body>
+        <h1>JavaScript Array Iteration Methods</h1><hr/>
+
+        <!--Array iteration methods operate on every array item.-->
+        <h2>Array.forEach()</h2>
+         <p id="demo0"></p> <p id="demo00"></p>
+
+        <!--forEach():-->
+        <p id="demo1"></p> <p id="demo2"></p><hr/>
+
+        <!--map(): -->
+        <h2>Array.map()</h2>
+        <p id="demo3"></p> <p id="demo4"></p><hr/>
+
+        <!--filter() -->
+        <h2>Array.filter()</h2>
+        <p id="demo5"></p><p id="demo6"></p><hr/>
+
+        <!--reduce() -->
+        <h2>Array.reduce()</h2>
+        <p id="demo7"></p><p id="demo8"></p><p id="demo9"></p><hr/>
+
+        <!--reduceRight()-->
+        <h2>Array.reduceRight()</h2>
+        <p id="demo10"></p><p id="demo11"></p><p id="demo12"></p><hr/>
+
+        <!--every() -->
+        <h2>Array.every()</h2>
+        <p id="demo13"></p><p id="demo14"></p><hr/>
+
+        <!--some() -->
+        <h2>Array.some()</h2>
+        <p id="demo15"></p><p id="demo16"></p><hr/>
+                      <p id="demo17"></p>
+
+        <!-- findIndex()-->
+        <h2>Array.findIndex()</h2>
+        <p id="demo18"></p><hr/>
+
+        <script>
+
+            /* Array iteration methods operate on every array item. */
+
+
+            /* forEach() Calls a callback function once for each array
+            ============ element. Takes 3 arguments:(value, [index, arr])*/
+
+            var fruits = ['banana', 'melon', 'orange'];
+            var output = "";
+
+            fruits.forEach(function(value, index, fruits) {
+                output += value + ", index  " + index + "<br/>" ;
+            });
+
+            document.getElementById('demo0').innerHTML = output;
+
+            var numbers1= [1, 2, 3, 4, 5];
+            var txt1 = "";
+            numbers1.forEach(function(value, index){
+                txt1 += value + ", index : " + index + "<br/>";
+            });
+
+            document.getElementById("demo00").innerHTML = txt1;
+
+            // 1
+            var txt1 = "";
+            numbers1.forEach(printFunction1);
+            document.getElementById("demo1").innerHTML = txt1;
+
+            function printFunction1(item, index, array) {
+                // this funtion uses all 3 parameters.
+                txt1 +=  item * 2 + " " ;
+            }
+
+            // 2
+            var txt2 = "";
+            numbers1.forEach(printFunction2);
+            document.getElementById("demo2").innerHTML = txt2;
+
+            function printFunction2(item) {
+                // this function uses only the first required parameter.
+                txt2 += item + " ";
+            }
+
+
+            /* map() Creates a new array by performing a function on each array
+            ======== element. Requires array with values. Does not change the
+                     original array. Takes 3 arguments:(value, [index, arr])   */
+
+            // 1
+            var doubler1 = numbers1.map(doublingFunction);
+
+            function doublingFunction(value, index, array) {
+                return value * 2;
+            }
+
+            document.getElementById('demo3').innerHTML = doubler1;
+
+            // 2
+            var squared1 = numbers1.map(squaringFunction);
+
+            function squaringFunction(value){
+                return value ** 2;
+            }
+
+            document.getElementById('demo4').innerHTML = squared1;
+
+
+            /* filter() Creates a new array with array elements having passed
+            =========== a specified test. Takes 3 arguments:(value, [index, arr]) */
+
+            var numbers2 = [2, 32, 21, 7, 100, 17, 0];
+
+            // 1
+            var numberOver18 = numbers2.filter(testing18);
+
+            function testing18(value, index, arr){
+                return value > 18;
+            }
+
+            document.getElementById('demo5').innerHTML = numberOver18;
+
+
+            // 2
+            var numberOdd = numbers2.filter(testingOdd);
+
+            function testingOdd(value) {
+                if ((value % 2) != 0) {
+                    return value;
+                }
+            }
+
+            document.getElementById('demo6').innerHTML = numberOdd;
+
+
+            /* reduce() Runs a function on each array element to produce
+            =========== a single value. Works from left-to-right in the array.
+                        See also reduceRight(). Creates a new array
+                        Takes 4 arguments:(total, value, [index, arr])        */
+
+            var numbers3 = [1, 2, 3, 4, 5];
+
+            // 1
+            var sum1 = numbers3.reduce(summing);
+
+            function summing(total, value, index, arr) {
+                return total ;
+            }
+
+            document.getElementById('demo7').innerHTML = "sum1 = " + sum1;
+
+            // 2
+            var product1 = numbers3.reduce(innerProduct);
+
+            function innerProduct(total, value) {
+                return total *= value;
+            }
+
+            document.getElementById('demo8').innerHTML = "sum1 = " + product1;
+
+            // 3
+            /* reduce() can accpets an initial value:*/
+            sum2 = numbers3.reduce(summing, 25);
+            document.getElementById('demo9').innerHTML = " sum2 = " + sum2;
+
+
+            /* reduceRight() Runs a function on each array element to produce
+            ================ a single value. Works from right-to-left in
+                the array.See also reduceRight(). Creates a new array.
+                Takes 4 arguments:(total, value, [index, arr])        */
+
+
+            var numbers3 = [1, 2, 3, 4, 5];
+
+            // 1
+            var sum1 = numbers3.reduceRight(summing);
+            function summing(total, value, index, arr) {
+                return total + value;
+            }
+
+            document.getElementById('demo10').innerHTML = "sum1 = " + sum1;
+
+            // 2
+            var product1 = numbers3.reduceRight(innerProduct);
+            function innerProduct(total, value) {
+                return total *= value;
+            }
+
+            document.getElementById('demo11').innerHTML = "sum1 = " + product1;
+
+            // 3
+            /* reduceRight() can accpets an initial value:*/
+            sum2 = numbers3.reduceRight(summing, 25);
+            document.getElementById('demo12').innerHTML = sum2;
+
+
+            /* every() Check if all array values pass a test.
+            ========== Takes 3 arguments:(value, [index, arr])                */
+
+            primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+
+            // 1
+            var primeAdult = primeNumbers.every(adultTest);
+
+            function adultTest(value, index, arr) {
+                return value > 18;
+            }
+
+            document.getElementById('demo13').innerHTML =
+                'every() primeNumbers Adult Test : ' + primeAdult;
+
+            // 2
+            var primeOdd = primeNumbers.every(evenTest);
+
+            function oddTest(value) {
+                if ((value % 2) != 0 ) {
+                    return value;
+                }
+            }
+
+            document.getElementById('demo14').innerHTML =
+                ' every() primeNumbers Odd Test : ' + primeOdd;
+
+
+            /* some() Check if all array values pass a test.
+            ========== Takes 3 arguments:(value, [index, arr])                */
+
+            primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+
+            // 1
+            var primeAdult = primeNumbers.some(adultTest);
+            function adultTest(value, index, arr) {
+                return value > 18;
+            }
+
+            document.getElementById('demo15').innerHTML =
+                'some() primeNumbers Adult Test : ' + primeAdult;
+
+            // 2
+            var primeOdd = primeNumbers.some(evenTest);
+            function evenTest(value) {
+                if ((value % 2) === 0 ) {
+                    return value;
+                }
+            }
+
+            document.getElementById('demo16').innerHTML =
+                'some() primeNumbers Odd Test : ' + primeOdd;
+
+
+            /* indexOf() Searches an array for an item and returns its
+            ============ first position. Accepts 2 arguments: (item, [start]).
+                         Returns -1 if nothing is found */
+
+            var fruits = ['Apple', 'Orange', 'Apple', 'Mango' ];
+            var a = fruits.indexOf('Apple');  // 0
+            var b = fruits.indexOf('kiwi');  // -1
+
+
+            /* lastIndexOf() Searches an array for an item and returns its
+            ===============  first position. Accepts 2 arguments: (item, [start]).
+                             Returns -1 if nothing is found */
+
+            var c = fruits.lastIndexOf('Apple');  // 2
+            var d = fruits.indexOf('kiwi');  // -1
+
+
+            /* find() Returns the value of the first array element that passes
+            ========= a test function. Accepts 3 arguments: (value, [index, arr])
+                      Return 'undefined' is not find */
+
+            var decimalNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            var multiple_of_3 = decimalNumbers.find(tripleMultipleTest);
+
+            function tripleMultipleTest(value, index, arr) {
+                if ((value % 3) == 0) {
+                    return value;
+                }
+            }
+            document.getElementById('demo17').innerHTML =
+                'multiple_of_3 : ' + multiple_of_3;
+
+
+            /* findIndex() Returns the value of the first array element that
+            ============== passes a test function.
+                           Accepts 3 arguments: (value, [index, arr])
+                           Return 'undefined' is not find                     */
+
+           var decimalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+           var multiple_of_3 = decimalNumbers.findIndex(tripleMultipleTest);
+
+           function tripleMultipleTest(value, index, arr) {
+               if ((value % 3) == 0) {
+                   return value;
+               }
+           }
+           document.getElementById('demo18').innerHTML =
+                'position of first multiple_of_3 : ' + multiple_of_3;
+
+        </script>
+    </body>
+</html>

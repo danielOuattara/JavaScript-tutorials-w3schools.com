@@ -1,0 +1,124 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Switch Statement</title>
+    </head>
+    <body>
+        <h1>JavaScript Switch Statement</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p>
+
+<!--
+The switch statement is used to perform different actions based on different conditions.
+
+This is how it works:
+ > The switch expression is evaluated once.
+ > The value of the expression is compared with the values of each case.
+ > If there is a match, the associated block of code is executed.
+-->
+            <script>
+                thisDay ="";
+                switch(new Date().getDay()) {
+                    case 0:
+                        thisDay = "Sunday";
+                        break;
+                    case 1:
+                        thisDay = "Monday";
+                        break;
+                    case 2:
+                        thisDay = "Tuesday";
+                        break;
+                    case 3:
+                        thisDay = "Wenesday";
+                        break;
+                    case 4:
+                    thisDay = "Thursday";
+                        break;
+                    case 5:
+                    thisDay = "Saturday";
+                }
+                document.getElementById("demo1").innerHTML = "Today is : " + thisDay;
+
+                thisMonth ="";
+                switch( new Date().getMonth()) {
+                    case 0:
+                        thisMonth = "january";
+                        break;
+                    case 1:
+                        thisMonth = "february";
+                        break;
+                    case 2:
+                        thisMonth = "march";
+                        break;
+                    case 3:
+                        thisMonth = "april";
+                        break;
+                    case 4:
+                        thisMonth = "may";
+                        break;
+                    case 5:
+                        thisMonth = "june";
+                        break;
+                    case 6:
+                        thisMonth = "july";
+                        break;
+                    case 7:
+                        thisMonth = "august";
+                        break;
+                    case 8:
+                        thisMonth = "september";
+                        break;
+                    case 9:
+                        thisMonth = "october";
+                        break;
+                    case 10:
+                        thisMonth = "november";
+                        break;
+                    default:
+                        thisMonth = "december"
+                }
+                // expression, is used to Capitalized a word in JavaScript:
+                document.getElementById("demo2").innerHTML = "This month is : " + thisMonth[0].toUpperCase() + thisMonth.slice(1);
+
+                // multiple test by case:
+                text = "";
+                switch (new Date().getDay()) {
+                    case 4:
+                    case 5:
+                        text = "Soon it is Weekend";
+                        break;
+                    case 0:
+                    case 6:
+                        text = " It is Weekend";
+                        break;
+                    default:
+                        text = "Soon will Be WeekEnd "
+                }
+                document.getElementById("demo3").innerHTML = text;
+
+/*
+ > If multiple cases matches a case value, the first case is selected.
+ > If no matching cases are found, the program continues to the default label.
+ > If no default label is found, the program continues
+   to the statement(s) after the switch.
+ */
+
+/*
+Strict comparison
+==================
+Switch cases use strict comparison (===).
+The values must be of the same type to match.
+A strict comparison can only be true if the operands are of the same type.
+In this example there will be no match for x:  */
+
+            </script>
+    </body>
+</html>

@@ -1,0 +1,207 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+07 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Numbers</title>
+    </head>
+    <body>
+        <h1>JavaScript Numbers.</h1>
+
+<!-- JavaScript has only one type of number.
+Numbers can be written with or without decimals -->
+
+        <p id='demo1'></p><p id='demo2'></p>
+
+        <script>
+            var x = 3.14;  // A number with decimals
+            document.getElementById('demo1').innerHTML = 'x = ' + x;
+
+            var y = 3;  // A number without decimals
+            document.getElementById('demo2').innerHTML = 'y = ' + y;
+        </script>
+
+
+<!--JavaScript Numbers are always: 64-bits double precision floating point
+The number (the fraction) is stored in bits 0 to 51,
+the exponent in bits 52 to 62, and the sign in bit 63:
+
+Value               Exponent 	          Sign
+52 bits (0 - 51)  	11 bits (52 - 62) 	1 bit (63)
+
+
+ Precision.
+===============
+Integers (numbers without a period or exponent notation)
+are accurate up to 15 digits. -->
+        <p id='demo3'></p><p id='demo4'></p>
+
+        <script>
+            var c = 999999999999999  // gives 999999999999999
+            document.getElementById('demo3').innerHTML = c;
+
+            var d = 9999999999999999 // gives 10000000000000000
+            document.getElementById('demo4').innerHTML = d;
+        </script>
+
+
+<!-- The maximum number of decimals is 17,
+     but floating point arithmetic is not always 100% accurate: -->
+
+        <p id='demo5'></p><p id='demo6'></p>
+
+        <script>
+
+            var e = 0.2 +0.1  //  gives 0.30000000000000004
+            document.getElementById('demo5').innerHTML = e;
+            // instead:
+            var e = (0.2 * 10 + 0.1 *10)/ 10  // gives 0.3, as expected !
+            document.getElementById('demo6').innerHTML = e;
+        </script>
+
+
+<!-- Adding Numbers and Strings:
+================================
+
+WARNING:     JavaScript uses the '+' operator for both addition and
+--------     concatenation.
+              > Numbers are added.
+              > Strings are concatenated.
+              > The JavaScript interpreter works from left to right.
+              > Never write a number with a leading zero (like 07):
+                some JavaScript versions interpret numbers as octal if
+                they are written with a leading zero.                        -->
+
+        <script>
+
+            var x = 10;
+            var y = 20;
+            var z = x + y;  //  30
+
+            var x = "10";
+            var y = "20";
+            var z = x + y;  //  z will be 1020 (a string)
+
+            var x = 10;
+            var y = "20";
+            var z = x + y;  //  z will be 1020 (a string)
+
+            var x = "10";
+            var y = 20;
+            var z = x + y;  //  z will be 1020 (a string)
+
+            var x = 10;
+            var y = 20;
+            var z = "The result is: " + x + y;  // The result is 1020
+
+            var x = 10;
+            var y = 20;
+            var z = "The result is: " + (x + y);  // The result is 30
+
+            var x = 10;
+            var y = 20;
+            var z = "30";
+            var result = x + y + z;  // 3030
+        </script>
+
+
+<!--Numeric Strings.
+=================== -->
+        <script>
+            var x = 100;  // x is a number
+            var y = "100";  // y is a string
+
+            var x = "100";
+            var y = "10";
+            var z = x / y;  // z will be 10, number
+
+            var x = "100";
+            var y = "10";
+            var z = x * y;  // z will be 1000, number
+
+            var x = "100";
+            var y = "10";
+            var z = x - y;  // z will be 90, number
+
+            var x = "100";
+            var y = "10";
+            var z = x + y;  // z will be "10010" , string
+
+            // In the last example JavaScript uses the '+' operator
+            // to concatenate the strings.
+        </script>
+
+<!--NaN - Not a Number:
+======================= -->
+        <script>
+            var x = 100 / "Apple";  // x will be NaN (Not a Number)
+            var x = 100 / "10";     // x will be 10
+        </script>
+
+<!-- isNAN(): to find out if a value is a number
+============                                                                 -->
+        <script>
+            var x = 100 / "Apple";
+            isNaN(x);   // true : because x is Not a Number
+
+            var x = NaN;
+            var y = 5;
+            var z = x + y;  // NaN
+
+            var x = NaN;
+            var y = "5";
+            var z = x + y;    // NaN
+
+            // NOTE:  NaN is a number, typeof NaN = "number":
+            typeof NaN;  // number
+        </script>
+
+
+<!--Infinity:
+=============                                                                -->
+
+        <script>
+            var x =  2 / 0;  //  Infinity
+            var y = -2 / 0;  // -Infinity
+        </script>
+
+
+<!--Hexadecimal:
+================                                                             -->
+         <script>
+             var x = 0xFF;  // x will be 255
+             //NOTE: By default, JavaScript displays numbers as base 10 decimals.
+         </script>
+
+<!-- toString(): method to output numbers from base 2 to base 36.
+================
+Hexadecimal is base 16. Decimal is base 10. Octal is base 8. Binary is base 2.                                       -->
+
+         <script>
+            var myNumber = 32;
+            myNumber.toString(10);  // returns 32
+            myNumber.toString(32);  // returns 10
+            myNumber.toString(16);  // returns 20
+            myNumber.toString(8);   // returns 40
+            myNumber.toString(2);   // returns 100000
+         </script>
+
+<!-- Numbers Can be Objects:
+=============================                                                -->
+         <script>
+            var x = 123;               // typeof x returns number
+            var y = new Number(123);   // typeof y returns object
+            var z = new Number(123);   // typeof y returns object
+
+            // (x == y) is true because x and y have equal values
+            // (x === y) is false because x and y have different types
+            // (y == z) is false because objects cannot be compared
+            // (y === z) is false because objects cannot be compared
+        </script>
+    </body>
+</html>

@@ -1,0 +1,313 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+19 06 2020
+JavaScript Tutorial : AJAX
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Ajax - The XMLHttpRequest Object</title>
+    </head>
+    <body>
+        <h1>Ajax - The XMLHttpRequest Object.</h1><hr/>
+
+
+<!-- The keystone of AJAX is the XMLHttpRequest object.
+
+
+The XMLHttpRequest Object
+=========================
+
+All modern browsers support the 'XMLHttpRequest' object.
+
+The 'XMLHttpRequest' object can be used to exchange data with a web server
+behind the scenes. This means that it is possible to update parts of a web
+page, without reloading the whole page.
+
+
+Create an XMLHttpRequest Object
+================================
+
+All modern browsers (Chrome, Firefox, IE7+, Edge, Safari, Opera) have a
+built-in 'XMLHttpRequest' object.
+
+Syntax for creating an XMLHttpRequest object:
+---------------------------------------------
+var variable_name = new XMLHttpRequest();
+
+
+Access Across Domains
+======================
+
+For security reasons, modern browsers do not allow access across domains.
+
+This means that both 'the web page' and 'the XML file' that the browser tries
+to load, must be located on the same server.
+
+All the examples on w3Schools open XML files located on the W3Schools domain.
+
+If you want to use the example above on one of your own web pages, the XML
+files you load must be located on your own server.
+
+
+Older Browsers (IE5 and IE6)
+=============================
+
+Old versions of Internet Explorer (5/6) use an 'ActiveX' object instead of
+the 'XMLHttpRequest' object:
+
+var variable_name = new ActiveXObject("Microsoft.XMLHTTP");
+
+To handle IE5 and IE6, check if the browser supports the XMLHttpRequest
+object, otherwise, create an ActiveX object:                                -->
+
+        <script>
+           function loadDoc() {
+
+             var xhttp;
+             if (window.XMLHtppRequest) {
+               xhttp = new XMLHttpRequest();
+             } else {
+               xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+             }
+
+             xhttp.onreadystatechange = function() {
+               if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("demo1").innerHTML = this.responseText;
+               }
+             };
+
+             xhttp.open("GET", "ajax_info.txt", true);
+             xhttp.send();
+           }
+         </script>
+
+
+<!-- XMLHttpRequest Object Methods
+===================================
+
+Method  	                 Description
+-------                    ---------------
+--------------------------------------------------------------------------------
+new XMLHttpRequest() 	     Creates a new XMLHttpRequest object
+--------------------------------------------------------------------------------
+abort() 	                 Cancels the current request
+--------------------------------------------------------------------------------
+getAllResponseHeaders()    Returns header information
+--------------------------------------------------------------------------------
+getResponseHeader() 	     Returns specific header information
+--------------------------------------------------------------------------------
+open( method, url, async,  Specifies the request
+user, psw)                 method: the request type GET or POST
+                           url: the file location
+                           async: true (asynchronous) or false (synchronous)
+                           [user]: optional user name
+                           [psw]: optional password
+--------------------------------------------------------------------------------
+send() 	                   Sends the request to the server
+                           Used for GET requests
+--------------------------------------------------------------------------------
+send(string) 	             Sends the request to the server.
+                           (Used for POST requests)
+--------------------------------------------------------------------------------
+setRequestHeader() 	       Adds a label/value pair to the header to be sent
+--------------------------------------------------------------------------------
+
+
+XMLHttpRequest Object Properties
+================================
+
+Property 	           Description
+---------            ---------------
+--------------------------------------------------------------------------------
+onreadystatechange 	 Defines a function to be called when the readyState
+                     property changes
+--------------------------------------------------------------------------------
+readyState 	         Holds the status of the XMLHttpRequest.
+                     0: request not initialized
+                     1: server connection established
+                     2: request received
+                     3: processing request
+                     4: request finished and response is ready
+--------------------------------------------------------------------------------
+responseText 	       Returns the response data as a string
+--------------------------------------------------------------------------------
+responseXML 	       Returns the response data as XML data
+--------------------------------------------------------------------------------
+status 	            Returns the status-number of a request
+                    200: "OK"
+                    403: "Forbidden"
+                    404: "Not Found"
+                    For a complete list go to the Http Messages Reference
+--------------------------------------------------------------------------------
+statusText 	         Returns the status-text (e.g. "OK" or "Not Found")
+-----------------------------------------------------------------------------
+
+
+HTTP Status Messages
+====================
+
+HTML Error Messages
+-------------------
+
+When a browser requests a service from a web server, an error might occur,
+and the server might return an error code like "404 Not Found".
+It is common to name these errors 'HTML error messages'.
+
+But these messages are something called 'HTTP status messages'. In fact, the
+server always returns a message for every request. The most common message
+is 200 OK.
+
+Below is a list of HTTP status messages that might be returned:
+
+
+1xx: Information
+==================
+Message:                  Description:
+--------                  ------------
+
+100 Continue 	            The server has received the request headers, and
+                          the client should proceed to send the request body
+
+101 Switching Protocols 	The requester has asked the server to switch protocols
+
+103 Checkpoint 	          Used in the resumable requests proposal to resume
+                          aborted PUT or POST requests
+
+2xx: Successful
+================
+Message:               Description:
+---------              ------------
+
+200 OK 	               The request is OK (this is the standard response for
+                       successful HTTP requests)
+
+201 Created 	         The request has been fulfilled, and a new resource is
+                       created
+
+202 Accepted 	         The request has been accepted for processing, but the
+                       processing has not been completed
+
+203 Non-Authoritative  The request has been successfully processed, but is
+    Information        returning information that may be from another source
+
+204 No Content 	       The request has been successfully processed, but is not
+                       returning any content
+
+205 Reset Content 	   The request has been successfully processed, but is not
+                       returning any content, and requires that the requester
+                       reset the document view
+
+206 Partial Content 	The server is delivering only part of the resource due
+                      to a range header sent by the client
+
+3xx: Redirection
+=================
+
+Message:             	Description:
+---------             ------------
+
+300 Multiple Choices 	  A link list. The user can select a link and go to that
+                        location. Maximum five addresses
+
+301 Moved Permanently   The requested page has moved to a new URL
+
+302 Found 	The requested page has moved temporarily to a new URL
+
+303 See Other 	The requested page can be found under a different URL
+
+304 Not Modified 	Indicates the requested page has not been modified since last requested
+
+306 Switch Proxy 	No longer used
+
+307 Temporary Redirect 	The requested page has moved temporarily to a new URL
+
+308 Resume Incomplete 	Used in the resumable requests proposal to resume aborted PUT or POST requests
+
+4xx: Client Error
+
+Message: 	Description:
+
+400 Bad Request 	The request cannot be fulfilled due to bad syntax
+
+401 Unauthorized 	The request was a legal request, but the server is refusing to respond to it. For use when authentication is possible but has failed or not yet been provided
+
+402 Payment Required 	Reserved for future use
+
+403 Forbidden 	The request was a legal request, but the server is refusing to respond to it
+
+404 Not Found 	The requested page could not be found but may be available again in the future
+
+405 Method Not Allowed 	A request was made of a page using a request method not supported by that page
+
+406 Not Acceptable 	The server can only generate a response that is not accepted by the client
+
+
+407 Proxy Authentication Required 	The client must first authenticate itself with the proxy
+
+408 Request Timeout 	The server timed out waiting for the request
+
+
+409 Conflict 	The request could not be completed because of a conflict in the request
+
+410 Gone 	The requested page is no longer available
+
+411 Length Required 	The "Content-Length" is not defined. The server will not accept the request without it
+
+412 Precondition Failed 	The precondition given in the request evaluated to false by the server
+
+413 Request Entity Too Large 	The server will not accept the request, because the request entity is too large
+
+414 Request-URI Too Long 	The server will not accept the request, because the URL is too long. Occurs when you convert a POST request to a GET request with a long query information
+
+
+415 Unsupported Media Type 	The server will not accept the request, because the media type is not supported
+
+416 Requested Range Not Satisfiable 	The client has asked for a portion of the file, but the server cannot supply that portion
+
+417 Expectation Failed 	The server cannot meet the requirements of the Expect request-header field
+
+5xx: Server Error
+
+Message: 	Description:
+
+500 Internal Server Error 	A generic error message, given when no more specific message is suitable
+
+501 Not Implemented 	The server either does not recognize the request method, or it lacks the ability to fulfill the request
+
+502 Bad Gateway 	The server was acting as a gateway or proxy and received an invalid response from the upstream server
+
+503 Service Unavailable 	The server is currently unavailable (overloaded or down)
+
+504 Gateway Timeout 	The server was acting as a gateway or proxy and did not receive a timely response from the upstream server
+
+505 HTTP Version Not Supported 	The server does not support the HTTP protocol version used in the request
+
+511 Network Authentication Required 	The client needs to authenticate to gain network access
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+    </body>
+</html>

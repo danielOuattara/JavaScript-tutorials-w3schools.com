@@ -1,0 +1,94 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Break and continue</title>
+    </head>
+    <body>
+        <h1>JavaScript Break and continue</h1>
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p>
+        <script>
+
+/*--The break statement.
+========================
+The break statement "jumps out" of a loop.
+It breaks the loop and continues executing the code after the loop (if any):
+*/
+            var text = "";
+            var counter ;
+            for (counter = 0; counter < 10; counter ++ ) {
+                if (counter == 3){
+                    break;
+                }
+                text += "counter is: " + counter + "<br/> ";
+            }
+            document.getElementById("demo1").innerHTML = text + "<br/>";
+            // the outside code below is executed after the "break" above
+            var text = "";
+            var counter ;
+            for (counter = 0; counter < 10; counter ++ ) {
+                if (counter == 3){
+                }
+                text += "counter is: " + counter + "<br/> ";
+            }
+            document.getElementById("demo2").innerHTML = text + "<br/>";
+/* The continue statement "jumps over" one iteration in the loop.*/
+
+            var text = "";
+            var counter ;
+            for (counter = 0; counter < 10; counter ++ ) {
+                if (counter === 3){
+                    continue;
+                }
+                text += "counter is: " + counter + "<br/> ";
+            }
+            document.getElementById("demo3").innerHTML = text + "<br/>";
+            // the outside code below is executed after the "break" above
+            var text = "";
+            var counter ;
+            for (counter = 0; counter < 10; counter ++ ) {
+                if (counter == 3){
+                }
+                text += "counter is: " + counter + "<br/> ";
+            }
+            document.getElementById("demo4").innerHTML = text + "<br/>";
+
+/* JavaScript Labels:
+====================
+To label JavaScript statements you precede the statements with a label name and a colon:
+    label:
+    statements
+
+The break and the continue statements are the only JavaScript statements
+that can "jump out of" a code block.
+    break labelname;
+    continue labelname;
+
+++ The continue statement (with / without a label reference)
+can only be used to skip one loop iteration.
+
+++ The break statement, without a label reference,
+can only be used to jump out of a loop or a switch.
+
+With a label reference, the break statement can be used to jump out of any code block:
+*/
+            var text="";
+            var cars =["BMW", "Volvo", "Saab", "Ford"];
+            list: {
+                text += cars[0] + "<br/>";
+                text += cars[1] + "<br/>";
+                text += cars[2] + "<br/>";
+                //break list;
+                text += cars[3] + "<br/>";
+            }
+            document.getElementById("demo5").innerHTML = text + "<br/>";
+        </script>
+    </body>
+</html>

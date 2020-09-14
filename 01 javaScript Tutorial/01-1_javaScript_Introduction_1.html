@@ -1,0 +1,34 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Introduction 1-1</title>
+  </head>
+
+  <body>
+    <h1> JavaScript Introduction 1-1</h1>
+    <p>This contents some examples of what javaScript can do in HTML pages</p>
+
+    <!--in double quotes -->
+    <p id="demo1">JavaScript can change HTML content of this paragraph.</p>
+    
+    <button type="button" name="button" onclick=
+      "document.getElementById('demo1').textContent = 'Hello javaScript!'">
+       Click Here</button>
+
+    <!--in  single quotes-->
+    <p id="demo2">JavaScript can change HTML content of this paragraph.</p>
+    
+     <button type="button" name="button" onclick=
+       'document.getElementById("demo2").innerHTML = "Hello javaScript!"'>
+     Click Here</button>
+  </body>
+
+</html>

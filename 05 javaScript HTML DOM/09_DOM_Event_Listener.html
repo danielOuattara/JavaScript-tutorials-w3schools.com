@@ -1,0 +1,374 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+06 07 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM EventListener</title>
+    </head>
+    <body>
+
+        <h1>JavaScript HTML DOM EventListener.</h1><hr/>
+
+<!-- The addEventListener() method
+================================== -->
+
+        <p>This example uses the addEventListener() method to attach a 
+            click event to a button.</p>
+
+        <button id="button01">Click !</button>
+
+        <p id="demo1"></p>
+
+        <script>
+            // You can refer to an internal named function:
+            document.getElementById("button01").addEventListener("click", function displayDate(){
+                document.getElementById("demo1").innerHTML = Date();
+            });
+
+            // function displayDate() {
+            //     document.getElementById("demo1").innerHTML = Date();
+            // }
+        </script>
+
+<!-- The 'addEventListener()' method attaches an event handler to a specified element.
+The 'addEventListener()' method attaches an event handler to an element without 
+overwriting existing event handlers.
+
+You can add many event handlers to one element.
+You can add many event handlers of the same type to one element, i.e two "click" events.
+
+You can add event listeners to any DOM object not only HTML elements. i.e the window object.
+
+The 'addEventListener()' method makes it easier to control how the event reacts to bubbling.
+
+When using the 'addEventListener()' method, the JavaScript is separated from the HTML 
+markup, for better readability and allows you to add event listeners even when you do 
+not control the HTML markup.
+
+You can easily remove an event listener by using the removeEventListener() method. 
+
+
+Syntax
+========
+
+element.addEventListener(event, function, useCapture);
+_______________________________________________________
+
+The first parameter is the type of the event (like "click" or "mousedown" or any
+other HTML DOM Event.)
+
+The second parameter is the function we want to call when the event occurs.
+
+The third parameter is a boolean value specifying whether to use event bubbling 
+or event capturing. This parameter is optional.
+
+Note: you don't use the "on" prefix for the event; use "click" instead of "onclick".
+----
+
+
+Add an Event Handler to an Element
+===================================                                               
+
+         You can also refer to an internal anonymous function:                      -->
+         <button id="button2">Button2: click</button>
+         <script>
+             document.getElementById("button2").addEventListener("click",function(){
+                 alert("Hello World");})
+         </script>
+
+        <!-- You can also refer to an external "named" function:                    -->
+        <button id="button3">Button3: click</button>
+        <script>
+            document.getElementById("button3").addEventListener("click", alertMessage);
+            function alertMessage () {
+                alert("Hello World !");
+            }
+        </script>
+
+
+<!-- Add Many Event Handlers to the Same Element
+================================================
+
+The 'addEventListener()' method allows you to add many events to the same element, 
+without overwriting existing events: -->
+  
+       <p>This example uses the addEventListener() method to add two click 
+           events to the same button.</p>
+
+    <button id="button4">Button 4</button>
+
+    <script>
+        var x = document.getElementById("button4");
+        x.addEventListener("click", function1);
+        x.addEventListener("click", function2);
+
+        function function1() {
+            alert("Hello World !");
+        }
+
+        function function2() {
+            alert("This is another Hello World !");
+        }
+    </script>
+
+
+<!-- You can add events of different types to the same element: -->
+
+    <p>This example uses the addEventListener() method to add many events on 
+        the same button.</p>
+
+    <button id="button5">Button 5</button>
+    <p id="demo2"></p>
+
+    <script>
+        var x = document.getElementById("button5");
+        x.addEventListener("mouseover", functionOne);
+        x.addEventListener("click", functionTwo);
+        x.addEventListener("mouseout", functionThree);
+
+        function functionOne() {
+            document.getElementById("demo2").innerHTML += "Mouse Over! <br/>";
+        }
+        
+        function functionTwo() {
+            document.getElementById("demo2").innerHTML += "Mouse Click ! <br/>";
+        }
+        
+        function functionThree() {
+            document.getElementById("demo2").innerHTML += "Mouse Out! <br/>";
+        }
+    </script>
+
+
+<!-- Add an Event Handler to the window Object
+===============================================
+
+The 'addEventListener()' method allows you to add event listeners on any HTML DOM 
+object such as HTML elements, the HTML document, the window object, or other 
+objects that support events, like the xmlHttpRequest object. -->
+
+
+        <p>This example uses the addEventListener() method on the window object.</p>
+
+        <p>Try resizing this browser window to trigger the "resize" event handler.</p>
+
+        <p id="demo3"></p>
+
+        <script>
+            window.addEventListener("resize", function() {
+                document.getElementById("demo3").innerHTML  = Math.random();
+            });
+        </script>
+
+
+<!-- Passing Parameters
+========================
+
+When passing parameter values, use an "anonymous function" that calls the specified 
+function with the parameters: -->
+
+
+        <p>This example demonstrates how to pass parameter values when using 
+            the addEventListener() method.</p>
+
+        <p>Click the button to perform a calculation.</p>
+
+        <button id="button6">button 6</button>
+
+        <p id="demo4"></p>
+
+        <script>
+            var p1 = 5;
+            var p2 = 7;
+
+            document.getElementById("button6").addEventListener("click", function () {
+                myFunction1(p1, p2)
+            });
+
+            function myFunction1(a, b) {
+                var result = a * b ;
+                return document.getElementById("demo4").innerHTML = result;
+            }
+        </script>
+
+<!-- Event Bubbling or Event Capturing ?
+=======================================
+
+There are two ways of event propagation in the HTML DOM, 'bubbling' and 'capturing'.
+Event propagation is a way of defining the element order when an event occurs. 
+
+If you have a <p> element inside a <div> element, and the user clicks on the 
+<p> element, which element's "click" event should be handled first ?
+
+In 'bubbling' the inner most element's event is handled first and then the outer:
+the <p> element's click event is handled first, then the <div> element's click event.
+
+In 'capturing' the outer most element's event is handled first and then the inner: 
+the <div> element's click event will be handled first, then the <p> element's 
+click event.
+
+With the addEventListener() method you can specify the propagation type by using 
+the "useCapture" parameter: addEventListener(event, function, useCapture);
+
+The default value is 'false', which will use the bubbling propagation, when the value 
+is set to 'true', the event uses the capturing propagation. -->
+
+        <style>
+            #myDiv1, #myDiv2 {
+                background-color: coral;
+                padding: 50px;
+            }
+            #myP1, #myP2 {
+                background-color: white;
+                font-size: 20px;
+                border: 1px solid;
+                padding: 20px;
+            }
+        </style>
+        <div id="myDiv1">
+            <h2>Bubbling</h2>
+            <p id="myP1">Click me!</p>
+        </div><br/>
+
+        <div id="myDiv2">
+            <h2>Capturing</h2>
+            <p id="myP2">Click me!</p>
+        </div><br/>
+
+        <script>
+            document.getElementById("myP1").addEventListener("click", function(){
+                   alert("You clicked the P1 white element");
+               }, false);
+
+            document.getElementById("myDiv1").addEventListener("click", function(){
+                   alert("You clicked the div1 orange element");
+               }, false);
+
+            document.getElementById("myP2").addEventListener("click", function(){
+                   alert("You clicked the P2 white element");
+               }, true);
+
+            document.getElementById("myDiv2").addEventListener("click", function(){
+                   alert("You clicked the div2 orange element");
+               }, true);
+        </script>
+
+<!--The removeEventListener() method
+=====================================
+
+The 'removeEventListener()' method removes event handlers that have been attached 
+with the 'addEventListener()' method: -->
+
+        <style>
+            #myDIV {
+            background-color: coral;
+            border: 1px solid;
+            padding: 50px;
+            color: white;
+            font-size: 20px;
+            }
+            </style>
+
+            <div id="myDIV">
+                <p>This div element has an onmousemove event handler that 
+                   displays a random number every time you move your mouse
+                   inside this orange field.</p>
+
+                <p>Click the button to remove the div's event handler.</p>
+
+                <button onclick="removeHandler()" id="myBtn">Remove</button>
+            </div>
+            
+            <p id="demo5"></p>
+
+            <script>
+                document.getElementById("myDIV").addEventListener("mouseover", function_1);
+
+                function function_1() {
+                    document.getElementById("demo5").innerHTML = Math.random();
+                }
+
+                function removeHandler() {
+                    document.getElementById("myDIV").removeEventListener("mouseover", function_1);
+        
+                }
+            </script><hr/>
+
+
+
+
+            <style>
+                #myDIV2 {
+                background-color: coral;
+                border: 1px solid;
+                padding: 50px;
+                color: white;
+                font-size: 20px;
+                }
+                </style>
+
+                <div id="myDIV2">
+                    <p>This div element has an onmousemove event handler that 
+                    displays a random number every time you move your mouse
+                    inside this orange field.</p>
+
+                    <p>Click the button to remove the div's event handler.</p>
+
+                    <button onclick="removeHandlerToggle()" id="myBtn">Remove</button>
+                </div>
+                
+                <p id="demo6"></p>
+
+                <script>
+
+                     x = document.getElementById("myDIV2");
+                     x.addEventListener("mouseover", function_2);
+
+                    function function_2() {
+                        document.getElementById("demo6").innerHTML = Math.random();
+                    }
+
+                    function removeHandlerToggle(){
+                        if(x.addEventListener) {
+                            x.removeEventListener;
+                        } else {
+                            x.addEventListener;
+                        }
+                                           
+                    }
+
+                </script><hr/>
+                        
+<!-- Browser Support
+=====================
+
+Note: The 'addEventListener()' and 'removeEventListener()' methods are not 
+supported in IE 8 and earlier versions. However, for these specific 
+browser versions, you can use the 'attachEvent()' method to attach an 
+event handlers to the element, and the 'detachEvent()' method to remove it: -->
+
+        <p>This example demonstrates a solution that will work for all browsers.</p>
+
+        <button id="myBtnFinal">Try it</button>
+
+        <script>
+        var x = document.getElementById("myBtnFinal");
+        if (x.addEventListener) {
+        x.addEventListener("click", myFunction);
+        } else if (x.attachEvent) {
+        x.attachEvent("onclick", myFunction);
+        }
+
+        function myFunction() {
+        alert("Hello World!");
+        }
+        </script>
+
+
+    </body>
+</html>

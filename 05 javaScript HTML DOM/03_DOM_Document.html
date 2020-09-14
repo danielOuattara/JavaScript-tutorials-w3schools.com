@@ -1,0 +1,211 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+02 04 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Document</title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM Document</h1><hr/>
+        <a href="https://www.w3schools.com/" style="text-decoration:none;">w3schools.com</a>
+
+
+<!-- The 'Document' object in the HTML DOM is the owner of all other objects
+     in your web page.
+
+
+ The HTML DOM Document Object.
+==============================
+
+The 'document' object represents your web page.
+
+If you want to access any element in an HTML page, you always start with
+accessing the 'document' object.
+
+Below are some examples of how you can use the document object to access
+and manipulate HTML.
+
+
+Finding HTML Elements.
+======================
+
+Method.                                 Description.
+-------                                 ------------
+--------------------------------------------------------------------------------
+document.getElementById(id) 	          Find an element by element id.
+--------------------------------------------------------------------------------
+document.getElementsByClassName(name) 	Find elements by class name.
+--------------------------------------------------------------------------------
+document.getElementsByTagName(name) 	  Find elements by tag name.
+--------------------------------------------------------------------------------
+
+
+ Changing HTML Elements.
+=========================
+
+Property 	                              Description
+--------                                -----------
+--------------------------------------------------------------------------------
+element.innerHTML = " new html content"  Change the inner HTML of an element
+element.innerText = " new html content"
+--------------------------------------------------------------------------------
+element.attribute = new value 	        Change the attribute value of an
+                                        HTML element
+--------------------------------------------------------------------------------
+element.style.property = new style 	    Change the style of an HTML element
+------------------------------------------------------------------------------->
+
+      <h2 id="demo1"> <a id="anchor1" href="https://www.w3schools.com/html/"
+        target="_blank";> This is a link </a></h2>
+
+      <script>
+        var element1 = document.getElementById("demo1");
+        element1.id = "demo2";
+        document.getElementById("anchor1").style.textDecoration = "none";
+
+        element2 = document.getElementById("anchor1");
+        element2.href = "https://www.w3schools.com/css/";
+     // element2.style.textDecoration = "none";
+      </script>
+
+<!--
+
+Method 	                                Description.
+------                                  ------------
+--------------------------------------------------------------------------------
+element.setAttribute(attribute, value) 	Change the attribute value of an
+                                        HTML element
+------------------------------------------------------------------------------->
+
+      <script>
+         element2.setAttribute("href", "https://www.w3schools.com/js/");
+       </script>
+
+ <!--
+
+ Adding and Deleting Elements.
+==================================
+
+Method 	                            Description
+-------                             -----------
+--------------------------------------------------------------------------------
+document.createElement(element) 	  Create an HTML element
+--------------------------------------------------------------------------------
+document.removeChild(element) 	    Remove an HTML element
+--------------------------------------------------------------------------------
+document.appendChild(element) 	    Add an HTML element
+--------------------------------------------------------------------------------
+document.replaceChild(new, old) 	  Replace an HTML element
+--------------------------------------------------------------------------------
+document.write(text) 	              Write into the HTML output stream
+------------------------------------------------------------------------------->
+
+      <p id="demo3"></p>
+      <p id="demo4"></p>
+      <p id="demo5"></p>
+      <p id="demo6"></p>
+
+      <script>
+        // creates a new paragraph
+        var paragraph_1 = document.createElement("p");
+        paragraph_1.id = "text1";
+        // paragraph_1.setAttribute("id","text1");
+        var content_1 = document.createTextNode("Hello World Again !");
+        paragraph_1.appendChild(content_1);
+        document.body.appendChild(paragraph_1);
+        document.getElementById("text1").style.color = "green";
+        // document.getElementById("demo3").innerHTML = document.documentElement.innerHTML;
+
+        console.log(document.body);
+      </script>
+
+
+<!--
+ Adding Events Handlers.
+============================
+
+Method 	                                   Description
+-------                                    ------------
+--------------------------------------------------------------------------------
+document.getElementById(id).onclick =      Adding event handler code to an
+    function(){code}                       onclick event
+--------------------------------------------------------------------------------
+
+
+Finding HTML Objects.
+======================
+
+The first HTML DOM Level 1 (1998), defined 11 HTML objects,
+object collections, and properties. These are still valid in HTML5.
+
+Later, in HTML DOM Level 3, more objects, collections, and properties were added.
+
+Property 	                 Description 	                               DOM
+--------------------------------------------------------------------------------
+document.anchors 	         Returns all <a> elements that have           1
+                           a name attribute
+--------------------------------------------------------------------------------
+document.applets 	         Returns all <applet> elements                1
+                           (Deprecated in HTML5)
+--------------------------------------------------------------------------------
+document.baseURI 	          Returns the absolute base URI               3
+                            of the document
+--------------------------------------------------------------------------------
+document.body 	            Returns the <body> element 	                1
+--------------------------------------------------------------------------------
+document.cookie 	          Returns the document's cookie 	            1
+--------------------------------------------------------------------------------
+document.doctype 	          Returns the document's doctype 	            3
+--------------------------------------------------------------------------------
+document.documentElement    Returns the <html> element 	                3
+--------------------------------------------------------------------------------
+document.documentMode 	    Returns the mode used by the browser 	      3
+--------------------------------------------------------------------------------
+document.documentURI 	      Returns the URI of the document 	          3
+--------------------------------------------------------------------------------
+document.domain 	          Returns the domain name of                  1
+                            the document server
+--------------------------------------------------------------------------------
+document.domConfig 	        Obsolete. Returns the DOM configuration  	  3
+--------------------------------------------------------------------------------
+document.embeds 	          Returns all <embed> elements 	              3
+--------------------------------------------------------------------------------
+document.forms 	            Returns all <form> elements 	              1
+--------------------------------------------------------------------------------
+document.head 	            Returns the <head> element 	                3
+--------------------------------------------------------------------------------
+document.images 	          Returns all <img> elements 	                1
+--------------------------------------------------------------------------------
+document.implementation 	  Returns the DOM implementation 	            3
+--------------------------------------------------------------------------------
+document.inputEncoding 	    Returns the document's encoding             3
+                            (character set)
+--------------------------------------------------------------------------------
+document.lastModified 	    Returns the date and time                   3
+                            the document was updated
+--------------------------------------------------------------------------------
+document.links 	            Returns all <area> and <a> elements         1
+                            that have a href attribute
+--------------------------------------------------------------------------------
+document.readyState 	      Returns the (loading) status                3
+                            of the document
+--------------------------------------------------------------------------------
+document.referrer 	        Returns the URI of the referrer             1
+                            (the linking document)
+--------------------------------------------------------------------------------
+document.scripts 	          Returns all <script> elements 	            3
+--------------------------------------------------------------------------------
+document.strictErrorChecking  Returns if error checking is enforced 	  3
+--------------------------------------------------------------------------------
+document.title 	             Returns the <title> element 	              1
+--------------------------------------------------------------------------------
+document.URL 	               Returns the complete URL of the document 	1
+------------------------------------------------------------------------------->
+
+    </body>
+</html>

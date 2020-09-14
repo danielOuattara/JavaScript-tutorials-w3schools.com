@@ -1,0 +1,595 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+21 04 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Events</title>
+    </head>
+    <body onload="checkCookies()">
+        <h1>JavaScript HTML DOM Events</h1><hr/>
+
+
+<!-- HTML DOM allows JavaScrit to react to HTML events                           -->
+
+      <style>
+
+        #div01 {
+            background-color: grey;
+            width: 50%;
+            overflow: hidden;
+            height: 250px; 
+        }
+
+        #head01 
+        {
+            float: left;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            margin-right: 50px;
+            height: 65px;
+            width: 200px;
+        }
+        
+        #head02 {
+            float: left;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            height: 65px;
+            width: 200px;
+        }
+
+      </style>
+      <div id="div01" >
+          <h2 id="head01" onmouseover="this.innerHTML = 'Thank You !'"
+              onmouseout="this.innerHTML = 'Mouse Over Me'">Mouse over me</h2>
+
+
+          <h2 id="head02" onmouseover="this.style.cursor='pointer'" 
+              onclick="clickMeEvent(this)">Click Me</h2>
+      </div>
+
+      <script>
+          function clickMeEvent(obj) {
+                if (obj.innerHTML == "Click Me") {
+                    obj.innerHTML = "Click Me <br> Click Me Again";
+                    return;
+                }
+                if (obj.innerHTML == "Click Me <br> Click Me Again") {
+                    obj.innerHTML = "Thank You";  
+                    return; 
+                }
+                if (obj.innerHTML == "Thank You") {
+                obj.innerHTML = "Goodbye";  
+                    return; 
+                }
+                if (obj.innerHTML == "Goodbye") {
+                    obj.style.display = "none";
+                    return;
+                }
+            }
+
+      </script>
+    
+
+
+<!--Reacting to Events
+======================
+
+A JavaScript code can be executed when an event occurs, like when
+a user clicks on an HTML element.
+
+To execute code when a user clicks on an element, add JavaScript
+code to an HTML event attribute like : onclick=JavaScript
+
+Examples of HTML events:
+
+    > When a user clicks the mouse
+    > When a web page has loaded
+    > When an image has been loaded
+    > When the mouse moves over an element
+    > When an input field is changed
+    > When an HTML form is submitted
+    > When a user strokes a key                                           -->
+
+
+<!-- Example 1: The content of the <h1> element is changed when
+                a user clicks on it: -->
+
+
+    <h2 onclick="this.innerHTML='Hello World !'" 
+        onmouseover ="style.cursor= 'pointer'">Click on me !</h2>
+
+
+<!-- Example 2: A function is called from the event handler: -->
+
+    <h2 onclick="changeText(this)">Click me !</h2>
+    <script>
+        function changeText(id) {
+            id.innerHTML = "Hello world !";
+        }
+    </script>
+
+
+<!-- HTML Event Attributes
+===========================
+
+To assign events to HTML elements you can use event attributes
+
+Assign an onclick event to a button element.
+A function named 'displayDate()' will be executed
+when the button is clicked.-->
+
+    <button onclick = "displayDate(this)"> what Date are we ? Click to know !</button><br/><br/>
+
+    <button onclick = "displayDate2()"> Date ? Click to know !</button><br/><br/>
+
+    <p id="demo1"></p>
+    
+    <button onclick = "this.innerHTML = new Date()">Date ?</button><br/><br/>
+
+    <script>
+        function displayDate(elem) {
+            var today = new Date();
+            elem.innerHTML = today;
+        }
+        function displayDate2() {
+            document.getElementById('demo1').innerHTML = new Date();
+        }
+    </script>
+
+
+<!-- Assign Events Using the HTML DOM
+======================================
+
+The HTML DOM allows you to assign events to HTML elements using 
+JavaScript:  -->
+
+    <p>Click "Try it" to execute the displayDate() function.</p>
+
+    <button id="myButton">Button 3</button>
+
+    <p id="demo2"></p>
+
+    <script>
+        document.getElementById("myButton").onclick = displayDate3;
+
+        function displayDate3() {
+            document.getElementById("demo2").innerHTML = Date();
+        }
+    </script>
+
+<!-- In the example above, a function named 'displayDate3' is assigned 
+to an HTML element with the id="myBtn".
+The function will be executed when the button is clicked.
+
+
+The onload and onunload Events
+==============================
+
+The 'onload' and 'onunload' events are triggered when the user enters or 
+leaves the page.
+
+The 'onload' event can be used to check the visitor's browser type and 
+browser version, and load the proper version of the web page based on 
+the information.
+
+The 'onload' and 'onunload' events can be used to deal with cookies.   -->
+
+
+      <p id="demo3"></p>
+      <script>
+          function checkCookies() {
+              var text ="";
+              if (navigator.cookieEnabled == true ) {
+                  text = "Cookies are enabled";
+                  
+              } else {
+                  text = "Cookies are not enabled ";
+              }
+
+              document.getElementById("demo3").innerHTML = text;
+          }
+      </script>
+
+
+<!-- The onchange Event
+========================
+
+The 'onchange' event is often used in combination with validation of 
+input fields.
+Below is an example of how to use the onchange. The 'upperCase()' 
+function will be called when a user changes the content of an input field. -->
+
+
+         Type in: <input type="text" id="fname" placeholder="your full name ..."
+           onchange="myFunction1()">
+        <button id="button3">Click to reload</button>
+        <script>
+
+            var x = document.getElementById("fname");
+        
+            function myFunction1() {    
+                 return x.value = x.value.toUpperCase();
+            }
+
+            document.getElementById("button3").onclick = inputEmpty;
+
+            function inputEmpty() {
+               return x.value = "";
+                
+            }
+        </script>
+
+
+<!-- The onmouseover and onmouseout Events
+============================================
+
+The 'onmouseover' and 'onmouseout' events can be used to trigger a 
+function when the user mouses over, or out of, an HTML element: -->
+
+       <div id ></div>
+
+
+
+
+
+
+<!-- HTML DOM Events
+=====================
+
+HTML DOM events allow JavaScript to register different event handlers 
+on elements in an HTML document.
+
+Events are normally used in combination with functions, and the function
+will not be executed before the event occurs (such as when a user clicks a button).
+
+For a tutorial about Events, read our JavaScript Events Tutorial.
+
+Event 	           Description 	                                Belongs To
+
+abort 	           The event occurs when the loading of a        UiEvent, Event
+                   media is aborted 	
+
+afterprint 	       The event occurs when a page has started printing, or if the print dialogue box has been closed 	Event
+
+animationend 	   The event occurs when a CSS animation has completed 	AnimationEvent
+
+animationiteration 	The event occurs when a CSS animation is repeated 	AnimationEvent
+
+animationstart 	The event occurs when a CSS animation has started 	AnimationEvent
+
+beforeprint 	The event occurs when a page is about to be printed 	Event
+
+beforeunload 	The event occurs before the document is about to be unloaded 	UiEvent, Event
+
+blur 	The event occurs when an element loses focus 	FocusEvent
+
+canplay 	The event occurs when the browser can start playing the media (when it has buffered enough to begin) 	Event
+
+canplaythrough 	The event occurs when the browser can play through the media without stopping for buffering 	Event
+
+change 	The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <select>, and <textarea>) 	Event
+
+click 	The event occurs when the user clicks on an element 	MouseEvent
+
+contextmenu 	The event occurs when the user right-clicks on an element to open a context menu 	MouseEvent
+
+copy 	The event occurs when the user copies the content of an element 	ClipboardEvent
+
+cut 	The event occurs when the user cuts the content of an element 	ClipboardEvent
+
+dblclick 	The event occurs when the user double-clicks on an element 	MouseEvent
+
+drag 	The event occurs when an element is being dragged 	DragEvent
+
+dragend 	The event occurs when the user has finished dragging an element 	DragEvent
+
+dragenter 	The event occurs when the dragged element enters the drop target 	DragEvent
+
+dragleave 	The event occurs when the dragged element leaves the drop target 	DragEvent
+
+dragover 	The event occurs when the dragged element is over the drop target 	DragEvent
+
+dragstart 	The event occurs when the user starts to drag an element 	DragEvent
+
+drop 	The event occurs when the dragged element is dropped on the drop target 	DragEvent
+
+durationchange 	The event occurs when the duration of the media is changed 	Event
+
+ended 	The event occurs when the media has reach the end (useful for messages like "thanks for listening") 	Event
+
+error 	The event occurs when an error occurs while loading an external file 	ProgressEvent, UiEvent, Event
+
+focus 	The event occurs when an element gets focus 	FocusEvent
+
+focusin 	The event occurs when an element is about to get focus 	FocusEvent
+
+focusout 	The event occurs when an element is about to lose focus 	FocusEvent
+
+fullscreenchange 	The event occurs when an element is displayed in fullscreen mode 	Event
+
+fullscreenerror 	The event occurs when an element can not be displayed in fullscreen mode 	Event
+
+hashchange 	The event occurs when there has been changes to the anchor part of a URL 	HashChangeEvent
+
+input 	The event occurs when an element gets user input 	InputEvent, Event
+
+invalid 	The event occurs when an element is invalid 	Event
+
+keydown 	The event occurs when the user is pressing a key 	KeyboardEvent
+
+keypress 	The event occurs when the user presses a key 	KeyboardEvent
+
+keyup 	The event occurs when the user releases a key 	KeyboardEvent
+
+load 	The event occurs when an object has loaded 	UiEvent, Event
+
+loadeddata 	The event occurs when media data is loaded 	Event
+
+loadedmetadata 	The event occurs when meta data (like dimensions and duration) are loaded 	Event
+
+loadstart 	The event occurs when the browser starts looking for the specified media 	ProgressEvent
+
+message 	The event occurs when a message is received through the event source 	Event
+
+mousedown 	The event occurs when the user presses a mouse button over an element 	MouseEvent
+
+mouseenter 	The event occurs when the pointer is moved onto an element 	MouseEvent
+
+mouseleave 	The event occurs when the pointer is moved out of an element 	MouseEvent
+
+mousemove 	The event occurs when the pointer is moving while it is over an element 	MouseEvent
+
+mouseover 	The event occurs when the pointer is moved onto an element, or onto one of its children 	MouseEvent
+
+mouseout 	The event occurs when a user moves the mouse pointer out of an element, or out of one of its children 	MouseEvent
+
+mouseup 	The event occurs when a user releases a mouse button over an element 	MouseEvent
+
+mousewheel 	Deprecated. Use the wheel event instead 	WheelEvent
+
+offline 	The event occurs when the browser starts to work offline 	Event
+
+online 	The event occurs when the browser starts to work online 	Event
+
+open 	The event occurs when a connection with the event source is opened 	Event
+
+pagehide 	The event occurs when the user navigates away from a webpage 	PageTransitionEvent
+
+pageshow 	The event occurs when the user navigates to a webpage 	PageTransitionEvent
+
+paste 	The event occurs when the user pastes some content in an element 	ClipboardEvent
+
+pause 	The event occurs when the media is paused either by the user or programmatically 	Event
+
+play 	The event occurs when the media has been started or is no longer paused 	Event
+
+playing 	The event occurs when the media is playing after having been paused or stopped for buffering 	Event
+
+popstate 	The event occurs when the window's history changes 	PopStateEvent
+
+progress 	The event occurs when the browser is in the process of getting the media data (downloading the media) 	Event
+
+ratechange 	The event occurs when the playing speed of the media is changed 	Event
+
+resize 	The event occurs when the document view is resized 	UiEvent, Event
+
+reset 	The event occurs when a form is reset 	Event
+
+scroll 	The event occurs when an element's scrollbar is being scrolled 	UiEvent, Event
+
+search 	The event occurs when the user writes something in a search field (for <input="search">) 	Event
+
+seeked 	The event occurs when the user is finished moving/skipping to a new position in the media 	Event
+
+seeking 	The event occurs when the user starts moving/skipping to a new position in the media 	Event
+
+select 	The event occurs after the user selects some text (for <input> and <textarea>) 	UiEvent, Event
+
+show 	The event occurs when a <menu> element is shown as a context menu 	Event
+
+stalled 	The event occurs when the browser is trying to get media data, but data is not available 	Event
+
+storage 	The event occurs when a Web Storage area is updated 	StorageEvent
+
+submit 	The event occurs when a form is submitted 	Event
+
+suspend 	The event occurs when the browser is intentionally not getting media data 	Event
+
+timeupdate 	The event occurs when the playing position has changed (like when the user fast forwards to a different point in the media) 	Event
+
+toggle 	The event occurs when the user opens or closes the <details> element 	Event
+
+touchcancel 	The event occurs when the touch is interrupted 	TouchEvent
+
+touchend 	The event occurs when a finger is removed from a touch screen 	TouchEvent
+
+touchmove 	The event occurs when a finger is dragged across the screen 	TouchEvent
+
+touchstart 	The event occurs when a finger is placed on a touch screen 	TouchEvent
+
+transitionend 	The event occurs when a CSS transition has completed 	TransitionEvent
+
+unload 	The event occurs once a page has unloaded (for <body>) 	UiEvent, Event
+
+volumechange 	The event occurs when the volume of the media has changed (includes setting the volume to "mute") 	Event
+
+waiting 	The event occurs when the media has paused but is expected to resume (like when the media pauses to buffer more data) 	Event
+
+wheel 	The event occurs when the mouse wheel rolls up or down over an element 	WheelEvent
+
+
+HTML DOM Event P
+roperties and Methods
+
+Property/Method 	Description 	Belongs To
+
+altKey 	Returns whether the "ALT" key was pressed when the mouse event was triggered 	MouseEvent
+
+altKey 	Returns whether the "ALT" key was pressed when the key event was triggered 	KeyboardEvent, TouchEvent
+
+animationName 	Returns the name of the animation 	AnimationEvent
+
+bubbles 	Returns whether or not a specific event is a bubbling event 	Event
+
+button 	Returns which mouse button was pressed when the mouse event was triggered 	MouseEvent
+
+buttons 	Returns which mouse buttons were pressed when the mouse event was triggered 	MouseEvent
+
+cancelable 	Returns whether or not an event can have its default action prevented 	Event
+
+charCode 	Returns the Unicode character code of the key that triggered the onkeypress event 	KeyboardEvent
+
+changeTouches 	Returns a list of all the touch objects whose state changed between the previous touch and this touch 	TouchEvent
+
+clientX 	Returns the horizontal coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered 	MouseEvent, TouchEvent
+
+clientY 	Returns the vertical coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered 	MouseEvent, TouchEvent
+
+clipboardData 	Returns an object containing the data affected by the clipboard operation 	ClipboardData
+
+code 	Returns the code of the key that triggered the event 	KeyboardEvent
+
+composed 	Returns whether the event is composed or not 	Event
+
+createEvent() 	Creates a new event 	Event
+
+ctrlKey 	Returns whether the "CTRL" key was pressed when the mouse event was triggered 	MouseEvent
+
+ctrlKey 	Returns whether the "CTRL" key was pressed when the key event was triggered 	KeyboardEvent, TouchEvent
+
+currentTarget 	Returns the element whose event listeners triggered the event 	Event
+
+data 	Returns the inserted characters 	InputEvent
+
+dataTransfer 	Returns an object containing the data being dragged/dropped, or inserted/deleted 	DragEvent, InputEvent
+
+defaultPrevented 	Returns whether or not the preventDefault() method was called for the event 	Event
+
+deltaX 	Returns the horizontal scroll amount of a mouse wheel (x-axis) 	WheelEvent
+
+deltaY 	Returns the vertical scroll amount of a mouse wheel (y-axis) 	WheelEvent
+
+deltaZ 	Returns the scroll amount of a mouse wheel for the z-axis 	WheelEvent
+
+deltaMode 	Returns a number that represents the unit of measurements for delta values (pixels, lines or pages) 	WheelEvent
+
+detail 	Returns a number that indicates how many times the mouse was clicked 	UiEvent
+
+elapsedTime 	Returns the number of seconds an animation has been running 	AnimationEvent
+
+elapsedTime 	Returns the number of seconds a transition has been running 	 
+
+eventPhase 	Returns which phase of the event flow is currently being evaluated 	Event
+
+getTargetRanges() 	Returns an array containing target ranges that will be affected by the insertion/deletion 	InputEvent
+
+getModifierState() 	Returns an array containing target ranges that will be affected by the insertion/deletion 	MouseEvent
+
+inputType 	Returns the type of the change (i.e "inserting" or "deleting") 	InputEvent
+
+isComposing 	Returns whether the state of the event is composing or not 	InputEvent, KeyboardEvent
+
+isTrusted 	Returns whether or not an event is trusted 	Event
+
+key 	Returns the key value of the key represented by the event 	KeyboardEvent
+
+key 	Returns the key of the changed storage item 	StorageEvent
+
+keyCode 	Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event 	KeyboardEvent
+
+location 	Returns the location of a key on the keyboard or device 	KeyboardEvent
+
+lengthComputable 	Returns whether the length of the progress can be computable or not 	ProgressEvent
+
+loaded 	Returns how much work has been loaded 	ProgressEvent
+
+metaKey 	Returns whether the "META" key was pressed when an event was triggered 	MouseEvent
+
+metaKey 	Returns whether the "meta" key was pressed when the key event was triggered 	KeyboardEvent, TouchEvent
+
+MovementX 	Returns the horizontal coordinate of the mouse pointer relative to the position of the last mousemove event 	MouseEvent
+
+MovementY 	Returns the vertical coordinate of the mouse pointer relative to the position of the last mousemove event 	MouseEvent
+
+newValue 	Returns the new value of the changed storage item 	StorageEvent
+
+newURL 	Returns the URL of the document, after the hash has been changed 	HasChangeEvent
+
+offsetX 	Returns the horizontal coordinate of the mouse pointer relative to the position of the edge of the target element 	MouseEvent
+
+offsetY 	Returns the vertical coordinate of the mouse pointer relative to the position of the edge of the target element 	MouseEvent
+
+oldValue 	Returns the old value of the changed storage item 	StorageEvent
+
+oldURL 	Returns the URL of the document, before the hash was changed 	HasChangeEvent
+
+onemptied 	The event occurs when something bad happens and the media file is suddenly unavailable (like unexpectedly disconnects) 	 
+
+pageX 	Returns the horizontal coordinate of the mouse pointer, relative to the document, when the mouse event was triggered 	MouseEvent
+
+pageY 	Returns the vertical coordinate of the mouse pointer, relative to the document, when the mouse event was triggered 	MouseEvent
+
+persisted 	Returns whether the webpage was cached by the browser 	PageTransitionEvent
+
+preventDefault() 	Cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur 	Event
+
+propertyName 	Returns the name of the CSS property associated with the animation or transition 	AnimationEvent, TransitionEvent
+
+pseudoElement 	Returns the name of the pseudo-element of the animation or transition 	AnimationEvent, TransitionEvent
+
+region 		MouseEvent
+
+relatedTarget 	Returns the element related to the element that triggered the mouse event 	MouseEvent
+
+relatedTarget 	Returns the element related to the element that triggered the event 	FocusEvent
+
+repeat 	Returns whether a key is being hold down repeatedly, or not 	KeyboardEvent
+
+screenX 	Returns the horizontal coordinate of the mouse pointer, relative to the screen, when an event was triggered 	MouseEvent
+
+screenY 	Returns the vertical coordinate of the mouse pointer, relative to the screen, when an event was triggered 	MouseEvent
+
+shiftKey 	Returns whether the "SHIFT" key was pressed when an event was triggered 	MouseEvent
+
+shiftKey 	Returns whether the "SHIFT" key was pressed when the key event was triggered 	KeyboardEvent, TouchEvent
+
+state 	Returns an object containing a copy of the history entries 	PopStateEvent
+
+stopImmediatePropagation() 	Prevents other listeners of the same event from being called 	Event
+
+stopPropagation() 	Prevents further propagation of an event during event flow 	Event
+
+storageArea 	Returns an object representing the affected storage object 	StorageEvent
+
+target 	Returns the element that triggered the event 	Event
+
+targetTouches 	Returns a list of all the touch objects that are in contact with the surface and where the touchstart event occured on the same target element as the current target element 	TouchEvent
+
+timeStamp 	Returns the time (in milliseconds relative to the epoch) at which the event was created 	Event
+
+total 	Returns the total amount of work that will be loaded 	ProgressEvent
+
+touches 	Returns a list of all the touch objects that are currently in contact with the surface 	TouchEvent
+
+transitionend 	The event occurs when a CSS transition has completed 	TransitionEvent
+
+type 	Returns the name of the event 	Event
+
+url 	Returns the URL of the changed item's document 	StorageEvent
+
+which 	Returns which mouse button was pressed when the mouse event was triggered 	MouseEvent
+
+which 	Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event 	KeyboardEvent
+
+view 	Returns a reference to the Window object where the event occurred 	UiEvent -->
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+02 04 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Elements</title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM Elements</h1><hr/>
+
+<!-- This page teaches you how to find and access HTML elements in an HTML page.
+
+
+Finding HTML Elements.
+======================
+
+Often, with JavaScript, you want to manipulate HTML elements.
+To do so, you have to find the elements first. There are several ways to do this:
+
+    > Finding HTML elements by id
+    > Finding HTML elements by tag name
+    > Finding HTML elements by class name
+    > Finding HTML elements by CSS selectors
+    > Finding HTML elements by HTML object collections
+
+
+ Finding HTML Element by Id.
+============================
+The easiest way to find an HTML element in the DOM, is by using the element id.
+This example finds the element with id="intro" and demonstrate the 
+getElementById method-->
+
+            <p id="demo1"> Hello Id !</p>
+            <p id="demo2"></p>
+            <script>
+                var myElement = document.getElementById("demo1");
+                myElement.style.color = "darkblue";
+                myElement.style.backgroundColor = "lightblue";
+
+                document.getElementById("demo2").innerHTML =
+                    "The second paragraph contents : " + myElement.innerHTML;
+            //  document.getElementById("demo2").innerHTML = myElement.innerHTML;
+                  // or
+            /* document.getElementById("demo2").innerHTML =
+                    "The second paragraph is : " + myElement.innerText;   */
+
+            //  alert(document.getElementById("demo1").innerHTML);
+            </script><br/><hr/>
+
+
+<!-- Finding HTML Elements by Tag Name.
+=======================================
+
+This example demonstrates the use of 'getElementsByTagName' to find
+all the <p> elements-->
+
+            <p id="demo3"> Hello Tag Name!</p>
+            <p id="demo4"></p>
+
+            <script>
+                document.getElementById("demo3").style.color = "green";
+                document.getElementById("demo3").style.backgroundColor = "lightgreen";
+
+                var x = document.getElementsByTagName("p");
+                document.getElementById("demo4").innerHTML =
+                  "The text here is: " + x[2].innerHTML;  // Hello Tag Name!
+            </script><br/>
+
+
+<!--This example demonstrates the use of 'getElementsByTagName' to find
+    the element with id="main", and then finds all <p> elements inside "main": -->
+
+            <div id="main">
+                <p>The DOM is very useful</p>
+                <p>This example demonstrate the <b>getElementsByTagName</b>
+                  method.</p>
+            </div>
+
+            <p id="demo5"></p>
+
+            <script>
+                var x = document.getElementById("main");
+                var y = x.getElementsByTagName("p");
+                document.getElementById("demo5").innerHTML =
+                  'The paragraph index[0] in "main" is : ' + y[0].innerHTML;
+                        // The DOM is very useful.
+            </script><br/><hr/>
+
+
+<!-- Finding HTML Elements by Class Name.
+=========================================
+
+If you want to find all HTML elements with the same class name,
+use 'getElementsByClassName()'.
+This example returns a list of all elements with name class="intro". -->
+
+            <p>Hello Class !</p>
+            <p class="intro"> The DOM is very powerul.</p>
+            <p class="intro">This example demonstrates the <b>
+              getElementsByClassName</b></p>
+
+            <p id="demo6"></p>
+
+            <script>
+
+                var x = document.getElementsByClassName("intro");
+                document.getElementById("demo6").innerHTML =
+                  "The first paragraph with class ='intro': is " +
+                  x[0].innerHTML;
+
+                var k = document.getElementsByTagName("p")
+                k[7].style.color ="red";
+                k[7].style.backgroundColor = "darkOrange";
+
+            </script><br/><hr/>
+
+
+<!-- Finding HTML Elements by CSS Selectors.
+============================================
+
+If you want to find all HTML elements that match a specified CSS selector
+(id, class names, types, attributes, values of attributes, etc), use the
+'querySelectorAll()' method.
+
+This example returns a list of all <p> elements with class="intro". -->
+
+            <p>Hello CSS selectors !</p>
+            <p class="intro">The DOM is very useful</p>
+            <p class="intro">This example demonstrate the <b>querySelectorAll()
+              </b> method</p>
+            <p id="demo7"></p>
+
+            <script>
+                k[11].style.color = "white";
+                k[11].style.backgroundColor = "#444";
+                k[11].style.padding = "10px";
+
+                var x = document.querySelectorAll("p.intro");
+                document.getElementById("demo7").innerHTML =
+                'The first paragraph with class="intro" is : ' + x[0].innerHTML;
+
+            </script><br/><hr/>
+
+
+<!-- Finding HTML Elements by HTML Object Collections.
+======================================================
+
+This example finds the form element with id="frm1", in the forms collection,
+and displays all element values: -->
+
+                <p id="demo8"></p>
+                <form id="frm1" action="/action_page.php">
+
+                   <label for="">First Name: </label>
+                   <input type="text" name="fname" value="Donald"><br/>
+
+                   <label for="">Last Name: </label>
+                   <input type="text" name="lname" value="Duck"><br/><br/>
+
+                   <input type="submit" value="Submit">
+
+                </form><br/>
+
+                <button onclick="myFunction()">Try it !</button>
+
+                <script>
+                    function myFunction() {
+                        var x = document.forms["frm1"];
+                     // var x = document.getElementById("frm1");
+                        var text = "";
+                        var i;
+                        for (i = 0; i < x.length - 1 ; i++) {
+                            text += x.elements[i].value + "<br/>";
+                        }
+                        document.getElementById("demo8").innerHTML = text;
+                    }
+
+                </script><br/><br/>    
+
+<!-- The following HTML objects (and object collections) are also accessible:
+
+    > document.anchors
+    > document.body
+    > document.documentElement
+    > document.embeds
+    > document.forms
+    > document.head
+    > document.images
+    > document.links
+    > document.scripts
+    > document.title                                            -->
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

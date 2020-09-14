@@ -1,0 +1,92 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Boolean</title>
+    </head>
+    <body>
+        <h1>JavaScript Boolean</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p> <p id="demo10"></p> <p id="demo11"></p> <p id="demo12"></p>
+        <p id="demo13"></p> <p id="demo14"></p><p id="demo15"></p> <p id="demo16"></p>
+        <p id="demo17"></p> <p id="demo18"><p id="demo19"></p> <p id="demo20"><p id="demo21">
+        <p id="demo22"><p id="demo23">
+        <script>
+            document.getElementById("demo1").innerHTML = "is 10 > 9 ? : " + Boolean(10 > 9);
+            document.getElementById("demo2").innerHTML = "is 10 > 9 ? : " + (10 > 9);
+            document.getElementById("demo3").innerHTML = 10 > 9;
+            document.getElementById("demo4").innerHTML = Boolean(10 > 9);
+            document.getElementById("demo5").innerHTML = Boolean(10 > 19);
+/*
+Comparisons and Conditions
+===========================
+> comparison operators
+> conditional statements.
+
+Operator 	Description     Example
+--------    ------------    ---------
+  == 	    equal to 	    if (day == "Monday")
+  > 	    greater than 	if (salary > 9000)
+  < 	    less than    	if (age < 18)
+
+The Boolean value of an expression is the basis for all JavaScript comparisons and conditions.
+REMEMEBER: Everything With a "Value" is True. Everything Without a "Value" is False
+ */
+            document.getElementById("demo6").innerHTML = 'Boolean("a") : ' + Boolean("a");
+            document.getElementById("demo7").innerHTML = 'Boolean("-") : ' + Boolean("-");
+            document.getElementById("demo8").innerHTML = 'Boolean(" ") : ' + Boolean(" ");
+            document.getElementById("demo9").innerHTML = 'Boolean("") : ' + Boolean("");
+            document.getElementById("demo10").innerHTML = 'Boolean(0) : ' + Boolean(0);
+            var x; // x is undefined.
+            document.getElementById("demo11").innerHTML = 'Boolean(x) : ' + Boolean(x);
+            var y = null; // y is null.
+            document.getElementById("demo12").innerHTML = 'Boolean(y) : ' + Boolean(y);
+            document.getElementById("demo13").innerHTML = 'Boolean(true) : ' + Boolean(true);
+            document.getElementById("demo14").innerHTML = 'Boolean(false) : ' + Boolean(false);
+
+            var z =10/ "letter"// z is Nan;
+            document.getElementById("demo15").innerHTML = 'Boolean(Nan) : ' + Boolean(z);
+
+/* Booleans Can be Objects.
+ But Avoid for complications and unexpected results  */
+
+            var x = false;
+            var y = new Boolean(false);
+            var z = new Boolean(false);
+            document.getElementById("demo16").innerHTML = 'typeof(x) : ' + typeof(x);  // object
+            document.getElementById("demo18").innerHTML = 'typeof(y) : ' + typeof(y);  // object
+            document.getElementById("demo19").innerHTML = 'typeof(z) : ' + typeof(y);  // object
+            document.getElementById("demo20").innerHTML = 'x == y : ' + (x == y);  // falses
+            document.getElementById("demo21").innerHTML = 'x === y  : ' + (x === y);  // false
+            document.getElementById("demo22").innerHTML = 'y == z  : ' + (y == z);  // false
+            document.getElementById("demo23").innerHTML = 'y === z  : ' + (y === z);  // false
+/*
+ Boolean Properties :
+ ====================
+Property   	  Description
+---------     ------------
+constructor   Returns the function that created JavaScript's Boolean prototype
+prototype 	  Allows you to add properties and methods to the Boolean prototype
+
+
+Boolean Methods :
+=================
+Method 	     Description
+--------     ------------
+toString() 	 Converts a boolean value to a string, and returns the result
+valueOf() 	 Returns the primitive value of a boolean */
+
+        </script>
+
+
+    </body>
+</html>

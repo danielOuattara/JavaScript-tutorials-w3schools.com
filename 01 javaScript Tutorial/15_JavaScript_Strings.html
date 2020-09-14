@@ -1,0 +1,116 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03  03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Strings</title>
+    </head>
+    <body>
+        <h1>JavaScript Strings</h1>
+
+
+<!-- JavaScript strings are used for storing and manipulating text. -->
+
+<!-- JavaScript Strings.
+========================-->
+
+        <p id="demo1"></p> <p id="demo2"></p><p id="demo3"></p><p id="demo4"></p>
+
+        <script>
+            var x = "John Doe"; // String inside double quote
+            var answer1 = "It's alright";
+            var answer2 = "He is called 'Johnny'";
+            var answer3 = 'He is called "Johnny"';
+            document.getElementById("demo1").innerHTML = x;
+            document.getElementById("demo2").innerHTML = answer1;
+            document.getElementById("demo3").innerHTML = answer2;
+            document.getElementById("demo4").innerHTML = answer3;
+        </script>
+
+
+<!-- String Length.
+=================== -->
+
+        <p id="demo5"></p>
+        <script>
+            document.getElementById("demo5").innerHTML = answer1.length;
+        </script>
+
+
+<!-- Escape Character.
+======================
+ Code 	 Result       Description
+ ------  ---------   -----------
+ \' 	  ' 	       Single quote
+ \" 	  "      	   Double quote
+ \\ 	  \ 	       Backslash
+
+Code 	Result
+------  ---------
+\b 	    Backspace
+\f 	    Form Feed
+\n 	    New Line
+\r 	    Carriage Return
+\t 	    Horizontal Tabulator
+\v 	    Vertical Tabulator                                                  -->
+
+        <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <script>
+            var vikings = "We are the so-called \"Vikings\" from the north.";
+            document.getElementById("demo6").innerHTML = vikings;
+        </script>
+
+
+<!-- Breaking Long Code Lines.
+============================== -->
+        <p id="demo8"></p> <p id="demo9"></p>
+
+        <script>
+            document.getElementById("demo7").innerHTML =
+            "Hello Dolly!";
+            document.getElementById("demo8").innerHTML = "Hello Dolly  \
+                Dolly!"
+            document.getElementById("demo9").innerHTML = "Hello HELLO Hello" +
+                " Dolly!"
+        </script>
+
+
+<!-- Strings Can be Objects.
+============================ -->
+        <p id="demo10"><p id="demo11"><p id="demo12"><p id="demo13"><p id="demo14">
+        <p id="demo15"></p><p id="demo16"></p><p id="demo17"></p>
+
+        <script>
+            var x = "John";              // typeof x will return string
+            var y = new String("John");  // typeof y will return object
+            var z = new String("John");
+
+            document.getElementById("demo10").innerHTML = "typeof x = " + typeof x;
+            document.getElementById("demo11").innerHTML = "typeof y = " + typeof y;
+
+            document.getElementById("demo12").innerHTML = "x == y : " + (x == y);
+            // true
+            document.getElementById("demo13").innerHTML = "x === y : " + (x === y);
+            // false
+            document.getElementById("demo14").innerHTML = "x == z : " + (x == z);
+            // true
+            document.getElementById("demo15").innerHTML = "x === z : " + (x === z);
+            // false
+            document.getElementById("demo16").innerHTML = "y == z : " + (y == z);
+            // true
+            document.getElementById("demo17").innerHTML = "y === z : " + (y === z);
+            // false
+
+        </script>
+
+<!-- ** Don't create strings as objects. It slows down execution speed.
+The 'new' keyword complicates the code and can produce some unexpected results: -->
+   
+    </body>
+</html>

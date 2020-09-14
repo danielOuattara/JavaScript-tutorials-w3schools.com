@@ -1,0 +1,73 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+02 04 2020
+JavaScript Tutorial : DOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript HTML DOM Methods </title>
+    </head>
+    <body>
+        <h1>JavaScript HTML DOM Methods</h1><hr/>
+
+<!--
+> HTML DOM 'methods' are actions you can perform on HTML elements.
+> HTML DOM 'properties' are values of HTML elements that you can set/change.
+
+
+The DOM Programming Interface.
+==============================
+
+The HTML DOM can be accessed with JavaScript (and with other languages).
+
+In the HTML DOM, all HTML elements are defined as 'objects'.
+
+The programming interface is all the 'properties' and 'methods' of each object:
+
+   > A 'property' is a value that you can get/set (like changing the content
+     of an HTML element).
+     
+   > A 'method' is an action you can do (like adding/deleting an HTML element)
+
+The following example changes the content (the innerHTML) of the <p> element
+possessing id="demo1":                                                   -->
+
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+        <script>
+          window.document.getElementById("demo1").innerHTML = "Hello World !";
+      //  window.document.getElementById("demo1").innerText = "Hello World !";
+          
+          // or :
+          
+          document.getElementById("demo2").innerHTML = "Hello World Again !";
+      //  document.getElementById("demo2").innerText = "Hello World Again !";
+        </script>
+
+
+ <!-- In the example above:   - "getElementById" is a method
+                              - "innerHTML"      is a property
+
+
+ The getElementById Method.
+============================
+
+The most common way to access an HTML element is to use the 'id' of that
+element. In the example above the 'getElementById' method uses id="demo1"
+to find the element.
+
+
+The innerHTML Property.
+========================
+
+The easiest way to get the content of an element is by using the 'innerHTML'
+property. The 'innerHTML' property is useful for getting or replacing the
+content of HTML elements.
+The 'innerHTML' property can be used to get or change any HTML element,
+including <html> and <body>.                                                 -->
+
+    </body>
+</html>

@@ -1,0 +1,147 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+20 04 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScipt Arrow Function</title>
+    </head>
+    <body>
+        <h1>JavaScipt Arrow Function</h1>
+
+<!-- Arrow functions were introduced in ES6. They allow us to write shorter
+     function syntax: -->
+
+        <p id='demo1'></p> <p id='demo2'></p> <p id='demo3'></p>
+        <p id='demo4'></p> <p id='demo5'></p> <p id='demo6'></p>
+
+        <script>
+            /* Before
+            ==========*/
+             var hello = function() {
+                return "Hello World !";
+            }
+            document.getElementById('demo1').innerHTML = hello();
+
+            /* With Arrow Function
+            =======================*/
+            var hello = () => {
+                return "Hello World !";
+            }
+            document.getElementById('demo2').innerHTML = hello();
+
+            /* If the function has only one statement, and the statement
+               returns a value, you can remove the brackets and the return keyword: */
+
+             var hello = () => "Hello world !";
+             document.getElementById('demo3').innerHTML = hello();
+
+             // Note: This works only if the function has only one statement.
+
+
+             /* Arrow Function With Parameter(s):
+             ==================================*/
+
+              var hello = arg => "Hello" + arg;  // only one 'arg', no parentheses
+              document.getElementById('demo4').innerHTML = hello("You !");
+
+              var hello = (arg) => "Hello " + arg;  // one 'arg' in parentheses
+              document.getElementById('demo5').innerHTML = hello("every one");
+
+              var hello = (arg1, arg2) => "Hello " + arg1 + " , " +  arg2;
+              document.getElementById('demo6').innerHTML = hello("ladies", "gentleman !");
+        </script>
+
+
+
+<!--What About 'this'?
+=====================
+
+'this' handling is different in 'arrow functions' compared to 'regular functions'.
+
+ > With arrow functions there are no binding of 'this'.
+   'this' keyword always represents the object that defined the arrow function.
+
+ > In regular functions the 'this' keyword represented the object that called
+   the function, which could be the window, the document, a button or whatever.
+
+Let us take a look at two examples to understand the difference.
+Both examples call a method twice, first when the page loads,
+and once again when the user clicks a button.
+
+The first example uses a regular function, and the second example uses
+an arrow function.
+
+The result shows that the first example returns two different objects
+ (window and button), and the second example returns the window object twice,
+  because the window object is the "owner" of the function.    -->
+
+        <p id='demo7'></p> <button id='btn01'>Click Me !</button><br/><hr/>
+        <p id='demo8'></p> <button id='btn02'>Click Me !</button>
+
+        <script>
+
+/*example 1, regular function: with a regular function 'this' represents
+  ---------------------------  the object that calls the function: */
+
+            var helloHere = function() {
+                document.getElementById('demo7').innerHTML += this;
+            }
+
+            // The window object calls the function:
+            window.addEventListener("load", helloHere);
+
+            // A button object calls the function:
+            document.getElementById('btn01').addEventListener("click", helloHere);
+
+
+/* example 2, Arrow function: With an arrow function this represents the owner
+----------------------------  of the function: */
+
+            var helloAgain  = () => {
+                document.getElementById('demo8').innerHTML += this;
+            }
+
+            // The window object calls the function:
+            window.addEventListener("load", helloAgain);
+
+            // A button object calls the function:
+            document.getElementById('btn02').addEventListener("click", helloAgain);
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

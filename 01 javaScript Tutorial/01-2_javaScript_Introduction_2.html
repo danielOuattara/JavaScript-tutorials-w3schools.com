@@ -1,0 +1,30 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Introduction 1-2</title>
+  </head>
+  <body>
+    <h1> JavaScript Introduction 1-2</h1>
+    <p>This contents some examples of what javaScript can do in HTML pages</p>
+
+    <p>JavaScript can change the HTML attribute values</p>
+    <p>In this case JavaScript changes the value of the src
+       (source) attribute of an image.</p>
+
+    <img id="myImage" alt=" Bulb On - Bulb Off" src="bulbOff.jpeg"
+        style="width:400px height: 300px">
+
+    <button type="button" name="button" onclick=
+           "document.getElementById('myImage').src='bulbOff.jpeg'">Off</button>
+    <button type="button" name="button" onclick=
+           "document.getElementById('myImage').src='bulbOn.jpeg'">On</button>
+  </body>
+</html>

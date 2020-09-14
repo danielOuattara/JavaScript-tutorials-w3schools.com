@@ -1,0 +1,77 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+19 06 2020
+JavaScript Tutorial : BOM
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> JavaScript Window History</title>
+        <style media="screen">
+          p {
+            border: 1px solid green;
+            padding: 10px;
+            margin: 30px 10px;
+          }
+        </style>
+    </head>
+    <body>
+        <h1>JavaScript Window History.</h1><hr/>
+
+<!-- The window.history object contains the browsers history.
+
+Window History
+==============
+
+The 'window.history' object can be written without the 'window' prefix.
+
+To protect the privacy of the users, there are limitations to how JavaScript
+can access this object.
+
+Some methods:
+
+    history.back() - same as clicking back in the browser
+    history.forward() - same as clicking forward in the browser
+
+Window History Back
+====================
+
+The 'history.back()' method loads the previous URL in the history list.
+This is the same as clicking the Back button in the browser.
+
+Create a back button on a page:                                              -->
+
+      <script>
+        function goBack() {
+          window.history.back()
+        }
+      </script>
+
+      <button type="button" value= "Back" onclick="goBack()"> Click to Back</button>
+
+
+<!-- The output of the code above will be:
+
+Window History Forward
+======================
+
+The 'history.forward()' method loads the next URL in the history list.
+This is the same as clicking the Forward button in the browser.
+
+Create a forward button on a page:                                           -->
+
+
+      <script>
+        function goForward() {
+          window.history.forward()
+        }
+
+      </script>
+
+      <button type="button" value="Forward" onclick="goForward()">
+         click to Forward</button>
+                                                                        
+  </body>
+</html>

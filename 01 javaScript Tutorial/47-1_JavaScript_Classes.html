@@ -1,0 +1,263 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+20 04 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JavaScript Classes</title>
+</head>
+
+<body>
+  <h1>JavaScript Classes </h1>
+
+  <!-- ES6, also known as ECMAScript2015, introduced classes.
+
+A 'class' is 'a blueprint' for creating 'similar' objects.
+
+A 'class' is a type of function, but instead of using the keyword
+'function' to initiate it, we use the keyword 'class', and the properties
+are assigned inside a 'constructor()' method. -->
+
+  <!-- Class Definition
+========================
+
+Use the keyword 'class' to create a class, and always add
+the 'constructor()' method.
+
+The constructor method is called each time the class object
+is initialized.  -->
+
+  <p id="demo1"></p><p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+  <p id="demo5"></p> <p id="demo6"></p> <p id="demo7"></p> <p id="demo8"></p>
+  <p id="demo9"></p> <p id="demo10"></p> <p id="demo11"></p> <p id="demo12"></p>
+  <p id="demo13"></p> <p id="demo14"></p> <p id="demo15"></p> <p id="demo16"></p>
+  <p id="demo17"></p>
+
+  <script>
+
+    // Create an class called 'Car' to instanciate 'similar objects':
+
+    class Car {
+      constructor(brand, year, color, gear, numberOfGear) {
+        this.brand = brand;
+        this.year = year;
+        this.color = color;
+        this.gear = gear;
+        this.numberOfGear = numberOfGear;
+      }
+    }
+
+    // Create an object called "myFord" based on the Car class:
+
+    myFord = new Car("Ford", 1970, "Orange", "Manual Gear", 6);
+
+    var output = "";
+    var item;
+    for (item in myFord) {
+      output += item + " : " + myFord[item] + "<br/>";
+    }
+    document.getElementById("demo1").innerHTML = output;
+
+    /* Note: The constructor method is called automatically
+             when the object is initialized. */
+
+    /* Constructor Methods and other Methods
+  =========================================
+
+    >  The 'constructor' method is special; it is used to initialize
+       properties. It is called automatically when a class is
+       initiated. It has to have the exact name "constructor".
+       In fact, if you do not have a constructor method, JavaScript
+       will add an invisible and empty constructor method.
+
+    >  You are also free to make your own other methods.
+       From now, the syntax should be familiar: */
+
+    //
+    class Books {
+      constructor(author, editor, pages, year, domain) {
+        this.author = author;
+        this.editor = editor;
+        this.pages = pages;
+        this.year = year;
+        this.domain = domain;
+      }
+
+      describe() {
+        return `L'auteur est ${this.author}, livre publié en ${this.year}, contenant
+                            ${this.pages} pages. `;
+      }
+    }
+
+    // first book object creation.
+    soleilDesInpedances = new Books( "Amadou Kourouma", "Mere Noire", 278,
+                                      1985, "Litterature Noire" );
+
+    document.getElementById( "demo2" ).innerHTML =
+        soleilDesInpedances.describe();
+
+
+    // Another class
+    class Avions {
+      constructor(longueur, hauteur, typeOfPropulsion) {
+        this.longueur = longueur;
+        this.hauteur = hauteur;
+        this.typeOfPropulsion = typeOfPropulsion;
+      }
+
+      describe1() {
+        return ` This airplane is ${this.longueur} long by ${this.hauteur}
+                 height. The plane is a ${this.typeOfPropulsion}`;
+      }
+
+      describe2(ZFW, MTW, rangeOfOperation) {
+        return ` This airplane is ${this.longueur} long by ${this.hauteur}
+                 height. The plane is a ${this.typeOfPropulsion}.
+                 The  Zero Fuel Weight is ${ZFW} for a Maximum Take Off Weight
+                 ${MTW}. The operation range is ${rangeOfOperation}.`;
+      }
+    }
+
+    Boeing777_200 = new Avions("87 m", " 21 m", "Jet Engine");
+
+    document.getElementById("demo3").innerHTML = Boeing777_200.describe1();
+    document.getElementById("demo4").innerHTML = Boeing777_200.describe2( "158t",
+        "350t", "8500 miles" );
+
+    class SuperCar {
+      constructor(brand) {
+        this.carname = brand;
+      }
+      describe1() {
+        return "I drove an " + this.carname;
+      }
+
+      describe2(serie) {
+        return "I have a " + this.carname + "  " + serie;
+      }
+    }
+
+    firstCar = new SuperCar("Opel");
+    document.getElementById("demo5").innerHTML = firstCar.describe1();
+
+    secondCar = new SuperCar("Toyota");
+    document.getElementById("demo6").innerHTML = secondCar.describe2("Yaris");
+
+    /* Static Methods
+  ==================
+
+    Static methods are defined with the 'static' keyword.
+
+    Static methods are defined on the class itself, and not on the prototype.
+    You can only call the method on the class itself, not on any other object */
+
+
+    class Person {
+      constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+
+      greeting1() {
+        return `Hello ${this.firstName} ${this.lastName}`;
+      }
+
+      static greeting2() {
+        return `Good Morning `;
+      }
+
+      static greeting3(destination) {
+        return `This summer I will travel to ${destination}`;
+      }
+
+      static lovings(x) {
+          return "I love you" + " " + x.firstName + " " + x.lastName;
+      }
+    }
+
+
+    var myWife = new Person("Julie", "Ouattara");
+
+    document.getElementById("demo7").innerHTML = Object.values(myWife);
+    document.getElementById("demo8").innerHTML = myWife.greeting1();
+    document.getElementById("demo9").innerHTML = Person.greeting2();
+      // + Object.values(myWife);
+    document.getElementById("demo10").innerHTML = Person.greeting3("Montreal");
+      // + " with " + myWife.firstName;
+      //  document.getElementById("demo10").innerHTML = myWife.greeting2();
+      //  return TypeError : myWife (object) cannot call a static method. Only Class can.
+
+    // If you want to use the myWife object inside the static method, you can
+    // send it as a parameter:
+    document.getElementById('demo11').innerHTML = Person.lovings(myWife);
+
+
+    /* Inheritance
+    ===============
+To create a class inheritance, use the 'extends' keyword.
+
+A  'child class' created with a class inheritance inherits all the methods from
+ its mother class */
+
+
+    class Parents {
+        constructor (firstName, gender){
+            this.firstName = firstName;
+            this.gender = gender;
+        }
+
+        canRead(){
+            return this.firstName + " can read";
+        }
+
+        canWrite(){
+            return this.gender + " is the chief";
+        }
+    }
+
+    var papa = new Parents("Soungalo", "Male");
+    var maman = new Parents("Natalia", "Female");
+
+    document.getElementById('demo12').innerHTML = Object.values(papa);
+    document.getElementById('demo13').innerHTML = Object.values(maman);
+    document.getElementById('demo14').innerHTML = maman.canRead();
+    document.getElementById('demo15').innerHTML = papa.canWrite();
+
+
+    class Children extends Parents {
+        constructor(firstName, gender, birthDate, height){
+            super(firstName, gender);
+            this.birthDate = birthDate;
+            this.height = height;
+        }
+    
+        canBike(){
+            return true;
+        }
+        canSnow(){
+            return true;
+        }
+    }
+    
+    
+    
+    var daniel =  new Children("Daniel", "Male", "1983-12-15", 178);
+        document.getElementById('demo12').innerHTML = Object.values(daniel);
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+02 04 2020
+JavaScript Tutorial : Functions
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Functions Apply</title>
+    </head>
+    <body>
+        <h1>JavaScript Functions Apply</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p><p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p> <p id="demo10"></p><p id="demo11"></p><p id="demo12"></p>
+
+        <script>
+
+/* Method Reuse.
+================
+
+With the 'apply()' method, you can write a method that can be used
+on different objects. */
+
+
+/* The JavaScript apply() Method.
+=================================
+
+The 'apply()' method is similar to the 'call()' method (see previous chapter) */
+
+            var person = {
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            }
+
+            var person1 = {
+                firstName: "Mary",
+                lastName: "Doe"
+            }
+
+            document.getElementById("demo1").innerHTML =
+                person.fullName.apply(person1);  // return "Mary Doe"
+
+
+/*The Difference Between call() and apply().
+============================================
+
+> 'call()' method() takes supplementary arguments as individual (one by one).
+> 'apply()' methods() takes supplementary arguments as arrays.
+
+The apply() method is very handy if you want to use an array instead of
+an argument list.*/
+
+
+/* The apply() Method with Arguments.
+===================================== */
+
+            //  The apply() method accepts arguments in an array:
+            var person = {
+                fullName: function(city, country) {
+                    return this.firstName + " " + this.lastName +
+                           " , " + city + " , " + country;
+                }
+            }
+
+            var person1 = {
+                firstName: "John",
+                lastName: "Doe"
+            }
+
+            document.getElementById("demo2").innerHTML =
+                person.fullName.apply(person1);
+
+            document.getElementById("demo3").innerHTML =
+                person.fullName.apply(person1, ["Gao", "Mali"]);
+
+            // compared to call() method:
+
+            document.getElementById("demo4").innerHTML =
+                person.fullName.call(person1);
+
+            document.getElementById("demo5").innerHTML =
+                person.fullName.call(person1, "Gao", "Mali");
+
+
+/* Simulate a Max Method on Arrays.
+===================================
+
+You can find the largest number (in a list of numbers)
+using the Math.max() method: */
+
+            document.getElementById("demo6").innerHTML =
+                Math.max(1, 2, 3);  // return 3
+
+            document.getElementById("demo7").innerHTML =
+                Math.max.apply(null, [1, 2, 3]);  // return 3
+
+            document.getElementById("demo8").innerHTML =
+                Math.max.apply(Math, [1, 2, 3]);  // return 3
+
+            document.getElementById("demo9").innerHTML =
+                Math.max.apply(" ", [1, 2, 3]);  // return 3
+
+            document.getElementById("demo10").innerHTML =
+                Math.max.apply(0, [1, 2, 3]);  // return 3
+
+/* JavaScript Strict Mode.
+==========================
+
+In JavaScript strict mode, if the first argument of the apply() method
+is not an object, it becomes the owner (object) of the invoked function.
+In "non-strict" mode, it becomes the global object. */
+
+        </script>
+
+    </body>
+</html>

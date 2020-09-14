@@ -1,0 +1,248 @@
+<!------------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+11  03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Array Sort Method</title>
+    </head>
+    <body>
+        <h1>JavaScript Array Sort Method</h1>
+
+        <!--sort():--><p id="demo1"></p><p id="demo2"></p>
+        <!--reverse():--><p id="demo3"></p>
+        <!--Numeric sort:--><p id="demo4"></p> <p id="demo5"> Empty ?</p>
+                            <p id="demo6"></p>
+                            <p id="demo7"></p> <p id="demo8"></p>
+        <!--Random order numeric sort:--><p id="demo9"></p> <p id="demo10"></p>
+        <!--Using MAth.max() on Array:--><p id="demo11"></p> <p id="demo12"></p>
+        <!--Using MAth.min() on Array:--><p id="demo13"></p>
+        <!--My Min JavaScript Methods:--><p id="demo14"></p> <p id="demo15"></p>
+
+
+
+        <script>
+
+            /* Array methods modify the original array. There is Exceptions  */
+
+            /* sort(): Sorts an array alphabetically:
+            ==========                                                        */
+            var outils = ["velo", "moto", "oiseau", "aile", "bateaux", "bisoux"];
+            document.getElementById("demo1").innerHTML = "outils = " + outils;
+            document.getElementById("demo2").innerHTML = "outils ordonnes = " + outils.sort();
+
+
+            /* reverse(): Reverses the elements in an array.
+             ===========  You can use it to sort an array in descending order: */
+            fruits = ["banana", "orange", "melon", "apple","mango"];
+
+            document.getElementById("demo3").innerHTML =
+                "fruits reversed  = " + fruits.sort().reverse();
+
+
+            /* Numerics sort
+            ===============
+            By default, the sort() function sorts values as strings.
+            Because of this, the sort() method will produce incorrect
+            result when sorting numbers.
+            You can fix this by providing a compare function:
+
+Compare function:
+=================
+
+function(a, b) {return a-b} : is called the COMPARE FUNCTION:
+    > if  a - b < 0, sort a before b,
+    > if  a - b > 0, sort b before a,
+    > if  a - b = 0, sort a or b before,
+                                                                              */
+
+
+            var numbers = [3, 2, 1, 43, 10, 10.3];
+            document.getElementById("demo4").innerHTML = numbers;
+
+            // Sort numeric values
+
+            // 1
+            function sortOrderly(arr){
+                return arr.sort(function(a,b) {return a - b });
+            }
+
+            document.getElementById("demo5").innerHTML = sortOrderly(numbers);
+
+            // 2
+            var numbers2 = [3, 2, 1, 43, 10, 10.3];
+
+            numbers2.sort(function(a,b) {return a - b });
+            document.getElementById("demo6").innerHTML = numbers2;
+
+
+            // Finding the highest numbers value in an array
+            function extremumsFinder(arr){
+                arr.sort(function(c,d) {return c - d });
+                document.getElementById("demo7").innerHTML =
+                    "Max Value = " +  arr[arr.length-1];
+                document.getElementById("demo8").innerHTML =
+                    "Min Value = " +  arr[0];
+            }
+
+            extremumsFinder(numbers);
+
+
+            // Random Numerics sorting
+            var points = [2,4,6,7,1,3,5];
+            document.getElementById("demo9").innerHTML = points;
+
+            function randomSorting(arr){
+                arr.sort(function(a, b) {return 0.5 - Math.random()})
+                document.getElementById("demo10").innerHTML = arr;
+            }
+            randomSorting(points);
+
+            // Using Math.max() on Array: to find the highest number in an array:
+            var ids = [40, 100, 1, 5, 25, 10];
+            document.getElementById("demo11").innerHTML = "ids = " + ids ;
+            document.getElementById("demo12").innerHTML =
+                "ids_maxArrayValue = " + arrayMax(ids) ;
+
+            function arrayMax(arr) {
+                return Math.max.apply(null, arr);
+            }
+
+            // Using Math.min() on Array: to find the lowest number in an array:
+            document.getElementById("demo13").innerHTML =
+                "Ids_minArrayValue = " + arrayMin(ids) ;
+
+            function arrayMin(arrayName) {
+                return Math.min.apply(null, arrayName);
+            };
+
+            // My Max JavaScript Methods
+            var data1 = [40, 140, 2, 5, 25, 10];
+            document.getElementById("demo14").innerHTML = myArrayMax(data1);
+
+            function myArrayMax(arrayName) {
+                var len = arrayName.length;
+                var max = -Infinity;
+                while (len--) {
+                    if (arrayName[len] > max) {
+                        max = arrayName[len];
+                    }
+                }
+                return max;
+            }
+
+            //MY Min JavaScript Methods
+            var data2 = [-12, -3, -56, -67, -45];
+            document.getElementById("demo15").innerHTML = myArrayMin(data2);
+            function myArrayMin(arrayName) {
+                var len = arrayName.length;
+                var min = +Infinity;
+                while(len--) {
+                    if (arrayName[len]< min) {
+                        min = arrayName[len];
+                    }
+                }
+                return min;
+            }
+
+            </script>
+
+<!-- Sorting Object Arrays:
+===========================-->
+            <p>Click to sort car objects by Age:</p>
+            <p id="demo16"></p>
+            <button onclick="sortCarsByYear()"> Click: Sort by Year</button>
+            <p>Click to sort car objects by Name:</p>
+            <p id="demo17"></p>
+            <button onclick="sortCarsByType()"> Click: Sort by Type</button>
+
+            <script>
+
+/* JavaScript arrays often contain objects. Even if objects have properties
+ of different data types, the 'sort()' method can be used to sort the array.
+ The solution is to write a compare function to compare the property values: */
+
+            // Sorting Object Arrays:
+
+            var superCars = [{type: "Volvo", year:2016},
+                             {type: "Saab" , year:2011},
+                             {type: "BMW"  , year:2014}];
+
+            function displayCars1() {
+                document.getElementById("demo16").innerHTML =
+                    superCars[0].type + " " + superCars[0].year + "<br/>" +
+                    superCars[1].type + " " + superCars[1].year + "<br/>" +
+                    superCars[2].type + " " + superCars[2].year;
+            }
+
+            displayCars1();
+
+            function sortCarsByYear() {
+                superCars.sort(function(a, b){return a.year - b.year});
+                displayCars1();
+            }
+
+
+            function displayCars2() {
+                document.getElementById("demo17").innerHTML =
+                superCars[0].type + " " + superCars[0].year + "<br/>" +
+                superCars[1].type + " " + superCars[1].year + "<br/>" +
+                superCars[2].type + " " + superCars[2].year;
+            }
+            displayCars2();
+
+            function sortCarsByType() {
+                superCars.sort(
+                    function(a, b){
+                        var x =  a.type.toLowerCase();
+                        var y = b.type.toLowerCase();
+                        if (x < y) {return -1;}
+                        if (x > y) {return 1; }
+                    return 0;
+                })
+
+                displayCars2();
+            }
+
+        </script>
+
+<!-- Array Methods
+===================
+Method 	       Description
+-------
+concat() 	   Joins two or more arrays, and returns a copy of the joined arrays
+copyWithin()   Copies array elements within the array, to and from specified positions
+entries() 	   Returns a key/value pair Array Iteration Object
+every() 	   Checks if every element in an array pass a test
+fill() 	       Fill the elements in an array with a static value
+filter() 	   Creates a new array with every element in an array that pass a test
+find() 	       Returns the value of the first element in an array that pass a test
+findIndex()    Returns the index of the first element in an array that pass a test
+forEach() 	   Calls a function for each array element
+from() 	       Creates an array from an object
+includes() 	   Check if an array contains the specified element
+indexOf() 	   Search the array for an element and returns its position
+isArray() 	   Checks whether an object is an array
+join() 	       Joins all elements of an array into a string
+keys() 	       Returns a Array Iteration Object, containing the keys of the original array
+lastIndexOf()  Search the array for an element, starting at the end, and returns its position
+map() 	       Creates a new array with the result of calling a function for each array element
+pop() 	       Removes the last element of an array, and returns that element
+push() 	       Adds new elements to the end of an array, and returns the new length
+reduce() 	   Reduce the values of an array to a single value (going left-to-right)
+reduceRight()  Reduce the values of an array to a single value (going right-to-left)
+reverse() 	   Reverses the order of the elements in an array
+shift() 	   Removes the first element of an array, and returns that element
+slice() 	   Selects a part of an array, and returns the new array
+some() 	       Checks if any of the elements in an array pass a test
+sort() 	       Sorts the elements of an array
+splice() 	   Adds/Removes elements from an array
+toString() 	   Converts an array to a string, and returns the result
+unshift() 	   Adds new elements to the beginning of an array, and returns the new length
+valueOf() 	   Returns the primitive value of an array                           -->
+    </body>
+</html>

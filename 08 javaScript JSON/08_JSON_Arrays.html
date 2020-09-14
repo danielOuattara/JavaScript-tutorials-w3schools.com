@@ -1,0 +1,140 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+19 06 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JSON Arrays</title>
+</head>
+
+<body>
+  <h1>JSON Arrays.</h1><hr/>
+
+  <!-- Arrays as JSON Objects
+===============================
+
+[ "Ford", "BMW", "Fiat" ]
+
+Arrays in JSON are almost the same as arrays in JavaScript.
+In JSON, array values must be of type string, number, object, array, boolean
+or null.
+
+In JavaScript, array values can be all of the above, plus any other valid
+JavaScript expression, including functions, dates, and undefined.
+
+
+Arrays in JSON Objects
+========================
+Arrays can be values of an object property:                                  -->
+
+      <p id="demo1"></p>
+      <p id="demo2"></p>
+      <p id="demo3"></p>
+      <p id="demo4"></p>
+      <p id="demo5"></p>
+      <p id="demo6"></p>
+
+      <script>
+        var object_1 = {
+          "name": "John",
+          "age": 30,
+          "cars": ["Ford", "BMW", "Fiat"]
+        }
+
+
+/* Accessing Array Values
+=========================
+You access the array values by using the index number: */
+
+        document.getElementById("demo1").innerHTML = object_1.cars[0];  // Ford
+        document.getElementById("demo2").innerHTML = object_1["cars"][0];  // Ford
+
+
+/* Looping Through An Array
+===========================
+You can access array values by using a for-in loop:*/
+       var listing = "";
+       var item;
+       for (item in object_1.cars) {
+         listing += object_1.cars[item] + "<br/> ";
+       }
+
+       document.getElementById("demo3").innerHTML = listing;
+
+// Or you can use a 'for' loop:
+
+      var listing2 = "";
+      var i;
+      for (i = 0; i < object_1.cars.length ; i++) {
+        listing2 += object_1.cars[i] + '<br/>';
+      }
+
+       document.getElementById("demo4").innerHTML = listing2 + '<hr/>';
+
+
+/* Nested Arrays in JSON Objects
+=================================
+Values in an array can also be another array, or even another JSON object:*/
+
+      var object_2 = {
+        "name": "John",
+        "age": 30,
+        "cars": [
+           {"name": "Ford", "models": ["Fiesta", "Focus", "Mustang"]},
+           {"name": "BMW", "models": ["320", "X3", "X5"]},
+           {"name": "Fiat", "models": ["500", "Panda", "Punto"]}
+        ]
+      }
+
+// To acces arrays inside arrays, use a 'for...in' loop for each array:
+      var listing3="";
+      var i, j;
+      for (i in object_2.cars ) {
+        listing3 += "<h2>" + object_2.cars[i].name + "</h2>" ;
+        for (j in object_2.cars[i].models) {
+          listing3 +=  object_2.cars[i].models[j] + "<br/>";
+        }
+
+      }
+      document.getElementById("demo5").innerHTML = listing3 + "<hr/>";
+
+
+      var listing4="";
+      var i, j;
+      for (i in object_2["cars"] ) {
+        listing4 += "<h2>" + object_2["cars"][i]["name"] +  "</h2>" ;
+        for (j in object_2["cars"][i]["models"]) {
+          listing4 +=  object_2.cars[i].models[j] + "<br/>";
+        }
+
+      }
+      document.getElementById("demo6").innerHTML = listing4 + "<hr/>";
+
+
+/* Modify Array Values
+
+      Use the index number to modify an array:*/
+
+       myObj.cars[1] = "Mercedes";
+
+/*      Delete Array Items
+
+      Use the delete keyword to delete items from an array:  */
+
+
+      delete myObj.cars[1];
+
+
+
+      </script>
+
+
+
+</body>
+</html>

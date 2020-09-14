@@ -1,0 +1,128 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+25 03 2020
+JavaScript Tutorial : Objects
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Objects Properties</title>
+    </head>
+    <body>
+        <h1>JavaScript Objects Properties</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p>
+
+        <script>
+
+/* JavaScript Propertie:
+=========================
+
+> Properties are the most important part of any JavaScript object.
+> JavaScript Object is a collection of named values (property: value).
+> Properties can usually be changed, added, and deleted, but some are read only.*/
+
+
+/*  Accessing JavaScript Properties:
+=====================================
+*/
+            var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+        // objectName.property
+            document.getElementById("demo1").innerHTML =
+                "person.firstName = " + person.firstName;
+
+        // objectName["property"]
+            document.getElementById("demo2").innerHTML =
+                'person["firstName"] = ' + person["firstName"];
+
+
+        // objectName[expression] : x = "age"; person[x]
+            x = "age";
+            document.getElementById("demo3").innerHTML = person[x];
+            id = "firstName";
+            document.getElementById("demo4").innerHTML = person[id];
+
+
+        // for...in loop, to access property:
+            var text = "";
+            var item;
+            var stylo = {marque:"BIC", couleur: "bleue", type: "bille",
+                         capochon: "oui", prix: 1.25};
+
+            for (item in stylo) {
+                text  += item + " : " + stylo[item] + " <br/>";
+            }
+            document.getElementById("demo6").innerHTML = text;
+
+
+/* Adding New Properties:
+  ======================= */
+
+            // adding a 'property: value' to person object.
+            person.nationality = "British";
+
+            var resume = "";
+
+            for (item in person) {
+                resume += item + " : " +person[item] + "<br/> ";
+            }
+            document.getElementById("demo8").innerHTML = resume;
+
+
+/* Deleting Properties:
+  =======================
+
+  The 'delete' keyword deletes both the 'value of the property' and the 'property' itself.
+  After deletion, the property cannot be used before it is added back again.
+
+  The 'delete' operator is designed to be used on object properties.
+  It has no effect on variables or functions.
+
+  The 'delete operator' should not be used on predefined JavaScript object properties.
+  It can crash your application.
+*/
+            var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+            delete person.age;
+            delete person["eyeColor"];
+
+            resume = "";  // resume is reinitialized (previous values deleted!)
+            for (item in person) {
+                resume += item + " " + person[item] + " <br/> ";
+            }
+            document.getElementById("demo9").innerHTML = resume;
+
+
+/*   Property attributes:
+==========================
+
+All properties have a name. In addition they also have a value.
+The value is one of the property's 'attributes'. Other attributes are:
+    > enumerable
+    > configurable
+    > writable.
+
+These attributes define how the property can be accessed (is it readable?, is it writable?)
+
+In JavaScript, all attributes can be read, but only the 'value attribute' can be changed,
+only if the property is writable.
+
+ECMAScript 5 has methods for both 'getting' and 'setting' all property attributes.
+*/
+
+/*  Prototype Properties
+=========================
+JavaScript objects inherit the properties of their prototype.
+
+The delete keyword does not delete inherited properties,
+but if you delete a prototype property, it will affect all objects
+inherited from the prototype. */
+
+        </script>
+    </body>
+</html>

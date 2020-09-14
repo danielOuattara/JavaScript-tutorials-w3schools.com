@@ -1,0 +1,68 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Syntax</title>
+  </head>
+  <body>
+    <h2>JavaScript Syntax</h2>
+
+    <p class="hidden">This paragrapah is hidden!</p>
+    <p id ="demo_1"></p> <p id ="demo_2"></p> <p id ="demo_3"></p> <p id ="demo_4"></p>
+    <p id ="demo_5"></p> <p id ="demo_6"></p> <p id ="demo_7"></p> <p id ="demo_8"></p>
+    <p id ="demo_9"></p> <p id ="demo_10"></p> <p id ="demo_11"></p>
+
+    <div class="div_1"></div>
+
+    
+    <script>
+
+      document.getElementById('demo_1').innerHTML = 10.5 + " ; " + 1001;
+      document.getElementById('demo_2').innerHTML = "John Doe ";
+      document.getElementById('demo_3').innerHTML = 'John Doe ';
+      
+      var x;
+      x = 6;
+      var demo4 = document.getElementById('demo_4');
+      demo4.innerHTML = "x = " + x ;
+
+      /* 
+        var div1 = document.getElementsByClassName('div_1');
+        div1.innerHTML = '<p> Hello World</p>';
+        console.log('div1 : ' + div1);
+      */
+
+      var hiddenContent = document.getElementsByClassName('p.hidden').innerHTML;
+      console.log('hiddenContent :' + hiddenContent);
+      
+      var demo5 = document.getElementById('demo_5');
+      demo5.innerHTML = "(5 + 6) * 10 =  " + ((5 + 6) * 10) ;
+      
+      var demo5_content =  demo5.innerHTML;
+      console.log(demo5_content);
+      
+      var y = 5
+      document.getElementById('demo_6').innerHTML = "x + y  =  " + (x + y) ;
+      // this a one line comment
+      /*
+      this
+      is
+      multiple lines
+      comments
+      */
+      var lastname, lastName;
+      lastname = "Doe";
+      lastName = "Peter"
+      document.getElementById('demo_7').innerHTML = "lastName : " + lastName ;
+      // document.getElementById('demo_8').innerHTML = "la  " + (x + y) ;
+    </script>
+
+  </body>
+</html>

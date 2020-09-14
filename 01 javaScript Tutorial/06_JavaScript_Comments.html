@@ -1,0 +1,48 @@
+<!--|--------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+03 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Comments</title>
+    </head>
+    <body>
+        <h1>JavaScript Comments</h1>
+
+        <!--Single line comments  -->
+        <!--Mulitple Lines comments  -->
+        <!--Using Comments to prevent code execution  -->
+
+        <h3 id="h3_1"><!--this heading is controlled by a JavaScript script --></h3>
+        <p id="p1"><!--this heading is controlled by a JavaScript script --></p>
+        <h3 id="h3_2"><!--this heading is controlled by a JavaScript script --></h3>
+        <p id="p2"><!--this heading is controlled by a JavaScript script --></p>
+
+        <script type="text/javascript">
+            // Changing heading title & paragraph.
+            document.getElementById('h3_1').innerHTML = 'An "h3-rang" Heading.';
+            document.getElementById('p1').innerHTML = "A first paragraph.";
+            /*
+            The code below will change
+            the heading with id = "myH"
+            and the paragraph with id = "myP"
+            in my web page:
+            */
+            document.getElementById('h3_2').innerHTML = 'A second "h3-rang" Heading.';
+            document.getElementById('p2').innerHTML = "A second paragraph.";
+
+    //      document.getElementById('h3_2').innerHTML = 'A second "h3-rang Heading.';
+            document.getElementById('p2').innerHTML = "A second paragraph.";
+    /*
+            document.getElementById('h3_2').innerHTML = 'A second "h3-rang Heading.';
+            document.getElementById('p2').innerHTML = "A second paragraph.";
+    */
+
+        </script>
+    </body>
+</html>

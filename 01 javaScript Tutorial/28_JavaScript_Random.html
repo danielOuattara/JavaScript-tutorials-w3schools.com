@@ -1,0 +1,78 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+24 03 2020
+JavaScript Tutorial :
+https://www.w3schools.com/js/
+------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Random</title>
+    </head>
+    <body>
+        <h1>JavaScript Random</h1>
+
+        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo9"></p> <p id="demo10"></p> <p id="demo11"></p> <p id="demo12"></p>
+        <p id="demo13"></p> <p id="demo14"></p><p id="demo15"></p> <p id="demo16"></p>
+        <p id="demo17"></p> <p id="demo18"><p id="demo19"></p> <p id="demo20"><p id="demo21">
+
+
+
+        <script>
+
+            // Math.random(): returns a number between ]0; 1[
+            document.getElementById("demo1").innerHTML = "random = " + Math.random();
+
+            //JavaScript Random Integers: integers between [0,9]
+            document.getElementById("demo2").innerHTML =
+            "random integer [0; 9] = " + Math.floor(Math.random() * 10);
+
+            //JavaScript Random Integers: integers between [1,10]
+            document.getElementById("demo3").innerHTML =
+             "random integer [1; 10] = " + Math.floor(Math.random() * 10 + 1);
+
+            //JavaScript Random Integers: integers between [1,10]
+            document.getElementById("demo4").innerHTML =
+             "random integer [1; 10] = " + (Math.floor(Math.random() * 10) + 1);
+
+            //JavaScript Random Integers: integers between [0,10]
+            document.getElementById("demo5").innerHTML =
+             "random integer [0; 10] = " + Math.floor(Math.random() * 11);
+
+             //JavaScript Random Integers: integers between [0, 99]
+             document.getElementById("demo6").innerHTML =
+             "random integer [0; 99] = " + Math.floor(Math.random() * 100);
+
+             //JavaScript Random Integers: integers between [1, 100]
+             document.getElementById("demo7").innerHTML =
+             "random integer [0; 100] = " + Math.floor(Math.random() * 100 + 1);
+
+             //JavaScript Random Integers: integers between [1, 100]
+             document.getElementById("demo8").innerHTML =
+             "random integer [1; 100] = " + (Math.floor(Math.random() * 100) + 1) ;
+
+             //JavaScript Random Integers: integers between [0, 100]
+             document.getElementById("demo9").innerHTML =
+             "random integer [0; 100] = " + Math.floor(Math.random() * 101);
+
+             //A Proper Random Function
+             function getRandomInteger(min, max) { // min included, max excluded
+                 return Math.floor(Math.random()* (max - min)) + min;
+             }
+             document.getElementById("demo10").innerHTML = getRandomInteger(0, 10);
+
+             function getRandomInteger(min, max) { // min and max included
+                 return Math.floor(Math.random()* (max - min + 1)) + min;
+             }
+             document.getElementById("demo11").innerHTML = getRandomInteger(0, 10);
+
+
+
+        </script>
+
+    </body>
+</html>
