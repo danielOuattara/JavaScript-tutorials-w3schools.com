@@ -14,7 +14,8 @@ https://www.w3schools.com/js/
     <body>
         <h1>JavaScript Functions</h1>
 
-<!-- JavaScript Function Syntax -->
+<!-- JavaScript Function Syntax 
+    - "function" keyword-->
 
 <!-- Function Invocation
 
@@ -32,19 +33,24 @@ when "something" invokes (calls) the function:
             function productFunction(a,b) {
                 return a * b;
             }
+
+
             var calcul = productFunction(4,3);
             document.getElementById("demo1").innerHTML = calcul;
-            document.getElementById("demo2").innerHTML = "calul = " +
-              productFunction(3, 6);
+            document.getElementById("demo2").innerHTML = "calul = " + productFunction(3, 6);
         </script>
 
-        <!-- Why Functions ? -->
+        <!-- Why Functions ? 
+            reuse code: Define the code once, and use it many times -->
 
         <!-- The () Operator Invokes the Function -->
 
         <!-- Functions Used as Variable Values -->
         <p id="demo"></p>
 
-        <!-- Local Variables -->
+        <!-- Local Variables 
+        
+            - Variables declared within a JavaScript function, become LOCAL to the function.
+            - Local variables can only be accessed from within the function.-->
     </body>
  </html>
