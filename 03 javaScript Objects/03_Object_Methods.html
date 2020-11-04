@@ -33,7 +33,6 @@ Methods are functions stored as object properties.
                 lastName : "Doe",
                 id       : 5566,
                 fullName : function() {
-                    //method that extract the name of a person.//
                     return this.firstName + " " + this.lastName;
                 }
             };
@@ -47,6 +46,7 @@ Methods are functions stored as object properties.
             // Accessing Object method by expression:
             var named = person.fullName();
             document.getElementById("demo2").innerHTML = named;
+
             // Accessing Object method definition !!!
             document.getElementById("demo3").innerHTML = person.fullName;
 
@@ -56,10 +56,10 @@ Methods are functions stored as object properties.
 
             var message = "Hello World !";
             document.getElementById("demo4").innerHTML = message;
-            var xXX_message = message.toUpperCase();
+            var XXX_message = message.toUpperCase();
             var xxx_message = message.toLowerCase();
-            document.getElementById("demo5").innerHTML = message.toUpperCase();
-            document.getElementById("demo6").innerHTML = message.toLowerCase();
+            document.getElementById("demo5").innerHTML = XXX_message;
+            document.getElementById("demo6").innerHTML = xxx_message;
 
 
 /* Adding a Method to an Object:
@@ -83,6 +83,8 @@ Methods are functions stored as object properties.
                 return this.firstName + " "+ this.lastName + " " + person.id +
                         " " + person.gender + " " + person.race + " " + person.height;
             }
+
+            
             document.getElementById("demo7").innerHTML = person.fullDescribe();
 
         </script>

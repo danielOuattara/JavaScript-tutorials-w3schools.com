@@ -11,6 +11,7 @@ https://www.w3schools.com/js/
         <meta charset="utf-8">
         <title>JavaScript Objects</title>
     </head>
+
     <body>
         <h1>JavaScript Objects.</h1>
 
@@ -37,19 +38,21 @@ https://www.w3schools.com/js/
             console.log('car.type :' , car.type);  // car.type : Fiat
             console.log('car["type"] :' , car["type"]);  // car[type] : Fiat
 
+
             var person = {   // second object: with attributes and mehtods
               firstName: "John",
               lastName : "Doe",
               age      : 50,
               eyeColor : "blue",
               fullName : function() {
-                           return this.firstName + " " + this.lastName;
+                           return `My name is ${this.firstName} ${this.lastName}, I'am ${this.age}`;
                          },
               drive() {
                 return `${this.lastName} knows how to drive !`;
               }
             };
             console.log (person.drive());
+            console.log(person.fullName());
         </script>
 
 
@@ -91,11 +94,12 @@ https://www.w3schools.com/js/
 ======================= -->
 
 
-<!-- Accessing Object Methods
-=================================-->
+<!-- Accessing Object Methods & Attributs
+==========================================-->
                 <script>
                     // objectName.methodName()
-                    document.getElementById("demo1").innerHTML = person.fullName();
+                    document.getElementById("demo2").innerHTML = person.fullName();
+                    document.getElementById("demo3").innerHTML = person.firstName;
 
                 </script>
 

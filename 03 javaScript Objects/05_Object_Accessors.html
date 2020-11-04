@@ -14,7 +14,7 @@ https://www.w3schools.com/js/
     <body>
         <h1>JavaScript Objects Accessors</h1>
 
-        <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
+        <p id="demo1_1"></p> <p id="demo1_2"></p> <p id="demo1_3"></p><p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
         <p id="demo5"></p> <p id="demo6"></p><p id="demo7"></p> <p id="demo8"></p>
         <p id="demo9"></p> <p id="demo10">
 
@@ -40,10 +40,19 @@ This example uses a 'lang' property (method) to 'get' the value of the
                 language : "en",
                 get lang() {
                     return this.language;
+                },
+                spokenLanguage_1: function() {
+                                     return this.language;
+                                  },
+                spokenLanguage_2() {
+                    return this.language;
                 }
+
             };
             // Display data from the object using a getter:
-            document.getElementById("demo1").innerHTML = person.lang;
+            document.getElementById("demo1_1").innerHTML = " demo1-1: " + " " + person.lang;
+            document.getElementById("demo1_2").innerHTML = " demo1-2: " + " " +person.spokenLanguage_1();
+            document.getElementById("demo1_3").innerHTML = " demo1-3: " + " " +person.spokenLanguage_2();
 
 
 /* JavaScript Setter (The 'set' Keyword)
@@ -118,7 +127,6 @@ of the 'language' property in upper case:*/
             document.getElementById("demo5").innerHTML = person.lang;
 
 
-
 /* Using the lang property, in this example, stores
    an upper case value in the language property: */
 
@@ -147,7 +155,6 @@ of the 'language' property in upper case:*/
     > It can secure better data quality
     > It is useful for doing things behind-the-scenes
  */
-
 
 
 /* Object.defineProperty():

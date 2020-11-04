@@ -43,8 +43,7 @@ Displaying directly a JavaScript object will output [object Object]. */
      /*Displaying Object Properties as a string:*/
 
             var person = {name: "John", age: 30, city: "New York"};
-            document.getElementById("demo2").innerHTML =
-            person.name + ", " + person.age + ", " + person.city;
+            document.getElementById("demo2").innerHTML = person.name + ", " + person.age + ", " + person.city;
 
 
     /*Displaying the Object in a 'for...in' Loop:*/
@@ -52,12 +51,13 @@ Displaying directly a JavaScript object will output [object Object]. */
             var person = {name: "Merinda", age: 23, city: "Montreal"};
 
             var text1 = "";
-            var item = "";
             for (item in person) {
                 text1 += person[item] + "<br/>";
             };
 
             document.getElementById("demo3").innerHTML = text1;
+
+            // ---------------
 
             var text2 = ""
             item ="";
@@ -95,9 +95,11 @@ Displaying directly a JavaScript object will output [object Object]. */
             document.getElementById("demo9").innerHTML = myString.length;
             document.getElementById("demo10").innerHTML = JSON.stringify(person);
 
+
             // JSON.stringify to convert Date in String.
             var person = {name:"John", dateOfBirth: new Date(1956,11,15)};
             document.getElementById("demo11").innerHTML = JSON.stringify(person);
+
 
             // JSON.stringify will not stringify Functions.
             var person = {
@@ -108,8 +110,8 @@ Displaying directly a JavaScript object will output [object Object]. */
                 };
 
             myString = JSON.stringify(person);
-            document.getElementById("demo12").innerHTML =
-             "myString = " + myString;
+            document.getElementById("demo12").innerHTML = "JSON.stringify will not stringify Functions -->" + " " +
+             " myString = " + myString;
 
             // before stringifying function, convert function into strings
             var person = {

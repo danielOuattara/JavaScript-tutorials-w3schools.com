@@ -86,10 +86,10 @@ https://www.w3schools.com/js/
 
             document.getElementById('demo1').innerHTML = resume;
 
+
             /* adding a property:
             ---------------------*/
             Object.defineProperty(person, "age", {value : 50});
-
 
             document.getElementById('demo2').innerHTML = person.age;
 
@@ -139,15 +139,17 @@ https://www.w3schools.com/js/
             // Display Properties:
             document.getElementById('demo3').innerHTML =
                  Object.getOwnPropertyNames(person);
-
             // firstName,lastName,language
 
             document.getElementById('demo4').innerHTML = Object.values(person);
             // Champs,Elysée
 
 
-            /* Listing Enumerable Properties: This example list only enumerable properties,
-            ================================  of an object */
+            /* Listing Enumerable Properties: 
+            ==================================
+            
+            This example list only enumerable properties,
+             of an object */
 
             var newPerson = {
                 firstName : "Champs",
@@ -158,21 +160,23 @@ https://www.w3schools.com/js/
             // change Property:
             Object.defineProperty( newPerson, "language", {enumerable: false});
 
-              // Display All Properties:
-              document.getElementById('demo5').innerHTML =
-                 Object.getOwnPropertyNames(newPerson);
 
+            // Display All Properties:
+            document.getElementById('demo5').innerHTML =
+                 Object.getOwnPropertyNames(newPerson);
             // firstName,lastName,language
+
 
             // Display enumerable Properties:
             document.getElementById('demo6').innerHTML =
                  Object.keys(newPerson);
-
             // firstName,lastName
 
 
-            /* Adding a Property:This example adds a new property to
-            ==================== an object: */
+            /* Adding a Property:
+            ======================
+
+            This example adds a new property to an object: */
 
             Object.defineProperty(newPerson, "country", {value: "Bagdad"});
 
@@ -183,8 +187,7 @@ https://www.w3schools.com/js/
             /* Adding Getters and Setters
             =============================
 
-            The Object.defineProperty() method can also be used
-            to add Getters and Setters: */
+            The Object.defineProperty() method can also be used to add Getters and Setters: */
 
             var hero = { firstName: 'Lucky', lastName: 'Luke'};
 
