@@ -1,0 +1,181 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+04 11 2020
+JavaScript Tutorial : JavaScript Classes
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Classes Inheritance</title>
+        <style>
+            p { font-family: courier; font-size: 17px;}
+        </style>
+    </head>
+    <body>
+        <h1>JavaScript Classes Inheritance</h1>
+
+
+<!-- Class Inheritance
+======================
+
+To create a class inheritance, use the "extends" keyword.
+
+A class created with a class inheritance inherits all the methods from another class: -->
+
+     <script>
+
+class Car {
+    constructor(brand) {
+        this.brand = brand;
+    }
+
+    present() {
+        return `I have a ${this.brand}`;
+    }
+}
+
+
+class CarModel extends Car {
+    constructor(brand, model) {
+        super(brand);
+        this.model = model;
+    }
+
+    show() {
+        return `${this.present()} ${this.model}`;
+    }
+}
+
+let myCar = new CarModel ("Mercedes", "AMG");
+console.log(myCar.present());
+console.log(myCar.show());
+
+/*
+
+The "super()"" method refers to the parent class.
+
+By calling the "super()" method in the constructor method, we call the parent's 
+constructor method and gets access to the parent's properties and methods.
+
+Inheritance is useful for code reusability: reuse properties and methods of an existing 
+class when you create a new class.
+
+
+
+Getters and Setters
+====================
+
+Classes also allows you to use "getters" and "setters".
+
+It can be smart to use "getters" and "setters" for your properties, specially if you want 
+to do something special with the value before returning them, or before you set them.
+
+To add "getters" and "setters" in the class, use the "get" and "set" keywords.
+
+*/
+
+class Car_2 {
+    constructor(brand) {
+        this.carName = brand;
+    }
+
+    get cnam() {
+        return this.carName;
+    }
+
+    set cnam(x) {
+        this.carName = x;
+    }
+}
+
+
+let myCar_2 = new Car_2("Ford");
+console.log(myCar_2.cnam);
+     
+
+/* 
+
+Note: even if the "getter" is a method, you do not use parentheses when you want 
+      to get the property value.
+
+The name of the "getter"/"setter" method cannot be the same as the name of the property, 
+in this case "carName".
+
+Many programmers use an underscore character _ before the property name to separate 
+the "getter"/"setter" from the actual property*/
+
+
+class Car_3 {
+    constructor(brand) {
+        this.__carName = brand;
+    }
+
+    get carName() {
+        return this.__carName;
+    }
+
+    set carName(x) {
+        this.__carName = x;
+    }
+}
+
+let myCar_3 = new Car_3 ("BMW");
+console.log(myCar_3.carName);
+
+
+/* To use a setter, use the same syntax as when you set a property value, 
+without parentheses:*/ 
+
+class Car_4 {
+    constructor(brand) {
+        this.__carName = brand;
+    }
+
+    get carName() {
+        return this.__carName;
+    }
+
+    set carName(x) {
+        this.__carName = x;
+    }
+}
+
+let myCar_4 = new Car_4 ("BMW");
+myCar_4.carName = "Peugeot";
+console.log(myCar_4.carName);
+
+
+
+/* Hoisting
+============
+
+Unlike functions, and other JavaScript declarations, class declarations are not hoisted.
+
+That means that you must declare a class before you can use it:*/ 
+
+// ----------------------------------------------
+
+//You cannot use the class yet.
+//myCar = new Car("Ford")
+//This would raise an error.
+
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+}
+
+//Now you can use the class:
+let myCar = new Car("Ford") 
+
+
+/* Note: For other declarations, like functions, you will NOT get an error when you 
+try to use it before it is declared, because the default behavior of JavaScript 
+declarations are hoisting (moving the declaration to the top).*/ 
+
+     </script>
+    </body>
+</html>

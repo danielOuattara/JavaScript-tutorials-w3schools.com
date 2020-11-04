@@ -1,0 +1,84 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+04 11 2020
+JavaScript Tutorial : JavaScript Classes
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Statics Methods</title>
+        <style>
+            p { font-family: courier; font-size: 17px;}
+        </style>
+    </head>
+    <body>
+        <h1>JavaScript Statics Methods</h1>
+
+
+<!-- Class Inheritance
+======================
+
+Static class methods are defined on the class itself. So you cannot call a static method 
+on an object, only on an object class. -->
+
+     <script>
+
+class Car_1 {
+    constructor(brand) {
+        this.brand = brand;
+    }
+
+    static namingCar() {
+        return `Here is my car !`;
+    }
+}
+
+
+let myCar_1 = new Car_1("BMW");
+
+// You can call "namingCar()" method on the Car Class only:
+console.log(Car_1.namingCar());
+
+// But NOT on a Car Object:
+//console.log(myCar_1.namingCar());  // this will raise an error
+
+
+
+/* If you want to use the myCar object inside the static method, you can send it as a parameter:*/
+
+
+class Car_2 {
+    constructor(name) {
+        this.name = name;
+    }
+
+    static hello(x) {
+        return `Hello ${x.name}`;
+    }
+}
+
+let myCar_2 = new Car_2("Ford");
+
+console.log(Car_2.hello(myCar_2));
+
+
+//=========================================
+
+class Car {
+  constructor(carname) {
+    this.carname = carname;
+  }
+  static hello(x) {
+    return "Hello " + x.carname;
+  }
+}
+let myCar = new Car("Ford");
+console.log(Car.hello(myCar));
+
+
+     </script>
+    </body>
+</html>
