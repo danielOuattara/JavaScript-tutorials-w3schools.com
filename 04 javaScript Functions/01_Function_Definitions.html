@@ -33,13 +33,14 @@ and will be executed later, when they are invoked (called upon).*/
                 return a * b;
             }
 
+
             document.getElementById("demo1").innerHTML =
                 "3 x 4  = " + productFunction(3, 4);  // 12
 /* NOTE:
 --------
 - Semicolons are used to separate executable JavaScript statements.
-- Since a 'function declaration' is not an executable statement, it is not common
-  to end it with a semicolon. */
+- Since a 'function declaration' is not an executable statement, it
+is not common to end it with a semicolon. */
 
 
 /*  Function Expressions.
@@ -55,7 +56,7 @@ and will be executed later, when they are invoked (called upon).*/
             document.getElementById("demo2").innerHTML = "x(4, 3) = " + x(4, 3);  // anonymous function : 12
 
             var z = x(4, 3);
-            document.getElementById("demo3").innerHTML = "z = " +z;  // 12
+            document.getElementById("demo3").innerHTML = "z = " + z;  // 12
 
 /* This function is actually an 'anonymous function'. Functions stored in
 variables do not need function names. They are always invoked using the
@@ -66,10 +67,10 @@ NOTE: The function above ends with a semicolon because it is a part of
 
 
 /* The Function() Constructor: (Not needed !)
-==============================
+==============================================
 
 Functions can also be defined with a built-in JavaScript function constructor
-called 'Function()'. */
+called 'Function()'. with capital 'F' */
 
             var myFunction = new Function("a", "b", "return a * b ");
             var x = myFunction(4, 3);
@@ -89,7 +90,8 @@ they are declared:
             function myFunction(y) {
                 return y * y;
             }
-            // CAUTION: Functions defined using an expression are not hoisted.
+
+// CAUTION: Functions defined using an expression are not hoisted.
 
 
 /* Self-Invoking Functions:
@@ -98,7 +100,7 @@ they are declared:
 Function expressions can be made "self-invoking".
 
 A self-invoking expression is invoked (started) automatically, without being
-called.Function expressions will execute automatically if the expression is 
+called. Function expressions will execute automatically if the expression is
 followed by ().
 
 CAUTION: You cannot self-invoke a function declaration.
@@ -117,14 +119,18 @@ a function expression:
             function myFunction(a, b) {
             return a * b;
             }
+
+
             var x = myFunction(4, 3);
             document.getElementById("demo7").innerHTML = x;
 
-            
+
 // JavaScript functions can be used in expressions:
             function myFunction(a, b) {
                 return a * b;
             }
+
+
             var x = myFunction(5, 6) * 2 + Math.sqrt(12);
             document.getElementById("demo8").innerHTML = x;  // 60
 
@@ -133,14 +139,14 @@ a function expression:
 =========================
 The 'typeof' operator in JavaScript returns "function" for functions.
 
-But, JavaScript functions can best be described as objects.
+But, JavaScript functions can best be described as "objects".
 JavaScript functions have both 'properties' and 'methods'.
 
 The 'arguments.length' property returns the number of arguments received
  when the function was invoked:
  */
             function myFunction2(a, b) {
-                return arguments.length;  // returns the number of arguments
+                return arguments.length;
             }
 
             document.getElementById("demo9").innerHTML =
@@ -154,7 +160,6 @@ The 'arguments.length' property returns the number of arguments received
  > A function defined as an element of an object, is called a 'method' to the object.
  > A function designed to create new objects, is called an 'object constructor'.
  */
-
 
 /* Arrow Functions.
 ===================
@@ -172,9 +177,10 @@ You don't need the 'function' keyword, the 'return' keyword, and the
             const multiplication = (x, y) => x * y;
             document.getElementById("demo11").innerHTML = multiplication(5, 7);
 
-/* Arrow functions do not have their own 'this'. They are not well suited for
+/*
+-> Arrow functions do not have their own 'this'. They are not well suited for
 defining 'object methods'.
-Arrow functions are not hoisted. They must be defined 'before' they are used.
+-> Arrow functions are not hoisted. They must be defined 'before' they are used.
 
 Using 'const' is safer than using 'var', because a function expression is always
 constant value.
@@ -184,6 +190,8 @@ is a single statement. Because of this, it might be a good habit to always
 keep them:                                                                    */
 
             const multi = (x, y) => {return x * y};
+
+
             document.getElementById("demo12").innerHTML = multi(5, 7);
         </script>
     </body>

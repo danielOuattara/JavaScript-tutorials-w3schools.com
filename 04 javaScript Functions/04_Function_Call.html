@@ -8,10 +8,10 @@ https://www.w3schools.com/js/
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>JavaScript Functions Call</title>
+        <title>JavaScript Function call</title>
     </head>
     <body>
-        <h1>JavaScript Functions Call</h1>
+        <h1>JavaScript Function call</h1>
 
         <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
         <script>
@@ -19,11 +19,13 @@ https://www.w3schools.com/js/
 
 /* Method Reuse.
 ================
-With the 'call()' method, you can write a method 
-that can be used on different objects.  */
+
+With the "call()" method, you can write a method that can be used on different objects.  */
+
 
 /* All Functions are Methods.
 =============================
+
 In JavaScript all functions are methods. If a function is not a method of a
 specific JavaScript object, it is a method of the global object: window
 (see previous chapter). */
@@ -31,49 +33,57 @@ specific JavaScript object, it is a method of the global object: window
             var person = {
                 firstName:"John",
                 lastName: "Doe",
-                fullName: function () {  // fullName() belongs to 'person'.
+                fullName: function () {  // fullName() belongs to "person".
                     return this.firstName + " " + this.lastName;
+                },
+                fullname_2() { // test:
+                  console.log( `${this.firstName} ${this.lastName}`);
                 }
             }
+
             person.fullName();   // Will return "John Doe"
+            person.fullname_2();
+            document.getElementById("demo1").innerHTML = person.fullName() + " / " + person.fullName();
 
 
-            function sum(a, b) {  // sum() belongs to 'window'
+            function sum(a, b) {  // sum() belongs to "window"
                 return a + b;
             }
 
-            sum(2,5)  // return 7
-            window.sum(2, 5)  // return 7
+            console.log(sum(2,5));
+            console.log(window.sum(2,5));
 
+/* The "this" Keyword.
+======================
 
-/* The this Keyword.
-====================
-In a method definition, 'this' refers to the "owner" of the method.
-In the example above, 'this' refer to the 'person' object that "owns"
-the 'fullName' method. 'this.firstName' means the firstName property of 
-this object.
-Read more about the this keyword at JS this Keyword. */
+In a method definition, "this" refers to the "owner" of the method.
+In the example above, "this" refer to the "person" object that "owns"
+the "fullName" method.
+
+"this.firstName" means the firstName property of this object.
+Read more about the "this" keyword at "JS this Keyword". */
 
 
 /* The JavaScript call() Method.
 ================================
-The 'call()' method is a predefined JavaScript method.
-With call(), an object can use a method belonging to another object.
+
+The "call()" method is a predefined JavaScript method.
+With "call()", an object can use a method belonging to another object.
  */
-            // This example calls the 'fullName()' method of 'person'
-            // using it on 'person1':
+            // This example calls the "fullName()" method from "person" object
+            // and uses it on "person1":
 
             var person = {
                 fullName: function() {
                     return this.firstName + " " + this.lastName;
                 }
             }
-            // object
+            // other objects
             var person1 = {
                 firstName: "John",
                 lastName: "Doe"
             }
-            // object
+
             var person2 = {
                 firstName: "Mary",
                 lastName: "Doe"
@@ -85,6 +95,7 @@ With call(), an object can use a method belonging to another object.
 
 /*The call() Method with Arguments.
 ===================================
+
 The call() method can accept arguments: */
 
             var person = {

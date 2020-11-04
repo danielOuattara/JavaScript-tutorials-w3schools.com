@@ -14,14 +14,17 @@ https://www.w3schools.com/js/
         <h1>JavaScript Functions Closures</h1>
 
         <p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="demo4"></p>
-        <p id="demo5"></p> <p id="demo6"></p> <p id="demo7"></p> <p id="demo8"></p>
+        <p id="demo5"></p> <p id="demo6"></p> <p id="demo7"></p>
+
+        <p id="demo8"></p>
+        <button type="button" name="button" onclick="printResult()">Click to Add</button>
 
         <script>
 
 /*
-JavaScript variables can belong to the 'local' or 'global' scope.
+JavaScript variables can belong to the "local" or "global" scope.
 
-Global variables can be made local (private) with 'closures' .
+Global variables can be made local (private) with "closures" .
 
 A closure is a function having access to the parent scope, even after
 the parent function has closed. */
@@ -30,7 +33,7 @@ the parent function has closed. */
 /* Global Variables.
 ====================
 
-A 'function' can access all variables defined 'inside' the function : */
+A "function" can access all variables defined "inside" the function : */
 
             function myFunction() {
                 var a = 4;
@@ -39,24 +42,25 @@ A 'function' can access all variables defined 'inside' the function : */
 /*
 But a function can also access variables defined outside the function: */
 
-            var a = 4;  //
+            var b = 4;  //
+
             function myFunction2() {
-                return a * a ;  // 16
+                return b * b ;  // 16
             }
 
 /*
-In the last example, 'a' is a 'global variable'.
-In a web page, global variables belong to the 'window' object. They can be used
-(and changed) by all scripts in the page (and in the window).
+In the last example, "b" is a "global variable".
+In a web page, global variables belong to the "window" object.
+They can be used / changed by all scripts in the page and in the window.
 
-In the first example, 'a' is a 'local variable'. It can only be used inside
+In the first example, "a" is a "local variable". It can only be used inside
 the function where it is defined. It is hidden from other functions and other
 scripting code.
 
 Global and local variables with the same name are different variables.
 Modifying one, does not modify the other.
 
-Note: Variables created without a declaration keyword (var, let, or const) 
+Note: Variables created without a declaration keyword (var, let, or const)
       are always global, even if they are created inside a function. */
 
 
@@ -85,7 +89,7 @@ You could use a global variable, and a function to increase the counter: */
             function add() {
                 counter +=1;
             }
-
+            // call add() 3 times.
             add();
             add();
             add();  // from here, counter = 3
@@ -142,7 +146,7 @@ In fact, in JavaScript, all functions have access to the scope "above" them.
 JavaScript supports nested functions. Nested functions have access to the scope
 "above" them.
 
-In this example, the inner function 'plus()' has access to the 'counter' variable
+In this example, the inner function "plus()" has access to the "counter" variable
 in the parent function: */
 
             function add() {
@@ -157,7 +161,7 @@ in the parent function: */
             }
 
 /*
-This could have solved the counter dilemma, if we could reach the 'plus()'
+This could have solved the counter dilemma, if we could reach the "plus()"
 function from the outside.
 We also need to find a way to execute counter = 0 only once.
 We need a closure. */
@@ -168,23 +172,28 @@ We need a closure. */
 
 Remember self-invoking functions ? What does this function do ? */
 
-        var add = ( function () {
-            var counter = 0;
-            return function () { counter +=1; return counter }
+        var sum = (function () {
+            var countless = 0;
+            return function () {
+              countless +=1;
+              return countless
+            }
         }) ();
-        add();
-        add();
-        add();
+        console.log(countless);
+
+        function printResult() {
+          document.getElementById('demo1').innerHTML = sum();
+        }
 
 /* Last Example Explained.
 ==========================
 
-The variable 'add' is assigned the return value of a self-invoking function.
+The variable "add" is assigned the return value of a self-invoking function.
 
 The self-invoking function only runs once.
 It sets the counter to zero (0), and returns a function expression.
 
-This way add becomes a function. The "wonderful" part is that it can access
+This way "add" becomes a function. The "wonderful" part is that it can access
 the counter in the parent scope.
 
 This is called a JavaScript closure. It makes it possible for a function

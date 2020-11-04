@@ -24,8 +24,8 @@ The code inside a JavaScript function will execute when "something" invokes it *
 /* Invoking a JavaScript Function.
 ==================================
 
-The code inside a function is not executed when the function is 'defined'.
-It is executed when the function is 'invoked'. It is common to use the term
+The code inside a function is not executed when the function is "defined".
+It is executed when the function is "invoked". It is common to use the term
 "call a function" instead of "invoke a function". It is also common to say
 "call upon a function", "start a function", or "execute a function".
 
@@ -41,47 +41,49 @@ invoked without being called.                                                 */
 
             myFunction(10, 2); // returns 20
 
-/*The function (method) above does not belong to any object.
-But in JavaScript there is always a 'default global object'.
+/*The function (method) above does not specificaly belong to any object.
+But in JavaScript there is always a "default global object".
 
-In HTML the 'default global object' is the 'HTML page itself',
+In HTML the "default global object" is the "HTML page itself",
 so the function above "belongs" to the HTML page.
 
-In a browser the page object is the 'browser window'.
+In a browser the page object is the "browser window".
 The function above automatically becomes a window function:
 myFunction() and window.myFunction() is the same function:.*/
 
             window.myFunction(3,5);  // returns 15.
 
 
-/* The this Keyword.
+/* The "this" Keyword.
 ====================
-In JavaScript, 'this' is the object that "owns" the current code.
+
+In JavaScript, "this" is the object that "owns" the current code.
 The value of this, when used in a function, is the object that
 "owns" the function.
-Note: 'this' is not a variable. It is a keyword.
-You cannot change the value of this.
 
-Tip: Read more about the this keyword at JS this Keyword. */
+Note: "this" is not a variable. It is a keyword. You cannot change
+       the value of "this".
+
+Tip: Read more about the "this" keyword at JS this Keyword. */
 
 
 /*The Global Object.
 ====================
-When a function is called without an owner object, the value of 'this' becomes
+When a function is called without an owner object, the value of "this" becomes
 the global object.
-In a web browser the 'global object' is the 'browser window'.*/
+In a web browser the "global object" is the "browser window".*/
 
             // This example returns the window object as the value of this:
             var  x = myFunction();
 
             function myFunction() {
-                return this
+                return this;
             }
 
 
             document.getElementById("demo1").innerHTML = x;
 
-/* Invoking a function as a global function, causes the value of 'this'
+/* Invoking a function as a global function, causes the value of "this"
 to be the global object. Using the window object as a variable can easily
 crash your program.*/
 
@@ -105,8 +107,8 @@ two properties (firstName and lastName), and a method (fullName): */
             document.getElementById("demo2").innerHTML = myObject.fullName();
 
 /*
-The 'fullName' function is a method that belongs to 'myObject' object.
-'this' indicates the element that "owns" the JavaScript code: myObject.  */
+The "fullName" function is a method that belongs to "myObject" object.
+"this" indicates the element that "owns" the JavaScript code: myObject.  */
 
             // Test it! Change the fullName method to return the value of this:
             var myObject = {
@@ -123,7 +125,7 @@ The 'fullName' function is a method that belongs to 'myObject' object.
 
 /* Invoking a Function with a Function Constructor.
 ===================================================
-If a function invocation is preceded with the 'new' keyword, it is a constructor
+If a function invocation is preceded with the "new" keyword, it is a constructor
 invocation. It looks like you create a new function, but since JavaScript
 functions are objects you actually create a new object: */
 
@@ -142,8 +144,8 @@ functions are objects you actually create a new object: */
 A constructor invocation creates a new object.
 The new object inherits the properties and methods from its constructor.
 
-The 'this' keyword in the constructor does not have a value.
-The value of 'this' will be the new object created when the function is invoked.
+The "this" keyword in the constructor does not have a value.
+The value of "this" will be the new object created when the function is invoked.
  */
         </script>
     </body>

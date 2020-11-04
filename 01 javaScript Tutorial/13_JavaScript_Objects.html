@@ -1,4 +1,4 @@
-<!--|--------------------------------------
+<!----------------------------------------
 Daniel OUATTARA- daniel.ouattara_AT_gmx.com
 03  03 2020
 JavaScript Tutorial :
@@ -14,14 +14,16 @@ https://www.w3schools.com/js/
     <body>
         <h1>JavaScript Objects.</h1>
 
-        <p id="demo1">Test</p><p id="demo2"></p><p id="demo3"></p>
+        <p id="demo1">Test</p>
+        <p id="demo2"></p>
+        <p id="demo3"></p>
 
+<!-- Real Life Objects, Properties, and Methods
+=============================================== -->
 
-<!-- Real Life Objects, Properties, and Methods -->
+<!-- JavaScript Objects
+======================== -->
 
-
-<!-- JavaScript Objects -->
-        
         <script type="text/javascript">
 
             var chat = {name:"trump", age:3};
@@ -33,7 +35,7 @@ https://www.w3schools.com/js/
             };
 
             console.log('car.type :' , car.type);  // car.type : Fiat
-            console.log('car[type] :' , car['type']);  // car[type] : Fiat
+            console.log('car["type"] :' , car["type"]);  // car[type] : Fiat
 
             var person = {   // second object: with attributes and mehtods
               firstName: "John",
@@ -51,7 +53,8 @@ https://www.w3schools.com/js/
         </script>
 
 
-<!-- Object Definition -->
+<!-- Object Definition
+======================= -->
 
             <script>
                 var maisonBrune = {surfaceAuSol: 120, nombreFenetre: 8, couleur:"jaune"};
@@ -64,10 +67,12 @@ https://www.w3schools.com/js/
             </script>
 
 
-<!-- Object Properties & Methods-->
+<!-- Object Properties & Methods
+=================================-->
 
 
-<!-- objectName.propertyName OR objectName["propertyName"] -->
+<!-- objectName.propertyName OR objectName["propertyName"]
+===========================================================-->
 
             <script>
 
@@ -78,23 +83,24 @@ https://www.w3schools.com/js/
             };
 
             console.log('truck.type :' , truck.type);  // truck.type : Fiat
-            console.log('truck[type] :' , truck['type']);  // truck[type] : Fiat
+            console.log('truck["type"] :' , truck['type']);  // truck[type] : Fiat
 
            </script>
 
+<!-- The this Keyword
+======================= -->
 
 
-<!-- The this Keyword -->
-
-
-<!-- Accessing Object Methods -->
+<!-- Accessing Object Methods
+=================================-->
                 <script>
                     // objectName.methodName()
                     document.getElementById("demo1").innerHTML = person.fullName();
 
                 </script>
 
-<!-- Do Not Declare Strings, Numbers, and Booleans as Objects! -->
+<!-- Do Not Declare Strings, Numbers, and Booleans as Objects!
+==============================================================-->
 
 
   </body>
