@@ -1,0 +1,141 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Functions
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Callbacks</title>
+    </head>
+
+    <body>
+        <h1>JavaScript Callbacks</h1><hr/>
+
+
+<!--Function Sequence : 
+=======================
+
+JavaScript functions are executed in the sequence as they are called, 
+not in the sequence as they are defined.                         -->
+
+        <p id="demo_1"></p>
+
+        <script>
+            myDisplay_1 = (arg) => {
+                document.querySelector('#demo_1').innerHTML = arg;
+            }
+
+            myFirst = () => {
+                myDisplay_1("First");
+            }
+
+            mySecond = () => {
+                myDisplay_1("Second");
+            }
+
+            mySecond(); // Second
+            myFirst();  // First
+
+           //  myFirst();  // First        
+           // mySecond();  // 
+
+        </script>
+
+
+<!-- Sequence Control
+=====================
+
+Sometimes you would like to have better control over when to execute a function.
+
+Do a calculation, and then display the result.
+Could call a calculator function (myCalculator), save the result, 
+and then call another function (myDisplayer) to display the result: -->
+
+        <p id="demo_2"></p>
+        <p id="demo_3"></p>
+
+        <script>
+
+            /* first Example
+            -----------------*/
+
+            myDisplay_2 = (foo) => {
+                document.querySelector('#demo_2').innerHTML = foo;
+            }
+
+            myCalculator_2 = (num1, num2) => {
+                let sum = num1 + num2; 
+                return sum;
+            }
+
+            let result = myCalculator_2(5, 7);
+           // myDisplay_2(result);  // --> 12
+            myDisplay_2(myCalculator_2(5, 7));  // --> 12
+
+            /* The problem with the first example above, is that you have to call 
+            two functions to display the result.*/
+
+
+            /* second Example
+            ------------------*/
+
+            myDisplay_3 = (foo) => {
+                document.querySelector('#demo_3').innerHTML = foo;
+            }
+            myCalculator_3 = (num1, num2) => {
+                let sum = num1 + num2;
+                myDisplay_3(sum);
+            }
+
+            myCalculator_3(5, 2);  // --> 7
+
+            /*The problem with the second example, is that you cannot prevent the 
+            calculator function from displaying the result.
+
+            
+            -->> Now it is time to bring in a callback.*/
+        </script>
+
+ <!-- JavaScript Callbacks
+=========================== 
+
+A callback is a function passed as an argument to another function.-->
+
+        <p id="demo_4"></p>
+
+        <script>
+
+            myDisplay_4 = (foo) => {
+                document.querySelector('#demo_4').innerHTML = foo;
+            }
+
+            myCalculator_4 = (num1, num2, callBack) => {
+                let sum = num1 + num2;
+                callBack(sum);
+            }
+
+            myCalculator_4(1, 3, myDisplay_4);  // --> 4
+
+            /* CAUTION: When you pass a function as an argument, 
+                        remember not to use parenthesis.*/
+
+
+
+/* When to Use a Callback ?
+============================
+
+The examples above are not very exciting.
+They are simplified to teach you the callback syntax.
+
+Where callbacks really shine are in asynchronous functions, 
+where one function has to wait for another function (like waiting for a file to load).
+
+Asynchronous functions are covered in the next chapter*/
+        </script>
+
+
+    </body>
+</html>

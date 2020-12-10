@@ -83,6 +83,7 @@ A simple GET request example:
         }
       </script>
 
+
 <!-- In the example above, you may get a cached result. To avoid this, add
 a unique ID to the URL                                                       -->
 
@@ -106,6 +107,7 @@ a unique ID to the URL                                                       -->
           xhttp.send();
         }
       </script>
+
 
 <!-- If you want to send information with the 'GET' method, add the information
 to the URL:                                                                  -->
@@ -142,7 +144,9 @@ A simple POST request Example
        <p>Click the button several times to see if the time changes, or
          if the file is cached.</p>
        <p id="demo4"></p>
+       
        <script>
+         
          function loadDoc4() {
            var xhttp = new XMLHttpRequest();
            xhttp.onreadystatechange = function() {
@@ -161,11 +165,15 @@ A simple POST request Example
 
 
         <button type="button" onclick="loadDoc5()">Request data</button>
+
         <p>Click the button several times to see if the time changes, or
           if the file is cached.</p>
+
         <p id="demo5"></p>
+
         <script>
           function loadDoc5() {
+
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
@@ -179,35 +187,60 @@ A simple POST request Example
         </script>
 
 
-<!-- Method 	Description
+<!---------------------------------------------------------------------------
+   Method    	                  Description
+------------                      --------------
 setRequestHeader(header, value) 	Adds HTTP headers to the request
 
-header: specifies the header name
-value: specifies the header value
-The url - A File On a Server
+                                  header: specifies the header name
+                                  value: specifies the header value
 
-The url parameter of the open() method, is an address to a file on a server:
+
+The url - A File On a Server
+=============================
+
+The url parameter in the "open()" method, is an address to 
+a file on a server:
+__________________________________________
 xhttp.open("GET", "ajax_test.asp", true);
 
-The file can be any kind of file, like .txt and .xml, or server scripting files like .asp and .php (which can perform actions on the server before sending the response back).
-Asynchronous - True or False?
+
+That file can be of any kind: 
+  -> .txt / .xml
+  -> .asp / .php (server scripting files which can perform actions on the server before sending the response back).
+
+
+
+Asynchronous - True or False ?
+===============================
 
 Server requests should be sent asynchronously.
 
 The async parameter of the open() method should be set to true:
+__________________________________________
 xhttp.open("GET", "ajax_test.asp", true);
 
-By sending asynchronously, the JavaScript does not have to wait for the server response, but can instead:
+By sending asynchronously, the JavaScript does not have to wait 
+for the server response, but can instead:
 
-    execute other scripts while waiting for server response
-    deal with the response after the response is ready
+  ->  execute other scripts while waiting for server response
+  ->  deal with the response after the response is ready
+
+
 
 The onreadystatechange Property
+================================
 
-With the XMLHttpRequest object you can define a function to be executed when the request receives an answer.
+With the "XMLHttpRequest" object you can define a function to be executed 
+when the request receives an answer.
 
-The function is defined in the onreadystatechange property of the XMLHttpRequest object:
-Example
+The function is defined in the "onreadystatechange" property of the XMLHttpRequest object:
+Example:
+___________________________________________________________________
+
+option : 1
+-----------
+
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     document.getElementById("demo").innerHTML = this.responseText;
@@ -215,27 +248,54 @@ xhttp.onreadystatechange = function() {
 };
 xhttp.open("GET", "ajax_info.txt", true);
 xhttp.send();
+____________________________________________________________________
+
+option : 2
+-----------
+
+xhttp.onreadystatechange = function() {
+  if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+};
+xhttp.open("GET", "ajax_info.txt", true);
+xhttp.send();
+____________________________________________________________________
 
 You will learn more about onreadystatechange in a later chapter.
-Synchronous Request
 
-To execute a synchronous request, change the third parameter in the open() method to false:
+
+Synchronous Request
+=====================
+
+To execute a synchronous request, change the third parameter in the open() 
+method to false:
+___________________________________________
 xhttp.open("GET", "ajax_info.txt", false);
 
-Sometimes async = false are used for quick testing. You will also find synchronous requests in older JavaScript code.
 
-Since the code will wait for server completion, there is no need for an onreadystatechange function:
-Example
+Sometimes async = false are used for quick testing. 
+You will also find synchronous requests in older JavaScript code.
+
+
+Since the code will wait for server completion, there is no need for 
+an onreadystatechange function:
+_____________________________________________
 xhttp.open("GET", "ajax_info.txt", false);
 xhttp.send();
 document.getElementById("demo").innerHTML = xhttp.responseText;
 
-Synchronous XMLHttpRequest (async = false) is not recommended because the JavaScript will stop executing until the server response is ready. If the server is busy or slow, the application will hang or stop.
 
-Synchronous XMLHttpRequest is in the process of being removed from the web standard, but this process can take many years.
+Synchronous XMLHttpRequest (async = false) is not recommended because 
+the JavaScript will stop executing until the server response is ready. 
 
-Modern developer tools are encouraged to warn about using synchronous requests and may throw an InvalidAccessError exception when it occurs.
- -->
+If the server is busy or slow, the application will hang or stop.
+
+Synchronous XMLHttpRequest is in the process of being removed from the web standard, 
+but this process can take many years.
+
+Modern developer tools are encouraged to warn about using synchronous requests and 
+may throw an InvalidAccessError exception when it occurs                         -->
 
     </body>
 </html>

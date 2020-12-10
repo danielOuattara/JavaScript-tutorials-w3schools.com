@@ -1,0 +1,170 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Functions
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Asynchronous JavaScript </title>
+    </head>
+
+    <body>
+        <h1>Asynchronous JavaScript </h1><hr/>
+
+<!-- Functions running in parallel with other functions are called asynchronous
+
+A good example is JavaScript setTimeout() -->
+
+
+<!-- Asynchronous JavaScript
+============================ -->
+
+        <p id="demo_1"></p>
+
+        <script>
+            myDisplay_1 = (foo) => document.querySelector('#demo_1').innerHTML = foo;
+            
+
+            myCalculator_1 =(num1, num2, callBackFunction) => {
+                let sum = num1 + num2;
+                callBackFunction(sum);
+            }
+
+            myCalculator_1 =(num1, num2, callBackFunction) => { callBackFunction (num1 + num2)}
+
+            myCalculator_1(5, 7, myDisplay_1);
+        </script>
+
+
+<!-- Waiting for a Timeout
+==========================
+
+When using the JavaScript function  "setTimeout()", you can specify 
+a callback function to be executed on time-out: -->
+
+        <p id="demo_2"></p>
+        
+        <script>
+            setTimeout(myFunction_2, 3000);
+
+            function myFunction_2() {
+                document.querySelector('#demo_2').innerHTML = " HEllo ! ";
+            }
+
+        </script>
+
+<!-- Instead of passing the name of a function as an argument to another function, 
+you can also pass a whole function instead: -->
+
+        <p id="demo_3"></p>
+        <p id="demo_4"></p>
+
+        <script>
+            setTimeout( function() { myFunction_3("Hello Again")}, 1750);
+
+            function myFunction_3(foo) {
+                document.querySelector('#demo_3').innerHTML = foo;
+            }
+
+            //OR 
+            setTimeout( function() { document.querySelector('#demo_4').innerHTML = "Hello Again Again! ";}, 1750);
+
+        </script>
+
+
+<!-- Waiting for Intervals:
+===========================
+
+When using the JavaScript function "setInterval()", you can specify a callback function 
+to be executed for each interval: -->
+
+        <p id="demo_5"></p>
+        <p id="demo_6"></p>
+
+        <script>
+        
+            setInterval( myFunction_5, 1000);
+
+            function myFunction_5() {
+                let  nowTime = new Date();
+                document.querySelector('#demo_5').innerHTML = 
+                    `${nowTime.getHours()} : ${nowTime.getMinutes()} : ${nowTime.getSeconds()} `;
+            }
+
+
+            setInterval (function() { document.querySelector('#demo_6').innerHTML = `
+                ${(new Date()).getHours()} : ${(new Date()).getMinutes()} : ${(new Date()).getSeconds()}` ;}, 1000);
+
+        </script>
+
+
+<!-- Waiting for Files
+=======================
+
+If you create a function to load an external resource (like a script or a file), 
+you cannot use it before it is fully loaded. This is the perfect time to use a callback.
+
+This example loads a HTML file (mycar.html), and displays the HTML file 
+in a web page, after the file is fully loaded: -->
+
+         <p id="demo_7"></p>
+        <script>
+
+            myDisplayer = (foo) => document.querySelector('#demo_7').innerHTML = foo;
+
+            getFile = (callBack) => {
+
+                let request = new XMLHttpRequest();
+                request.open('GET', 'https://reqres.in/api/users')
+                request.onload = () => {
+                    if (request.status == 200) {
+                        callBack(request.responseText);
+                    } else  {
+                        callBack("error: " + request.status);
+                    }
+                }
+                request.send();
+            }
+            getFile(myDisplayer);
+
+        </script>
+        <hr><hr>
+
+         <p id="demo_8"></p>
+        <script>
+
+            myDisplayer = (foo) => document.querySelector('#demo_8').innerHTML = foo;
+
+            getFile = (callBack) => {
+
+                let request = new XMLHttpRequest();
+                request.open('GET', 'http://localhost:3000/api/cameras')
+                request.onload = () => {
+                    if (request.status == 200) {
+                        
+                        // callBack(JSON.parse(request.responseText)[0].lenses);
+                        callBack(JSON.parse(request.responseText)[0].lenses[0]);
+                        callBack(JSON.parse(request.responseText)[0].imageUrl);
+                        // callBack(JSON.parse(request.responseText).length);
+                        // callBack(JSON.parse(request.responseText));
+                        // callBack(JSON.stringify(request.responseText));
+                        // callBack(Object.values(JSON.parse(request.responseText)[0])); // OK
+                    } else  {
+                        callBack("error: " + request.status);
+                    }
+                }
+                request.send();
+            }
+            getFile(myDisplayer);
+
+        </script>
+
+    
+
+
+
+    </body>
+</html>

@@ -137,7 +137,7 @@ This example returns a list of all <p> elements with class="intro". -->
 
             <script>
                 k[11].style.color = "white";
-                k[11].style.backgroundColor = "#444";
+                k[11].style.backgroundColor = "#e312a3";
                 k[11].style.padding = "10px";
 
                 var x = document.querySelectorAll("p.intro");
@@ -154,13 +154,14 @@ This example finds the form element with id="frm1", in the forms collection,
 and displays all element values: -->
 
                 <p id="demo8"></p>
+
                 <form id="frm1" action="/action_page.php">
 
-                   <label for="">First Name: </label>
-                   <input type="text" name="fname" value="Donald"><br/>
+                   <label for="fname">First Name: </label>
+                   <input type="text" id="fname" name="fname" value="Donald"><br/>
 
-                   <label for="">Last Name: </label>
-                   <input type="text" name="lname" value="Duck"><br/><br/>
+                   <label for="lname">Last Name: </label>
+                   <input type="text" id="lname" name="lname" value="Duck"><br/><br/>
 
                    <input type="submit" value="Submit">
 
@@ -171,11 +172,11 @@ and displays all element values: -->
                 <script>
                     function myFunction() {
                         var x = document.forms["frm1"];
-                     // var x = document.getElementById("frm1");
+                        // OR // var x = document.getElementById("frm1");
                         var text = "";
                         var i;
                         for (i = 0; i < x.length - 1 ; i++) {
-                            text += x.elements[i].value + "<br/>";
+                            text += x.elements[i].value + " ";
                         }
                         document.getElementById("demo8").innerHTML = text;
                     }
@@ -194,16 +195,6 @@ and displays all element values: -->
     > document.links
     > document.scripts
     > document.title                                            -->
-
-
-
-
-
-
-
-
-
-
 
     </body>
 </html>

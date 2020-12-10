@@ -8,7 +8,7 @@ https://www.w3schools.com/js/
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>JavaScript HTML DOM Navigation</title>
+        <title id="demo">JavaScript HTML DOM Navigation</title>
     </head>
     <body>
         <h1>JavaScript HTML DOM Navigation.</h1><hr/>
@@ -24,11 +24,11 @@ According to the W3C HTML DOM standard, everything in an HTML document is a node
     > The entire document is a document node
     > Every HTML element is an element node
     > The text inside HTML elements are text nodes
-    > Every HTML attribute is an attribute node (deprecated)
+    > Every HTML attribute is an attribute node (depreceated)
     > All comments are comment nodes                                         -->
 
    <p>    <img src="htmltreeDOM.gif" alt="HTML Tree DOM" 
-               style="height:300px; width:400px; margin-bottom: 50px;"/></p>
+               style="height:300px; width:450px; margin-bottom: 50px;"/></p>
 
 
 <!-- With the HTML DOM, all nodes in the node tree can be accessed by JavaScript.
@@ -43,13 +43,15 @@ The nodes in the node tree have a hierarchical relationship to each other.
 
 The terms 'parent', 'child', and 'sibling' are used to describe the relationships.
 
-   > In a node tree, the top node is called the root (or root node)
-   > Every node has exactly one parent, except the root (which has no parent)
-   > A node can have a number of children
-   > Siblings (brothers or sisters) are nodes with the same parent  -->
+> In a node tree, the top node is called the root (or root node)
+> Every node has exactly one parent, except the root (which has no parent)
+> A node can have a number of children
+> Siblings (brothers or sisters) are nodes with the same parent  -->
 
-  <p>   <img src="./../../images/basic_HTML_layout.jpg" alt="basic HTML layout">
-    <img src="./../../images/node_relationship.gif" alt="node relationship"></p><hr/>
+   <img src="./../../images/node_relationship.gif" alt="node relationship"><hr/>
+
+   <img src="./../../images/basic_HTML_layout.jpg" alt="basic HTML layout"><hr/>
+
 
 
 <!-- From the HTML above you can read:
@@ -57,8 +59,8 @@ The terms 'parent', 'child', and 'sibling' are used to describe the relationship
 > <html> is the root node
 > <html> has no parents
 > <html> is the parent of <head> and <body>
-> <head> is the first child of <html>
-> <body> is the last child of <html>
+> <head> is the firstChild of <html>
+> <body> is the lastChild of <html>
 
 and:
 
@@ -93,20 +95,25 @@ A common error in DOM processing is to expect an element node to contain text.
 
 The element node <title> (in the example above) does not contain text.
 It contains a 'text node' with the value "DOM Tutorial".
-The value of the text node can be accessed by the node's 'innerHTML' property:
+
+ -> The value of the text node can be accessed by the node's  "innerHTML" property:
 
 var myTitle = document.getElementById("demo").innerHTML;
 ________________________________________________________
 
-Accessing the 'innerHTML' property is the same as accessing the 'nodeValue' of the first child:
+
+-> Accessing the 'innerHTML' property is the same as accessing the 'nodeValue' of the first child:
 
 var myTitle = document.getElementById("demo").firstChild.nodeValue;
 ___________________________________________________________________
 
-Accessing the first child can also be done like this:
+
+
+-> Accessing the first child can also be done like this:
 
 var myTitle = document.getElementById("demo").childNodes[0].nodeValue;
 ______________________________________________________________________
+
 
 All the (3) following examples retrieves the text of an <h1> element and copies it into
 a <p> element:                                                                       -->
@@ -118,15 +125,31 @@ a <p> element:                                                                  
         <p id="id04"></p>
 
         <script>
-          document.getElementById("id02").innerHTML =
-            document.getElementById("id01").innerHTML;
+          document.getElementById("id02").innerHTML = "id02 :  " + document.getElementById("id01").innerHTML;
 
-          document.getElementById("id03").innerHTML = 
-            document.getElementById("id01").firstChild.nodeValue;
+          document.getElementById("id03").innerHTML = "id03 : " + document.getElementById("id01").firstChild.nodeValue;
 
-          document.getElementById("id04").innerHTML = 
-            document.getElementById("id01").childNodes[0].nodeValue;
+          document.getElementById("id04").innerHTML = "id04 : " + document.getElementById("id01").childNodes[0].nodeValue;
         </script><hr/>
+
+        <div id="div_1">
+          <h1>Discussion</h1>
+          <h2>La vie est une une histoire de temps</h2>
+          <!-- <a href="http:/www.w3schools.com/" target="_blank">w3schools.com</a> -->
+          <p>belle</p>
+        </div>
+        <p>----------------------------------------</p>
+
+        <p id="p_01"></p>
+        <p id="p_02"></p>
+        <p id="p_03"></p>
+        <hr>
+
+        <script>
+          document.getElementById("p_01").innerHTML = "p_01 : " + document.getElementById("div_1").firstChild.nodeValue;
+          document.getElementById("p_02").innerHTML = "p_02 : " + document.getElementById("div_1").childNodes[1].innerHTML;
+          document.getElementById("p_03").innerHTML = "p_03 : " + document.getElementById("div_1").lastChild.nodeValue;
+        </script>
 
 <!-- InnerHTML
 ===============

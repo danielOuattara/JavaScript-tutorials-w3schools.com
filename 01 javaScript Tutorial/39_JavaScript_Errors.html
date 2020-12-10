@@ -15,15 +15,15 @@ https://www.w3schools.com/js/
         <p id="demo1"></p><br/><hr/><br/><p id="demo5"></p><p id="demo6"></p>
         <p id="demo7"></p> <p id="demo8"></p><p id="demo9"></p>
 
+
         <input id="demo4" type="text">
         <button type="button" onclick="testFunctionErr()"> Test Input</button>
         <p id="p01"></p>
 
+
+
         <script>
-
-
 /*
-
 'try' statement lets you test a block of code for errors.
 'catch' statement lets you handle the error.
 'throw' statement lets you create custom errors.
@@ -32,8 +32,10 @@ https://www.w3schools.com/js/
 
 /* Errors Will Happen!
 ======================
+
 When executing JavaScript code, different errors can occur.
-Errors can be coding errors made by the programmer, errors due to wrong input, and other unforeseeable things.  */
+Errors can be coding errors made by the programmer, errors due 
+to wrong input, and other unforeseeable things.  */
 
         try {
             allert("Welcome Guest !");
@@ -43,15 +45,18 @@ Errors can be coding errors made by the programmer, errors due to wrong input, a
 
 /* JavaScript catches 'allert' as an error, and executes the 'catch' code to handle it.  */
 
+
+
 /* JavaScript try and catch.
 ============================
+
 The 'try' statement allows you to define a block of code to be tested
 for errors while it is being executed.
 The 'catch' statement allows you to define a block of code to be executed,
 if an error occurs in the try block.
 
-The JavaScript statements 'try' and 'catch' come in pairs:
 
+The JavaScript statements 'try' and 'catch' come in pairs:
 -----------------------------------------|
 try {
   Block of code to try
@@ -61,24 +66,32 @@ catch(err) {
 }
 ----------------------------------------*/
 
+
+
 /*JavaScript Throws Errors.
 ==========================
+
 When an error occurs, JavaScript will normally stop and generate an error message.
 The technical term for this is: "JavaScript will throw an exception (throw an error)."
+
 JavaScript will actually create an "Error object" with two properties: "name" and "message".*/
 
 
 /* The throw Statement.
 =======================
+
 The 'throw' statement allows you to create a custom error.
 Technically you can "throw an exception (throw an error)".
-The exception can be a JavaScript 'String', a 'Number', a 'Boolean' or an 'Object':
+The exception can be a JavaScript 'String', a 'Number', 
+a 'Boolean' or an 'Object':
+
 -------------------------------------------|
 
 throw "Too big";    // throw a text
 throw 500;          // throw a number
 
 -------------------------------------------|
+
  If you use throw together with try and catch,
 you can control program flow and generate custom error messages. */
 
@@ -86,12 +99,11 @@ you can control program flow and generate custom error messages. */
 
 /* Input Validation Example.
 ============================
-This example examines input. If the value is wrong, an exception (err) is thrown.
-The exception (err) is caught by the catch statement and a custom error message
+
+This example examines input. If the value is wrong, an exception (err) is 'thrown'.
+
+The exception (err) is caught by the 'catch' statement and a custom error message
 is displayed:  */
-
-
-            //document.getElementById("demo2").innerHTML = "<br/><br/><hr/>";
 
             document.getElementById("demo3").innerHTML = "Enter a number between 5 and 10:";
 
@@ -104,13 +116,17 @@ is displayed:  */
 
                 try {
                     if (x == "") throw "empty";
-                    if (isNan(x)) throw "not a number";
+                    if (isNaN(x)) throw "not a number";
                     x = Number(x);
                     if (x < 5) throw "too low";
                     if (x > 10) throw "too high";
                 }
                 catch(err) {
                     message.innerHTML = "Input is " + err;
+                }
+
+                finally {
+                    x.innerHTML = "";
                 }
             }
 

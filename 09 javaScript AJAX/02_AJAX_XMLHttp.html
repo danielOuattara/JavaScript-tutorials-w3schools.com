@@ -14,7 +14,7 @@ https://www.w3schools.com/js/
         <h1>Ajax - The XMLHttpRequest Object.</h1><hr/>
 
 
-<!-- The keystone of AJAX is the XMLHttpRequest object.
+<!-- The keystone of AJAX is the "XMLHttpRequest" object.
 
 
 The XMLHttpRequest Object
@@ -33,13 +33,43 @@ Create an XMLHttpRequest Object
 All modern browsers (Chrome, Firefox, IE7+, Edge, Safari, Opera) have a
 built-in 'XMLHttpRequest' object.
 
+
 Syntax for creating an XMLHttpRequest object:
----------------------------------------------
-var variable_name = new XMLHttpRequest();
+
+____________________________________________
+var variable_name = new XMLHttpRequest();                                -->
 
 
-Access Across Domains
-======================
+  <script>
+
+    // option 1 :------------------------------------------------------------
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "ajax_info.txt", true);
+      xhttp.send();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("demo").innerHTML = this.responseText;
+            }
+        };
+    }
+
+
+    // option 2 :--------------------------------------------------------------
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "url", true);
+    xhr.send();
+    xhr.onreadystatechange = () => {
+      if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+        reponse =  JSON.parse(this.responseText);
+      } 
+    }
+  </script>
+
+
+
+<!--Access Across Domains
+==========================
 
 For security reasons, modern browsers do not allow access across domains.
 
@@ -114,6 +144,8 @@ send(string) 	             Sends the request to the server.
 --------------------------------------------------------------------------------
 setRequestHeader() 	       Adds a label/value pair to the header to be sent
 --------------------------------------------------------------------------------
+
+
 
 
 XMLHttpRequest Object Properties
@@ -286,25 +318,6 @@ Message: 	Description:
 505 HTTP Version Not Supported 	The server does not support the HTTP protocol version used in the request
 
 511 Network Authentication Required 	The client needs to authenticate to gain network access
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 -->

@@ -25,14 +25,12 @@ All animations should be relative to a container element.-->
             <div id = "animate"> </div>
         </div>
 
-
 <!-- Style the Elements
 ========================
 
 The container element should be created with
  > style = "position: relative"
  > style = "position: absolute".                                     -->
-
 
         <style>
             #container {
@@ -49,7 +47,6 @@ The container element should be created with
                 background-color: red;
             }
         </style>
-
 
 <!-- Animation Code
 ===================
@@ -79,7 +76,7 @@ The changes are called by a timer. When the timer interval is small, the animati
         <script>
             function myMove() {
                 var elem = document.getElementById('animate');
-                var pos = 0;
+                var pos = -150;
                 var id = setInterval(frame, 0.1);
                 function frame() {
                     if (pos == 300) {

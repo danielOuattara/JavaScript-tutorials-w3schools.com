@@ -30,16 +30,21 @@ https://www.w3schools.com/js/
                 document.getElementById("demo1").innerHTML = Date();
             });
 
+        // OR
+
+            // document.getElementById("button01").addEventListener("click", displayDate);
+
             // function displayDate() {
             //     document.getElementById("demo1").innerHTML = Date();
             // }
+        
         </script>
 
-<!-- The 'addEventListener()' method attaches an event handler to a specified element.
-The 'addEventListener()' method attaches an event handler to an element without 
-overwriting existing event handlers.
+<!-- The 'addEventListener()' method attaches an event handler to a specified element 
+without overwriting other existing event handlers.
 
 You can add many event handlers to one element.
+
 You can add many event handlers of the same type to one element, i.e two "click" events.
 
 You can add event listeners to any DOM object not only HTML elements. i.e the window object.
@@ -59,13 +64,14 @@ Syntax
 element.addEventListener(event, function, useCapture);
 _______________________________________________________
 
-The first parameter is the type of the event (like "click" or "mousedown" or any
-other HTML DOM Event.)
+ > The first parameter is the type of the event (like "click" or "mousedown" or any
+   other HTML DOM Event.)
 
-The second parameter is the function we want to call when the event occurs.
+ > The second parameter is the function we want to call when the event occurs.
 
-The third parameter is a boolean value specifying whether to use event bubbling 
-or event capturing. This parameter is optional.
+ > The third parameter is a boolean value specifying whether to use event bubbling 
+   or event capturing. This parameter is optional.
+
 
 Note: you don't use the "on" prefix for the event; use "click" instead of "onclick".
 ----
@@ -85,6 +91,7 @@ Add an Event Handler to an Element
         <button id="button3">Button3: click</button>
         <script>
             document.getElementById("button3").addEventListener("click", alertMessage);
+
             function alertMessage () {
                 alert("Hello World !");
             }
@@ -195,6 +202,7 @@ function with the parameters: -->
                 return document.getElementById("demo4").innerHTML = result;
             }
         </script>
+        
 
 <!-- Event Bubbling or Event Capturing ?
 =======================================
@@ -215,8 +223,8 @@ click event.
 With the addEventListener() method you can specify the propagation type by using 
 the "useCapture" parameter: addEventListener(event, function, useCapture);
 
-The default value is 'false', which will use the bubbling propagation, when the value 
-is set to 'true', the event uses the capturing propagation. -->
+The default value is 'false', which will use the "bubbling" propagation, when the value 
+is set to 'true', the event uses the "capturing" propagation. -->
 
         <style>
             #myDiv1, #myDiv2 {
@@ -230,6 +238,7 @@ is set to 'true', the event uses the capturing propagation. -->
                 padding: 20px;
             }
         </style>
+
         <div id="myDiv1">
             <h2>Bubbling</h2>
             <p id="myP1">Click me!</p>
@@ -239,6 +248,7 @@ is set to 'true', the event uses the capturing propagation. -->
             <h2>Capturing</h2>
             <p id="myP2">Click me!</p>
         </div><br/>
+
 
         <script>
             document.getElementById("myP1").addEventListener("click", function(){
@@ -257,6 +267,8 @@ is set to 'true', the event uses the capturing propagation. -->
                    alert("You clicked the div2 orange element");
                }, true);
         </script>
+
+
 
 <!--The removeEventListener() method
 =====================================
@@ -299,9 +311,6 @@ with the 'addEventListener()' method: -->
                 }
             </script><hr/>
 
-
-
-
             <style>
                 #myDIV2 {
                 background-color: coral;
@@ -319,7 +328,7 @@ with the 'addEventListener()' method: -->
 
                     <p>Click the button to remove the div's event handler.</p>
 
-                    <button onclick="removeHandlerToggle()" id="myBtn">Remove</button>
+                    <button onclick="removeHandlerToggle()" id="myBtn-2">Remove</button>
                 </div>
                 
                 <p id="demo6"></p>

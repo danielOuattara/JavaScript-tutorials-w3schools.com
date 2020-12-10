@@ -11,8 +11,9 @@ https://www.w3schools.com/js/
         <title>JavaScript HTML DOM - Changing HTML</title>
     </head>
     <body>
+
         <h1>JavaScript HTML DOM - Changing HTML</h1>
-        <br/><br/><hr/><br/>
+        <br/><hr/>
 
 <!-- The HTML DOM allows JavaScript to change the content of HTML elements. 
 
@@ -61,16 +62,16 @@ To change the value of an HTML attribute, use this syntax:
 
 This example changes the value of the src attribute of an <img> element: -->
 
-           <button  id="button01" onclick="myFunction()" onmouseover="myFunction2()">
+           <button id="button01" onclick="myFunction()" onmouseover="myFunction2()">
                Click to change image :</button><br/>
 
-            <img  id="image01" src="../../HTML/images/acacia-trees.jpg"
+            <img id="image01" src="./../../HTML/images/acacia-trees.jpg"
                   alt="acacia tree" style ="width: 500px; height: 450px;"/><br/><br/>
 
     
-            <img  id="image02" src="../../HTML/images/acacia-trees.jpg"
+            <img  id="image02" src="./../../HTML/images/acacia-trees.jpg"
             alt="acacia tree" style ="width: 500px; height: 450px;" 
-            onclick="myFunction()"/>
+            onclick="myFunction()" onmouseover="cursor()"/>
 
 
 
@@ -85,6 +86,11 @@ This example changes the value of the src attribute of an <img> element: -->
 
                 function myFunction2() {
                     document.getElementById('button01').style.cursor ="pointer";
+                }
+
+                cursor = () => {
+                    myImage = document.getElementById('image02');
+                    myImage.style.cursor ='pointer';
                 }
 
             </script>

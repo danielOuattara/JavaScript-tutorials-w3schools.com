@@ -12,7 +12,7 @@ https://www.w3schools.com/js/
     </head>
     <body>
         <h1>JavaScript HTML DOM Document</h1><hr/>
-        <a href="https://www.w3schools.com/" style="text-decoration:none;">w3schools.com</a>
+        <!-- <a href="https://www.w3schools.com/" style="text-decoration:none;">w3schools.com</a> -->
 
 
 <!-- The 'Document' object in the HTML DOM is the owner of all other objects
@@ -22,16 +22,16 @@ https://www.w3schools.com/js/
  The HTML DOM Document Object.
 ==============================
 
-The 'document' object represents your web page.
+The "document" object represents your web page.
 
 If you want to access any element in an HTML page, you always start with
-accessing the 'document' object.
+accessing the "document" object.
 
 Below are some examples of how you can use the document object to access
 and manipulate HTML.
 
 
-Finding HTML Elements.
+Finding HTML Elements. (methods)
 ======================
 
 Method.                                 Description.
@@ -45,42 +45,54 @@ document.getElementsByTagName(name) 	  Find elements by tag name.
 --------------------------------------------------------------------------------
 
 
- Changing HTML Elements.
+ Changing HTML Elements. (properties)
 =========================
 
 Property 	                              Description
 --------                                -----------
 --------------------------------------------------------------------------------
+
 element.innerHTML = " new html content"  Change the inner HTML of an element
-element.innerText = " new html content"
+element.innerText = " new html content"       ""            ""       "" 
+element.textContent =
 --------------------------------------------------------------------------------
+
 element.attribute = new value 	        Change the attribute value of an
                                         HTML element
 --------------------------------------------------------------------------------
+
 element.style.property = new style 	    Change the style of an HTML element
 ------------------------------------------------------------------------------->
 
-      <h2 id="demo1"> <a id="anchor1" href="https://www.w3schools.com/html/"
-        target="_blank";> This is a link </a></h2>
+      <h2 id="demo1"> 
+        <a id="anchor1" href="https://www.w3schools.com/html/" target="_blank";> This is a link </a>
+      </h2>
+
+      <button onclick="myCreateElement()">Click to create an HTML element</button>
 
       <script>
         var element1 = document.getElementById("demo1");
         element1.id = "demo2";
         document.getElementById("anchor1").style.textDecoration = "none";
+        document.getElementById("anchor1").style.color = "purple";
 
         element2 = document.getElementById("anchor1");
         element2.href = "https://www.w3schools.com/css/";
-     // element2.style.textDecoration = "none";
       </script>
+
 
 <!--
 
 Method 	                                Description.
 ------                                  ------------
---------------------------------------------------------------------------------
-element.setAttribute(attribute, value) 	Change the attribute value of an
-                                        HTML element
-------------------------------------------------------------------------------->
+---------------------------------------------------------------------------------------------
+element.setAttribute(attribute, value) 	Change the attribute value of an HTML element
+
+element.getAttribute(attribute) 	      returns the attribute value (name) of an HTML element
+---------------------------------------------------------------------------------------------
+
+element.removeAttribute(attribute) 	      returns the attribute value (name) of an HTML element
+--------------------------------------------------------------------------------------------->
 
       <script>
          element2.setAttribute("href", "https://www.w3schools.com/js/");
@@ -90,6 +102,7 @@ element.setAttribute(attribute, value) 	Change the attribute value of an
 
  Adding and Deleting Elements.
 ==================================
+
 
 Method 	                            Description
 -------                             -----------
@@ -105,28 +118,73 @@ document.replaceChild(new, old) 	  Replace an HTML element
 document.write(text) 	              Write into the HTML output stream
 ------------------------------------------------------------------------------->
 
-      <p id="demo3"></p>
-      <p id="demo4"></p>
-      <p id="demo5"></p>
-      <p id="demo6"></p>
+
 
       <script>
-        // creates a new paragraph
-        var paragraph_1 = document.createElement("p");
-        paragraph_1.id = "text1";
-        // paragraph_1.setAttribute("id","text1");
-        var content_1 = document.createTextNode("Hello World Again !");
-        paragraph_1.appendChild(content_1);
-        document.body.appendChild(paragraph_1);
-        document.getElementById("text1").style.color = "green";
+
+         myCreateElement = function(){
+            // creates a new paragraph
+            var paragraph_1 = document.createElement("p");
+
+            paragraph_1.id = "text1";  // OR // paragraph_1.setAttribute("id","text1");
+
+            var content_1 = document.createTextNode("Hello World Again !");
+
+            paragraph_1.appendChild(content_1);
+
+            document.body.appendChild(paragraph_1);
+
+            document.getElementById("text1").style.color = "green";
+        }
         // document.getElementById("demo3").innerHTML = document.documentElement.innerHTML;
 
-        console.log(document.body);
+        // console.log(document.body);
+
+
+        // create a new styled <h1>
+          var heading_1 = document.createElement("h1");
+          heading_1.setAttribute("id","h_01");
+          var content_heading_1 = document.createTextNode("Learning HTML DOM");
+          heading_1.appendChild(content_heading_1);
+          document.body.appendChild(heading_1);
+          document.getElementById("h_01").style.backgroundColor ="green";
+
+
+
       </script>
 
+      <button type="button" id="button_01" onclick="htmlGenerator()">Click to generate HTML</button>
+     
+      <button type="button" id="button_02">Click to generate HTML</button>
 
-<!--
- Adding Events Handlers.
+
+      <script>
+
+          htmlGenerator = () => {
+            var heading_2 = document.createElement("h1");
+            heading_2.setAttribute("id","h_02");
+            var content_heading_2 = document.createTextNode("Creating HTML DOM via JavaScript");
+            heading_2.appendChild(content_heading_2);
+            document.body.appendChild(heading_2);
+            document.getElementById("h_02").style.backgroundColor ="green";
+            document.getElementById("h_02").style.color ="white";
+          }
+
+
+          document.getElementById("button_02").onclick = htmlGenerator_2 = () => {
+              var heading_3 = document.createElement("h1");
+              heading_3.setAttribute("id","h_03");
+              var content_heading_3 = document.createTextNode("Creating HTML DOM via JavaScript");
+              heading_3.appendChild(content_heading_3);
+              document.body.appendChild(heading_3);
+              document.getElementById("h_03").style.backgroundColor ="blue";
+              document.getElementById("h_03").style.color ="white";
+
+            }
+
+      </script>
+
+<!-- Adding Events Handlers.
 ============================
 
 Method 	                                   Description
@@ -134,11 +192,29 @@ Method 	                                   Description
 --------------------------------------------------------------------------------
 document.getElementById(id).onclick =      Adding event handler code to an
     function(){code}                       onclick event
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------->
+
+        <p id="landing-zone"></p>
+
+        <script>
+
+          document.getElementById("button_02").onclick = htmlGenerator_2 = () => {
+              var heading_3 = document.createElement("h1");
+            heading_3.setAttribute("id","h_03");
+            var content_heading_3 = document.createTextNode("Creating HTML DOM via JavaScript");
+            heading_3.appendChild(content_heading_3);
+            document.body.appendChild(heading_3);
+            document.getElementById("h_03").style.backgroundColor ="blue";
+            document.getElementById("h_03").style.color ="white";
+            }
+
+        </script>
 
 
-Finding HTML Objects.
-======================
+
+
+<!--Finding HTML Objects.
+=========================
 
 The first HTML DOM Level 1 (1998), defined 11 HTML objects,
 object collections, and properties. These are still valid in HTML5.
@@ -206,6 +282,23 @@ document.title 	             Returns the <title> element 	              1
 --------------------------------------------------------------------------------
 document.URL 	               Returns the complete URL of the document 	1
 ------------------------------------------------------------------------------->
+
+
+    <p id="bloc-1"></p>
+    <p id="bloc-2"></p>
+    <p id="bloc-3"></p>
+    <p id="bloc-4"></p>
+
+
+    <script>
+      document.getElementById("bloc-1").innerHTML = document.title;
+      document.getElementById("bloc-2").innerHTML = document.doctype;
+      console.log(document.doctype);
+      document.getElementById("bloc-3").innerHTML = document.head;
+      console.log(document.head);
+      document.getElementById("bloc-4").innerHTML = document.title;
+    </script>
+
 
     </body>
 </html>

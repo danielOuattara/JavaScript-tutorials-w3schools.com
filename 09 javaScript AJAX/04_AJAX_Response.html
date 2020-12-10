@@ -49,12 +49,14 @@ statusText 	            Returns the status-text (e.g. "OK" or "Not Found")
 
 The 'onreadystatechange' function is called every time the readyState changes.
 
-When 'readyState' is 4 and status is 200, the response is ready:             -->
+When 'readyState' is 4 and 'status' is 200, the response is ready:             -->
 
         <p id="demo1"></p>
 
         <button id="button01" onclick="loadDoc()">Click to Request</button>
+
         <script>
+
             function loadDoc() {
                 var xhttp = new XMLHttpRequest();
 
@@ -67,10 +69,11 @@ When 'readyState' is 4 and status is 200, the response is ready:             -->
                 xhttp.open("GET", "https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_first/ajax_info.txt", true);
                 xhttp.send();
             }
+
         </script>
 
-        <!-- Note: The 'onreadystatechange' event is triggered four times (1-4), one time for each 
-             change in the readyState.
+<!-- Note: The 'onreadystatechange' event is triggered four times (1-4), one time for each 
+           change in the readyState.
  
 
  Using a Callback Function
@@ -86,15 +89,21 @@ The function call should contain the URL and what function to call when
 the response is ready.                                                                                 -->
 
         <p id="demo2"></p>
+
         <button id="button02" onclick="loadDoc2('ajax_info.txt', myFunction)">Click to Request</button>
+
         <!-- <button id="button02" onclick="loadDoc2('url-2', myFunction2)"></button> -->
+
         <!-- <button id="button02" onclick="loadDoc2('url-3', myFunction3)"></button> -->
 
         <script>
 
-            function loadDoc2 (url, cFunction) {
-                var xhttp;
-                xhttp = new XMLHttpRequest();
+            loadDoc("url-1", myFunction1);
+
+            loadDoc("url-2", myFunction2);
+
+            function loadDoc (url, cFunction) {
+                var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         cFunction (this);
@@ -108,7 +117,16 @@ the response is ready.                                                          
                 document.getElementById("demo2").innerHTML = xhttp.responseText;
             }
 
+            function myFunction1(xhttp) {
+                // action goes here
+            }
+
+            function myFunction2(xhttp) {
+                // action goes here
+            }
+
         </script>
+
 
 <!-- Server Response Properties
 ===============================
@@ -148,6 +166,7 @@ can use it accordingly:                                                         
    </div>
 
    <script>
+
        function loadDoc4() {
            var xhttp = new XMLHttpRequest() ;
            xhttp.onreadystatechange = function () {
@@ -159,6 +178,7 @@ can use it accordingly:                                                         
            xhttp.open("GET", "ajax_info.txt", true);
            xhttp.send();
        }
+
    </script>
 
 
@@ -172,6 +192,60 @@ The 'responseXML' property returns the server response as an XML DOM object.
 Using this property you can parse the response as an XML DOM object: -->
 
 
+        <script>
+            //   Request the file cd_catalog.xml and parse the response:
+        xmlDoc = xhttp.responseXML;
+        txt = "";
+        x = xmlDoc.getElementsByTagName("ARTIST");
+        for (i = 0; i < x.length; i++) {
+         txt += x[i].childNodes[0].nodeValue + "<br>";
+        }
+        document.getElementById("demo").innerHTML = txt;
+        xhttp.open("GET", "cd_catalog.xml", true);
+        xhttp.send(); 
+
+        </script>
+
+<!-- You will learn a lot more about XML DOM in the DOM chapters 
+of this tutorial. 
+
+
+The getAllResponseHeaders() Method
+==================================
+
+The 'getAllResponseHeaders()' method returns all header information 
+from the server response.                                          -->
+
+        <script>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.getAllResponseHeaders();
+            }
+            };
+            xhttp.open("GET", "ajax_info.txt", true);
+            xhttp.send();
+        </script>
+
+
+<!-- The getResponseHeader() Method
+===================================
+
+The 'getResponseHeader()' method returns specific header information 
+from the server response.                                         -->
+
+        <script>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML =
+                this.getResponseHeader("Last-Modified");
+            }
+            };
+            xhttp.open("GET", "ajax_info.txt", true);
+            xhttp.send();
+
+        </script>
 
 
 

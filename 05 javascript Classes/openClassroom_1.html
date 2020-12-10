@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    showBalance() {
+        console.log(`Solde: ${this.balance} EUR`);
+    }
+
+    deposit(amount) {
+        console.log(`Votre dépôt: ${amount} EUR `);
+        this.balance += amount;
+        this.showBalance();
+    }
+
+    withdraw(amount) {
+        if(amount > this.balance) {
+            console.log("Retrait non autorisé !");
+        } else {
+            console.log ("Retrait autorisé ! ");
+            this.balance -= amount;
+            this.showBalance();
+        }
+    }
+}
+
+let client_1 = new BankAccount("Joe", 400);
+console.log(client_1.balance);
+console.log(client_1.showBalance());
+
+client_1.deposit(200);
+client_1.withdraw(50);
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

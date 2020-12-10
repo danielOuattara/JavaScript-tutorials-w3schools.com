@@ -1,0 +1,227 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Functions
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Asynchronous Promises </title>
+    </head>
+
+    <body>
+        <h1>Asynchronous Promises </h1><hr/>
+
+
+<!--
+
+> "Producing code" is code that can take some time.
+
+> "Consuming code" is code that must wait for the result.
+
+A Promise is a JavaScript object that links producing code and consuming code -->
+
+
+
+<!-- JavaScript Promise Object
+===============================
+
+A JavaScript Promise object contains both the producing code and calls to the consuming code: -->
+
+        <script>
+            // Promise Syntax:
+            //-------------------------------------------------------------------------
+
+            let myPromise = new Promise(function (myResolve, myReject) {
+                // producing code  (take some time)
+
+                myResolve(); // when successful
+                myReject();  // when error
+            });
+
+
+            // Consuming code: must wait for a fulfilled Promise
+
+
+            myPromise.then(
+                function(value) { /* code if successful */},
+                function(error) { /* code if some error */}
+            )
+
+            //----------------------------------------------------------------------------
+
+        </script>
+
+<!-- When the executing code obtains the result, it should call one of the two callbacks:
+
+    Result	Call
+    ------------------------------------
+    Success	myResolve(result value)
+    ------------------------------------
+    Error	myReject(error object)   -->
+
+
+<!-- Promise Object Properties
+==============================
+
+A JavaScript Promise object can be:
+
+    > Pending
+    > Fulfilled
+    > Rejected
+
+The Promise object supports two properties: "state" and "result".
+
+->> While a Promise object is "pending" (working), the "result" is undefined.
+
+->> When a Promise object is "fulfilled", the "result" is a value.
+
+->> When a Promise object is "rejected", the "result" is an error object.
+
+myPromise.state	    myPromise.result
+----------------------------------------
+pending	            undefined
+fulfilled	        a result value
+rejected	        an error object                                      
+
+
+
+NOTE:  You cannot access the Promise properties "state" and "result".
+       You must use a Promise method to handle promises.
+-->
+
+
+<!-- Promise, How To Use
+=========================
+
+Here is how to use a Promise: -->
+
+        <script>
+          myPromise.then(
+            function(value) { /* code if successful */ },
+            function(error) { /* code if some error */ }
+         );
+        </script>
+
+<!-- 
+
+'Promise.then()' takes two arguments:
+    > a callback for success
+    > a callback for failure.
+
+ - Using only one is mandatory.
+ - Using both is optional.                              -->
+
+        <p id="demo_1"></p>
+        <script>
+            // Example
+            // --------
+
+            myDisplayer = (foo) => document.querySelector('#demo_1').innerHTML = foo;
+
+            let promise_1 = new Promise (function (myResolve, myReject) {
+                let x = 0; // play with me
+
+                // Here, the producing code, may take some time
+
+                if ( x == 0) { 
+                    myResolve("OK");
+                } else {
+                    myResolve("Error");
+                }
+            });
+
+            promise_1.then (
+                function(value) {
+                    myDisplayer(value);
+                },
+                function(error) {
+                    myDisplayer(error);
+                }
+            );
+        </script>
+
+
+<!-- JavaScript Promise Examples
+================================
+
+To demonstrate the use of promises, we will use the callback examples from the previous chapter:
+
+   1- Waiting for a Timeout
+   2-  Waiting for a File                                                                   
+-------------------------------------------------------------------------------------------- -->
+
+
+<!-- Waiting for a Timeout using a CallBack
+----------------------------------------- -->
+        <p id="demo_2"></p>
+        <p id="demo_3"></p>
+
+
+        <script>
+            // option 1:
+            setTimeout( myFunction_1, 2000);
+
+            function myFunction_1() {
+                document.querySelector('#demo_2').innerHTML = "Timeout using callBack function: option 1";
+            }
+
+            
+            // option 2:
+            setTimeout( () => { document.querySelector('#demo_3').innerHTML = 'Timeout using a callBack function: option 2'}, 2000);
+
+        </script>
+
+
+ 
+<!-- Waiting for a Timeout using a Promise
+----------------------------------------- -->
+        <h2> Waiting for a Timeout()</h2>
+        <p id="demo_4"></p>
+        <p id="demo_5"></p>
+
+
+        <script>
+            // option 1:
+
+            const promise_2 = new Promise(( reject_2, resolve_2) => {
+
+                setTimeout(function() {resolve_2("Timeout using promise: option 1");} , 2000);
+            });
+
+
+            promise_2.then( 
+                 function(value) {
+                     document.querySelector('#demo_4').innerHTML = value },
+
+                 function(error) {
+                     document.querySelector('#demo_4').innerHTML = error }
+            );
+
+            // option 2:
+
+            const promise_3 = new Promise(( reject_3, resolve_3) => {
+
+                setTimeout(() => {resolve_3("Timeout using promise: option 1");} , 2000);
+            });
+
+
+            promise_3.then( 
+                 (value) => {document.querySelector('#demo_5').innerHTML = value },
+                 (error) => {document.querySelector('#demo_5').innerHTML = error }
+            );
+
+        </script>
+
+
+<!-- Waiting for a file 
+========================-->
+ 
+
+
+    
+
+    </body>
+</html>
