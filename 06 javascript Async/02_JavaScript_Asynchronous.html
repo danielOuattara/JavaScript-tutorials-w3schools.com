@@ -28,12 +28,12 @@ A good example is JavaScript setTimeout() -->
             myDisplay_1 = (foo) => document.querySelector('#demo_1').innerHTML = foo;
             
 
-            myCalculator_1 =(num1, num2, callBackFunction) => {
+            myCalculator_1 =(num1, num2, callbackFunction) => {
                 let sum = num1 + num2;
-                callBackFunction(sum);
+                return callbackFunction(sum);
             }
-
-            myCalculator_1 =(num1, num2, callBackFunction) => { callBackFunction (num1 + num2)}
+            // OR 
+            // myCalculator_1 =(num1, num2, callBackFunction) => { callBackFunction (num1 + num2)}
 
             myCalculator_1(5, 7, myDisplay_1);
         </script>
@@ -42,13 +42,13 @@ A good example is JavaScript setTimeout() -->
 <!-- Waiting for a Timeout
 ==========================
 
-When using the JavaScript function  "setTimeout()", you can specify 
+When using the JavaScript function "setTimeout()", you can specify 
 a callback function to be executed on time-out: -->
 
         <p id="demo_2"></p>
         
         <script>
-            setTimeout(myFunction_2, 3000);
+            setTimeout(myFunction_2, 4000);
 
             function myFunction_2() {
                 document.querySelector('#demo_2').innerHTML = " HEllo ! ";
@@ -63,14 +63,14 @@ you can also pass a whole function instead: -->
         <p id="demo_4"></p>
 
         <script>
-            setTimeout( function() { myFunction_3("Hello Again")}, 1750);
+            setTimeout( function() { myFunction_3("Hello Again")}, 5000);
 
             function myFunction_3(foo) {
                 document.querySelector('#demo_3').innerHTML = foo;
             }
 
             //OR 
-            setTimeout( function() { document.querySelector('#demo_4').innerHTML = "Hello Again Again! ";}, 1750);
+            setTimeout(() => { document.querySelector('#demo_4').innerHTML = "Hello Again Again! ";}, 6000);
 
         </script>
 
@@ -78,8 +78,8 @@ you can also pass a whole function instead: -->
 <!-- Waiting for Intervals:
 ===========================
 
-When using the JavaScript function "setInterval()", you can specify a callback function 
-to be executed for each interval: -->
+When using the JavaScript function "setInterval()", you can specify 
+a callback function to be executed for each interval: -->
 
         <p id="demo_5"></p>
         <p id="demo_6"></p>
@@ -91,12 +91,14 @@ to be executed for each interval: -->
             function myFunction_5() {
                 let  nowTime = new Date();
                 document.querySelector('#demo_5').innerHTML = 
-                    `${nowTime.getHours()} : ${nowTime.getMinutes()} : ${nowTime.getSeconds()} `;
+                    `case 1 = ${nowTime.getHours()} : ${nowTime.getMinutes()} : ${nowTime.getSeconds()} `;
             }
 
 
-            setInterval (function() { document.querySelector('#demo_6').innerHTML = `
-                ${(new Date()).getHours()} : ${(new Date()).getMinutes()} : ${(new Date()).getSeconds()}` ;}, 1000);
+            setInterval (()=> { 
+                document.querySelector('#demo_6').innerHTML = ` case 2 =
+                    ${(new Date()).getHours()} : ${(new Date()).getMinutes()} : ${(new Date()).getSeconds()}`
+                }, 1000);
 
         </script>
 
@@ -105,15 +107,14 @@ to be executed for each interval: -->
 =======================
 
 If you create a function to load an external resource (like a script or a file), 
-you cannot use it before it is fully loaded. This is the perfect time to use a callback.
-
-This example loads a HTML file (mycar.html), and displays the HTML file 
-in a web page, after the file is fully loaded: -->
+you cannot use this ressource before it is fully loaded. 
+This is the perfect time to use a callback. -->
 
          <p id="demo_7"></p>
         <script>
 
             myDisplayer = (foo) => document.querySelector('#demo_7').innerHTML = foo;
+            // myDisplayer = (foo) => console.log(foo);
 
             getFile = (callBack) => {
 
@@ -122,21 +123,26 @@ in a web page, after the file is fully loaded: -->
                 request.onload = () => {
                     if (request.status == 200) {
                         callBack(request.responseText);
+                        // callBack(JSON.parse(request.responseText));
                     } else  {
                         callBack("error: " + request.status);
                     }
                 }
                 request.send();
             }
+
+
             getFile(myDisplayer);
+
 
         </script>
         <hr><hr>
+        <!--==================================================================-->
 
          <p id="demo_8"></p>
         <script>
 
-            myDisplayer = (foo) => document.querySelector('#demo_8').innerHTML = foo;
+            myDisplayer = (foo) => document.querySelector('#demo_8').innerHTML  += foo +  '<hr/>';
 
             getFile = (callBack) => {
 
@@ -146,6 +152,7 @@ in a web page, after the file is fully loaded: -->
                     if (request.status == 200) {
                         
                         // callBack(JSON.parse(request.responseText)[0].lenses);
+                        callBack(request.responseText);
                         callBack(JSON.parse(request.responseText)[0].lenses[0]);
                         callBack(JSON.parse(request.responseText)[0].imageUrl);
                         // callBack(JSON.parse(request.responseText).length);
@@ -158,13 +165,10 @@ in a web page, after the file is fully loaded: -->
                 }
                 request.send();
             }
+
+
             getFile(myDisplayer);
 
         </script>
-
-    
-
-
-
     </body>
 </html>

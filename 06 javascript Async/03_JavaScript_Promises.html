@@ -17,25 +17,27 @@ https://www.w3schools.com/js/
 
 <!--
 
-> "Producing code" is code that can take some time.
+> "Producing code" is code that can take some time to produce result.
 
 > "Consuming code" is code that must wait for the result.
 
-A Promise is a JavaScript object that links producing code and consuming code -->
+A Promise is a JavaScript object that links "producing code" and "consuming code" -->
 
 
 
 <!-- JavaScript Promise Object
 ===============================
 
-A JavaScript Promise object contains both the producing code and calls to the consuming code: -->
+A JavaScript "Promise object" contains both the "producing code" and 
+calls to the "consuming code": -->
 
         <script>
             // Promise Syntax:
             //-------------------------------------------------------------------------
 
             let myPromise = new Promise(function (myResolve, myReject) {
-                // producing code  (take some time)
+                
+                // Here: producing code  (take some time)
 
                 myResolve(); // when successful
                 myReject();  // when error
@@ -43,24 +45,22 @@ A JavaScript Promise object contains both the producing code and calls to the co
 
 
             // Consuming code: must wait for a fulfilled Promise
-
-
             myPromise.then(
-                function(value) { /* code if successful */},
-                function(error) { /* code if some error */}
+                function(value) { /* code if successful */}, function(error) { /* code if some error */}
             )
 
             //----------------------------------------------------------------------------
 
         </script>
 
-<!-- When the executing code obtains the result, it should call one of the two callbacks:
+<!-- When the executing (the executor) code obtains the result, 
+    it should call one of the two callbacks:
 
-    Result	Call
+    Result	   Call
     ------------------------------------
-    Success	myResolve(result value)
+    Success    myResolve(result value)
     ------------------------------------
-    Error	myReject(error object)   -->
+    Error	   myReject(error object)   -->
 
 
 <!-- Promise Object Properties
@@ -83,7 +83,9 @@ The Promise object supports two properties: "state" and "result".
 myPromise.state	    myPromise.result
 ----------------------------------------
 pending	            undefined
+----------------------------------------
 fulfilled	        a result value
+----------------------------------------
 rejected	        an error object                                      
 
 
@@ -107,7 +109,7 @@ Here is how to use a Promise: -->
 
 <!-- 
 
-'Promise.then()' takes two arguments:
+'Promise.then()' takes up to two arguments:
     > a callback for success
     > a callback for failure.
 
@@ -150,12 +152,13 @@ Here is how to use a Promise: -->
 To demonstrate the use of promises, we will use the callback examples from the previous chapter:
 
    1- Waiting for a Timeout
-   2-  Waiting for a File                                                                   
+   2- Waiting for a File                                                                   
 -------------------------------------------------------------------------------------------- -->
 
 
 <!-- Waiting for a Timeout using a CallBack
 ----------------------------------------- -->
+        <h2> Waiting for a Timeout() using callback</h2>
         <p id="demo_2"></p>
         <p id="demo_3"></p>
 
@@ -178,17 +181,20 @@ To demonstrate the use of promises, we will use the callback examples from the p
  
 <!-- Waiting for a Timeout using a Promise
 ----------------------------------------- -->
-        <h2> Waiting for a Timeout()</h2>
+        <h2> Waiting for a Timeout() using Promise</h2>
         <p id="demo_4"></p>
         <p id="demo_5"></p>
 
 
         <script>
             // option 1:
+            //-------------------------------------
 
-            const promise_2 = new Promise(( reject_2, resolve_2) => {
+            const promise_2 = new Promise(( resolve_2, reject_2) => {
 
-                setTimeout(function() {resolve_2("Timeout using promise: option 1");} , 2000);
+                setTimeout(function() {
+                    resolve_2("Timeout using promise: option 1");
+                } , 2000);
             });
 
 
@@ -201,6 +207,7 @@ To demonstrate the use of promises, we will use the callback examples from the p
             );
 
             // option 2:
+            //-----------------------------------------
 
             const promise_3 = new Promise(( reject_3, resolve_3) => {
 
@@ -218,7 +225,70 @@ To demonstrate the use of promises, we will use the callback examples from the p
 
 <!-- Waiting for a file 
 ========================-->
- 
+
+        <h2> Waiting for a data using callBack</h2>
+
+        <p id="demo6"></p>
+
+        <script>
+
+            function displayer(foo) {
+                document.getElementById('demo6').innerHTML = foo;
+            }
+
+            function getfile( callback) {
+
+                let xhr = new XMLHttpRequest()
+                xhr.open('GET', 'https://reqres.in/api/users')
+                xhr.onload = function() {
+                    if (xhr.status == 200) {
+                        callback(xhr.responseText)
+                    } else {
+                        callback(`error + ${error.name} + ${error.message} + ${xhr.status}`)
+                    }
+                }
+                xhr.send();
+            }
+
+            getfile(displayer);
+
+        </script>
+
+        <hr>
+        <h2> Waiting for data using Promise</h2>
+        <p id="demo7"></p>
+
+        <script>
+            function displayer(foo) {
+                document.getElementById('demo7').innerHTML = foo;
+            }
+
+             function getfile_2() {
+                 return new Promise ( function(resolve, reject) {
+                     let req = new XMLHttpRequest()
+                     req.open('GET', 'https://reqres.in/api')
+                     req.onload = function() {
+                         if (req.status == 200) {
+                             resolve(req.response);
+                         } else {
+                             resolve('Data Not Found');
+                         }
+                     }
+                     req.send()
+                 })
+                   .then( function(result) {
+                       displayer(result);
+                       }, 
+                       function(error) {
+                         displayer(error);
+                       })
+             }
+
+             getfile_2();
+
+
+
+        </script>
 
 
     

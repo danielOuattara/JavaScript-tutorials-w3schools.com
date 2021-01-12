@@ -1,0 +1,202 @@
+<!-----------------------------------------
+Daniel OUATTARA- daniel.ouattara_AT_gmx.com
+28 03 2020
+JavaScript Tutorial : Functions
+https://www.w3schools.com/js/
+------------------------------------------->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Javascript async/await </title>
+    </head>
+
+    <body>
+        <h1>Javascript async/await </h1><hr/>
+
+    
+<!-- "async" and "await" make "promises" easier to write:
+
+    - "async" makes a function "return a Promise"
+
+    - "await" makes a function "wait for a Promise"  -->
+
+
+
+
+<!-- Async Syntax
+==================
+
+The keyword "async" written before a function makes the function return a promise: -->
+
+        <script>
+
+            //-----------------------------------------
+            async function myFunction() {
+                return "Hello";
+            }
+
+            // is the same as :
+            //------------------------------------------
+
+            async function myFunction() {
+                return Promise.resolve("Hello");
+            }
+        </script>
+
+<!-- Here is how to use the Promise:-->
+
+        <script>
+            
+            myFunction().then(
+                function(value) { /* code if successful */ },
+                function(error) { /* code if some error  */ }  
+            );
+        </script>
+
+
+        <!-- Example -->
+
+        <p id="demo1"></p>
+        <script>
+
+            function displayer(foo) {
+                document.getElementById('demo1').innerHTML = foo;
+            } 
+
+            async function function_1() {
+                return "Hello";
+            }
+
+            function_1().then (
+                function(value) {displayer(value);}, 
+                function(error) {displayer(error);}
+            );
+        </script>
+
+
+<!-- Or simpler, since you expect a normal value(response) (not an error): -->
+
+        <p id="demo2"></p>
+
+
+        <script>
+
+            function displayer(foo) {
+                document.getElementById('demo2').innerHTML =  foo;
+            }
+
+            async function function_2() {
+                return "Hello 2"; 
+            }
+
+            function_2().then( function(response) {
+                return displayer(response);
+            });
+        </script>
+
+
+
+<!-- Await Syntax
+=================
+
+The keyword "await" before a function makes the function "wait for a promise": 
+
+let value = await promise;
+
+The await keyword can only be used inside an async function.
+
+Examples                                                                     
+---------                                                                  -->
+
+       <h2>Basic Syntax</h2>
+
+        <p id="demo3"></p>
+        <script>
+
+            async function function_3() {
+
+                let promise_3 = new Promise( function(resolve,reject) {
+                    resolve("Javascript is Fun !")
+                });
+
+                document.getElementById('demo3').innerHTML = await promise_3;
+            }
+
+            function_3();
+
+
+
+        </script>
+
+      
+
+
+
+        <h2>Waiting for a Timeout</h2>
+
+        <p id="demo4"></p>
+
+        <script>
+
+            async function function_4() {
+
+                let promise_4 = new Promise (function (resolve, reject){
+                    setTimeout (function() {
+                        resolve('I was Waiting for a Timeout to End !!! ');
+                    }, 1000);
+                });
+
+                document.getElementById("demo4").innerHTML = await promise_4;
+            }
+
+            function_4();
+
+        </script>
+
+
+        <h2>Waiting for an online data</h2>
+
+        <p id="demo5"></p>
+
+        <script>
+
+            async function function_5() {
+                let promise_5 = new Promise (function (resolve, reject){
+
+                    const xhr = new XMLHttpRequest()
+                    xhr.open('GET', 'https://reqres.in/api')
+                    xhr.onload = function() {
+                        if (xhr.status == 200) {
+                            resolve(xhr.response)
+                        } else {
+                            reject ('Data Not found hhhhhhhhhhh')
+                        }
+                    }
+                    xhr.send();
+                });
+
+                document.getElementById("demo5").innerHTML = await promise_5;
+            }
+
+            function_5();
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
